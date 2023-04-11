@@ -43,6 +43,7 @@ theme:
         
 markdown_extensions:
   - admonition
+  - tables
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.critic
@@ -60,6 +61,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+
+plugins:
+  - table-reader
      
 extra_css:
     - stylesheets/extra.css
