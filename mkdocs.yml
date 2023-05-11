@@ -1,5 +1,5 @@
-site_name: Tufts TTS Research Technology Tools
-repo_url: https://github.com/BioNomad/tuftsTools
+site_name: Omics Train - Bioinformatics Made Simple
+repo_url: https://github.com/BioNomad/omicsTrain
 edit_uri: blob/main/docs/
 
 theme:
