@@ -75,4 +75,6 @@ extra_javascript:
 nav:
     - About : 
         - Introduction: index.md
-        - HPC Tools: hpc_tools.md
+    - Software/Tools:
+    - Biostatistics:
+    - Machine Learning:
