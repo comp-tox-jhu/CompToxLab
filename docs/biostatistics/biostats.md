@@ -1,58 +1,26 @@
 # Introduction to Biostatistics
 
-Biostatistics attempts to use statiscal methods to solve biological problems. This involves data so for the purpose of our biostatistics tutorials we will
-need to do some setup.
+Biostatistics attempts to use statiscal methods to solve biological problems. This involves data so for the purpose of our biostatistics tutorials we will need to do some setup.
 
 ## Setup 
 
-For the following machine learning tutorials we will be using glioblastoma data from [cBioPortal](https://www.cbioportal.org/study/summary?id=gbm_cptac_2021).
-Before getting started you will need:
-
-- Account on [Tufts HPC](https://access.tufts.edu/research-cluster-account)
-- [VPN](https://access.tufts.edu/vpn) if accessing the HPC from off campus
-
-## Navigate To The Cluster
-
-Once you have an account and are connected to the VPN/Tufts Network, navigate to the [OnDemand Website](https://ondemand.pax.tufts.edu/) and log in with your tufts credentials. Once you are logged in you'll notice a few navigation options:
-
-![](images/ondemandLayout.png)
-
-## Setting Up A Project Space
-
-We are going to open an interactive app:
-
-Click on `Interactive Apps > RStudio Pax` and you will see a form to fill out to request compute resources to use RStudio on the Tufts HPC cluster. We will fill out the form with the following entries:
-
-- `Number of hours` : `3`
-- `Number of cores` : `1`
-- `Amount of memory` : `32GB`
-- `R version` : `4.0.0`
-- `Reservation for class, training, workshop` : `Default`
-- `Load Supporting Modules`: `curl/7.47.1 gcc/7.3.0 hdf5/1.10.4 boost/1.63.0-python3 libpng/1.6.37 java/1.8.0_60 libxml2/2.9.10 libiconv/1.16 fftw/3.3.2 gsl/2.6`
-
-We will now need to create our project that we will work out of:
-
-Click `Lauch` and wait until your session is ready. Click `Connect To RStudio Server`, and you will notice a new window will pop up with RStudio. Now Create a new project:
+For the following machine learning tutorials we will be using glioblastoma data from [cBioPortal](https://www.cbioportal.org/study/summary?id=gbm_cptac_2021). When working within R it is useful to set up an R project. R projects will set your working directory relative to the project directory. This can help ensure you are only working with files within this project space. To create a new project:
     
 1. Go to `File` > `New Project`
 2. `New Directory`
 3. `New Project`
-4. Create a name for your project (e.g. `machine-learning`)
+4. Create a name for your project (e.g. `biostatistics`)
 5. `Create Project`
      
-In terminal, start setting up your directories:
-    
-``` bash
-mkdir data
-mkdir scripts
-mkdir results
-```
+When analyzing data it is useful to create a folder to house your raw data, scripts and results. We can do this by clicking the `New Folder` icon to create these folders:
+
+1. Click `New Folder` > Enter `data` > Click OK
+2. Click `New Folder` > Enter `scripts` > Click OK
+3. Click `New Folder` > Enter `results` > Click OK
     
 Now that we have our project set up we will need to download our data. In the `data` folder we will download our data and decompress it:
 
-``` bash
-cd data
-wget https://cbioportal-datahub.s3.amazonaws.com/gbm_cptac_2021.tar.gz
-tar -xvf gbm_cptac_2021.tar.gz 
-cd ..
+``` R
+download.file(url = "https://cbioportal-datahub.s3.amazonaws.com/gbm_cptac_2021.tar.gz",destfile = "./data/gbm_cptac_2021.tar.gz" )
+untar("./data/gbm_cptac_2021.tar.gz" )
 ```
