@@ -79,6 +79,29 @@ nav:
         - "Programming Languages/Tools": programming_languages_tools/programming_languages_tools.md
     - Biostatistics:
         - "Biostatistics": biostatistics/biostatistics.md
+        - "Setup": biostatistics/biostats.md
+        - Variables and Sampling:
+            - "Quantitative Variables": biostatistics/quant.md
+            - "Qualitative Variables": biostatistics/qual.md
+            - "Sampling": biostatistics/sampling.md
+            - "Confidence Intervals": biostatistics/confidence-interval.md
+            - "Probability Distributions": biostatistics/distributions.md
+        - Analyzing One Categorial Variable:
+            - "Binomial Test": biostatistics/binomial-test.md
+        - Analyzing Two Categorical Variables:
+            - "Odds": biostatistics/odds.md
+            - "Risk/Odds Ratio": biostatistics/odds-ratio-risk.md
+            - "Fisher's Exact Test": biostatistics/fisher-test.md
+            - "Chi-Square Test": biostatistics/chi-square.md
+        - Analyzing One Numeric Variable:
+            - "One Sample T-Test": biostatistics/one-t-test.md
+        - Analyzing Numeric Variable With Two Groups:
+            - "Paired T-Test": biostatistics/paired-t-test.md
+            - "Two Sample T-Test": biostatistics/two-t-test.md
+        - Analyzing Two Numeric Variables:
+            - "Correlation": biostatistics/correlation.md
+        - Analyzing Two Or More Groups:
+            - "One-Way ANOVA": biostatistics/one-way-anova.md
     - Machine Learning:
         - "Machine Learning": machine_learning/machine_learning.md
         - "Tutorial Setup": machine_learning/setup.md
