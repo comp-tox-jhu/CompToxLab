@@ -77,6 +77,8 @@ nav:
         - Introduction: index.md
     - Programming Languages/Tools:
         - "Programming Languages/Tools": programming_languages_tools/programming_languages_tools.md
+    - Omics:
+        - Omics: omics/omics.md
     - Biostatistics:
         - "Biostatistics": biostatistics/biostatistics.md
         - "Setup": biostatistics/biostats.md
