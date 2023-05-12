@@ -75,6 +75,9 @@ extra_javascript:
 nav:
     - About : 
         - Introduction: index.md
-    - Software/Tools:
+    - Programming Languages/Tools:
+        - "Programming Languages/Tools": programming_languages_tools/programming_languages_tools.md
     - Biostatistics:
+        - "Biostatistics": biostatistics/biostatistics.md
     - Machine Learning:
+        - "Machine Learning": machine_learning/machine_learning.md
