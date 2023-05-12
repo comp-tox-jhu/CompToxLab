@@ -22,5 +22,5 @@ Now that we have our project set up we will need to download our data. In the `d
 
 ``` R
 download.file(url = "https://cbioportal-datahub.s3.amazonaws.com/gbm_cptac_2021.tar.gz",destfile = "./data/gbm_cptac_2021.tar.gz" )
-untar("./data/gbm_cptac_2021.tar.gz" )
+untar(tarfile = "./data/gbm_cptac_2021.tar.gz",exdir = "./data/")
 ```
