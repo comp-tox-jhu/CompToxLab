@@ -81,7 +81,7 @@ nav:
         - "Biostatistics": biostatistics/biostatistics.md
     - Machine Learning:
         - "Machine Learning": machine_learning/machine_learning.md
-            - "Tutorial Setup": machine-learning/setup.md
+        - "Tutorial Setup": machine_learning/setup.md
         - Unsupervised Learning:
             - "Dimension Reduction": machine_learning/unsupervised/dimension-reduction.md
             - "Distance Metrics": machine_learning/unsupervised/clustering.md
