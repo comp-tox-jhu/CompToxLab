@@ -81,3 +81,16 @@ nav:
         - "Biostatistics": biostatistics/biostatistics.md
     - Machine Learning:
         - "Machine Learning": machine_learning/machine_learning.md
+            - "Tutorial Setup": machine-learning/setup.md
+        - Unsupervised Learning:
+            - "Dimension Reduction": machine_learning/unsupervised/dimension-reduction.md
+            - "Distance Metrics": machine_learning/unsupervised/clustering.md
+            - "K-Means Clustering": machine_learning/unsupervised/k-means.md
+            - "Hierarchical Clustering": machine_learning/unsupervised/hierarchical.md
+        - Supervised Learning:
+            - Linear Models: machine_learning/supervised/linear-model.md
+            - Logistic Regression: machine_learning/supervised/logistic-regression.md
+            - Survival Analysis Part 1: machine_learning/supervised/surv-part1.md
+            - Survival Analysis Part 2: machine_learning/supervised/surv-part2.md
+            - Multivariate Regression: machine_learning/supervised/multivariate-regression.md
+            - Model Performance: machine_learning/supervised/model-performance.md
