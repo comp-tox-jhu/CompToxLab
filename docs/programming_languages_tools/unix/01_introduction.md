@@ -32,6 +32,21 @@ command [options] [arguments]
     - `[options]` options you can input to modify the original command
     - `[arguments]` the inputs you'd like the command to work with
     
+## Data For Today's Tutorial
 
+To get started let's copy some data to get started! So in command line enter the following code to copy data to your computer:
 
+```bash
+wget https://github.com/BioNomad/omicsTrain/blob/main/docs/programming_languages_tools/unix/unix_tutorial.zip
+```
 
+The `wget` command can be used to pull most files from the internet! However this file is compressed (ends in either `.zip`,`.tar`, or `.tar.gz`), meaning we can't access the files yet. To uncompress our data let's use the unzip command:
+
+```bash
+unzip unix_tutorial.zip
+```
+Great, now we are ready to get started!
+
+## References
+
+1. [Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/01-introduction.html)
