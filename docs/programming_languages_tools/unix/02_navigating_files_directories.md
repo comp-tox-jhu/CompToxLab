@@ -1,5 +1,7 @@
 # Navigating Files/Directories
 
+## Changing and Checking Directories
+
 File systems follow a heirarchy. Think of the files in your computer, you have folders which can contain folders or files. Now that have our tutorial data we will enter or *change* into our `unix_tutorial` folder or *directory* with the `cd` command (`cd` being short for change directory):
 
 ```bash
@@ -19,6 +21,8 @@ pwd
     ```
     
 This output will be a little different for every user based on your computer's file structure. However, you will note here that we are within the root folder (`~`) which contains all other folders, the `Documents` folder, and finally the `unix_tutorial` folder. This string of folders showing where we are is called our **file path** or just **path** for short. 
+
+## Listing Directory Contents
 
 Now this `unix_tutorial` folder has other folders inside it. We can _list_ these folders with the `ls` command:
 
@@ -61,6 +65,8 @@ The long format will usually have 8 columns:
 - day of modification
 - time of modification
 - file/folder name
+
+## Navigation Shortcuts
 
 Now let's practice navigating directories by entering our `data_folder`:
 
