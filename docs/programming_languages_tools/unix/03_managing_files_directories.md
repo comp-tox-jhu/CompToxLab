@@ -109,7 +109,7 @@ cat accList.txt
     SRR1219880
     ```
     
-Sometimes a file can be thousands of lines and you may only want to view  a certain portion of it. We can view the begnnning of a file with `more` and the end of a file with the `less` command. To exit out of this viewing mode, just hit `q`!
+Sometimes a file can be thousands of lines and you may only want to view  a certain portion of it. We can view the begnnning of a file with `more` and the end of a file with the `less` command. To exit out of this viewing mode, just hit `q`! To get a quick idea of what your file contains you can also use the `head` command to grab the first 6 lines!
 
 ## Editing File Content
 
