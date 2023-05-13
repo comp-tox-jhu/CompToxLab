@@ -45,3 +45,7 @@ cat new_file | wc
     ```
     
 Just to note, that you can use `wc new_file` to get the same result, this is just an example of how to pipe the output of one command into another. 
+
+## References
+
+1. [Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/04-redirection.html)
