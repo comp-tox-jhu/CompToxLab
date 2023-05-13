@@ -157,3 +157,7 @@ cat new_file
     ```bash
     Hello World
     ```
+
+## References
+
+1. [Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/03-working-with-files.html)
