@@ -4,11 +4,11 @@ Many software don't have a graphical user interface (or GUI) that users can use 
 
 !!! abstract "Learning Objectives"
 
-    1. Navigating Files & Directories
-    2. Managing Files & Directories
-    3. Redirection and Pipes
-    4. Regular Expressions
-    5. Shell Scripting
+    1. [Navigating Files & Directories](./02_navigating_files_directories.md)
+    2. [Managing Files & Directories](./03_managing_files_directories.md)
+    3. [Redirection and Pipes](./04_redirection_pipes.md)
+    4. [Regular Expressions](./05_regular_expressions.md)
+    5. [Shell Scripting](./06_shell_scripts.md)
     
     
 ## Getting To the Terminal
