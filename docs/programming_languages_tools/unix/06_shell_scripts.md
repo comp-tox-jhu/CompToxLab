@@ -1,109 +1,179 @@
 # Writing Shell Scripts
 
-Step 1: Create a new file
-Open a text editor and create a new file. Save it with a .sh extension, for example, myscript.sh. This will be your Unix script.
+## Creating a Script
 
-Step 2: Set up the script
-To begin, add the following line at the beginning of your script to specify the shell you want to use:
+Shell scripts are convenient ways of running multiple commands. These scripts usually end with `.sh`. Let's use nano to create a shell script that says the date. First move to our `scripts_folder`:
 
-bash
-Copy code
-#!/bin/bash
-Step 3: Define variables
-You can declare variables to store values that you'll use throughout your script. Variables in bash don't have a specific type and are defined without any prefixes. Here's an example:
+```bash 
+cd ../scripts_folder/
+```
 
-bash
-Copy code
-#!/bin/bash
+Now create a script called "first_script.sh" with the following contents:
 
-# Define a variable
-name="John"
-age=30
-Step 4: Use variables
-You can access the values stored in variables using the $ symbol. Here's an example of printing the values of the variables we defined:
 
-bash
-Copy code
-#!/bin/bash
+!!! info "first_script.sh"
 
-name="John"
-age=30
+    ```bash
+    #!/bin/bash
+    
+    # run the date command
+    date
+    ```
 
-# Print the values
-echo "Name: $name"
-echo "Age: $age"
-Step 5: Define functions
-Functions allow you to group a set of commands together and reuse them in your script. Here's an example of defining a function:
+You'll note we use `#!/bin/bash` to make sure this is a bash shell script. When we start using other programming languages (like python) this will be swapped out with `#!/bin/ptyhon`. We also have a line that starts with a `#`. This is called a comment. Comments aren't read as code, they are just plain text we can add to give our commands/code context. Comments are very useful in making your code readable. We should also note that we can't run our script just yet. To run our script we will need to change the permissions on it with the `chmod` command:
 
-bash
-Copy code
-#!/bin/bash
+```bash
+chmod +x first_script.sh 
+```
 
-# Define a function
-greet() {
-  echo "Hello, $1!"
+This command allows us to *execute* our script. To execute our script we can enter the following:
+
+```bash
+./first_script.sh 
+```
+
+!!! info "first_script.sh"
+
+    ```bash
+    Sat May 13 13:00:45 EDT 2023
+    ```
+    
+## Variables
+
+Now let's make our script more complicated with a variable (basically a word that represents some value):
+
+!!! info "first_script.sh"
+
+    ```bash
+    #!/bin/bash
+    
+    # define a variable
+    initial="Today is:"
+    
+    # echo the variable and date
+    echo $initial 
+    date
+    ```
+    
+Here we see that we have text ("Today is:") that is assigned to `initial`, which we reference with a `$` sign. To run this script we will enter the following:
+
+
+```bash
+./first_script.sh 
+```
+
+!!! info "first_script.sh"
+
+    ```bash
+    Today is:
+    Sat May 13 13:00:45 EDT 2023
+    ```
+
+## Functions
+
+We can create a function using shell scripting with the following syntax:
+
+```bash
+function_name (){
+    command
 }
-In this example, $1 represents the first argument passed to the function.
+```
 
-Step 6: Call functions
-To execute a function, simply call it by its name followed by parentheses. Here's an example of calling the greet function we defined earlier:
+To call that function we write out function_name(). Let's modify our script to add a function!
 
-bash
-Copy code
-#!/bin/bash
+!!! info "first_script.sh"
 
-greet() {
-  echo "Hello, $1!"
-}
+    ```bash
+    #!/bin/bash
+    
+    # define a variable
+    initial="Today is:"
+    
+    # echo the variable and date
+    echo $initial 
+    date
+    
+    # define a function to print the first column of the first argument you give the script
+    first_col() {
+        awk '{print $1}' $1
+    }
+    
+    # call this function
+    first_col $1
+    ```
+    
+In our function, we ask it to print the first column of the first argument passed to the function. When we call the function, we ask it to apply this function to the first argument we give the script itself. So let's run this script with the meta.txt file as our argument:
 
-# Call the function
-greet "Alice"
-Step 7: Process command-line arguments
-You can pass arguments to your script when you run it from the command line. The arguments are accessible using special variables: $1, $2, $3, and so on. Here's an example:
+```bash
+./first_script.sh
+```
 
-bash
-Copy code
-#!/bin/bash
 
-# Process command-line arguments
-echo "First argument: $1"
-echo "Second argument: $2"
-Step 8: Implement loops
-Loops allow you to repeat a set of commands multiple times. There are various types of loops in bash, but let's focus on two common ones: the for loop and the while loop.
+!!! info "output"
 
-Example of a for loop:
+   ```bash
+   Today is:
+   Sat May 13 13:30:30 EDT 2023
+   Run
+   SRR1219879
+   SRR1219880
+   ```
+   
+## Loops
 
-bash
-Copy code
-#!/bin/bash
+We can use loops to perform repetitive tasks. Loops follow the following syntax:
 
-# Iterate over a list using a for loop
-for item in "apple" "banana" "orange"
+```bash
+for variable in list
 do
-  echo "Fruit: $item"
+    command $variable
 done
-Example of a while loop:
+```
 
-bash
-Copy code
-#!/bin/bash
+Let's modify our script to use a loop to examine the first line of all files in working directory:
 
-# Use a while loop to print numbers from 1 to 5
-counter=1
-while [ $counter -le 5 ]
-do
-  echo "Number: $counter"
-  counter=$((counter + 1))
-done
-Step 9: Make the script executable
-Before you can run the script, you need to make it executable. Open a terminal and navigate to the directory where your script is located. Then, run the following command:
+!!! info "first_script.sh"
 
-bash
-Copy code
-chmod +x myscript.sh
-Step 10: Run the script
-To execute your script, navigate to the directory where it's located and run the following command in the terminal:
+    ```bash
+    #!/bin/bash
+    
+    # define a variable
+    initial="Today is:"
+    
+    # echo the variable and date
+    echo $initial 
+    date
+    
+    # define a function to print the first column of the first argument you give the script
+    first_col() {
+        awk '{print $1}' $1
+    }
+    
+    # call this function
+    first_col $1
+    
+    # make a loop to examine the first line of all files in working directory
+    for file in *
+    do 
+        head -n 1 $file
+    done
+    ```
 
-bash
-Copy code
-./myscript.sh
+To run the script we will enter the following:
+
+```bash
+./first_script.sh
+```
+
+!!! info "output"
+
+   ```bash
+   Today is:
+   Sat May 13 13:30:30 EDT 2023
+   Run
+   SRR1219879
+   SRR1219880
+   #!/bin/bash
+   ```
+
+
