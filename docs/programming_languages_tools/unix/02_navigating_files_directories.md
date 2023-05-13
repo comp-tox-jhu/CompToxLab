@@ -94,3 +94,7 @@ pwd
     ```bash
     ~/Documents/unix_tutorial
     ```
+    
+## References
+
+1. [Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/02-the-filesystem.html)
