@@ -177,3 +177,6 @@ To run the script we will enter the following:
    ```
 
 
+## References
+
+1. [Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/05-writing-scripts.html)
