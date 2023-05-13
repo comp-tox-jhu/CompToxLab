@@ -1,74 +1,114 @@
 # Regular Expressions
 
-Introduction to Regular Expressions:
-Regular expressions are patterns used to match and manipulate text. They consist of a sequence of characters that define a search pattern. Unix provides several tools that support regular expressions, such as grep, sed, and awk.
+## Syntax
 
-Basic Regular Expression Syntax:
-Before diving into the tools, let's cover the basic syntax of regular expressions:
+Regular expressions are a great way to find/manipulate patterns in files. Regular expressions follow a specific syntax:
 
-Literal Characters: Most characters in a regular expression match themselves. For example, the regular expression "cat" matches the string "cat" exactly.
+- `.` used for matching any character
+- `*` used for mathcing zero or more times
+- `+`  used for matching one or more times
+- `?` used for matching zero or one times
+- `|` or operator
+- `^` used for matching the start of a line
+- `$` used for matching at the end of a line
 
-Character Classes: Square brackets ([]) define a character class, which matches any single character within the brackets. For example, the regular expression "[aeiou]" matches any vowel.
+So if we wanted to list all files that end with `txt` we would use:
 
-Metacharacters: Certain characters have special meaning in regular expressions. Some commonly used metacharacters are:
+```bash
+ls *txt
+```
 
-. (dot): Matches any single character.
-* (asterisk): Matches zero or more occurrences of the preceding character or group.
-+ (plus): Matches one or more occurrences of the preceding character or group.
-? (question mark): Matches zero or one occurrence of the preceding character or group.
-| (pipe): Acts as an OR operator, matching either the expression before or after it.
-Anchors: Anchors are used to match the position within a line. Two commonly used anchors are:
+!!! info "output"
 
-^ (caret): Matches the start of a line.
-$ (dollar sign): Matches the end of a line.
-Using grep:
-grep is a powerful command-line tool for searching files for lines that match a specific pattern. Here's how you can use grep with regular expressions:
-perl
-Copy code
-grep pattern file
-pattern represents the regular expression pattern you want to search for.
-file specifies the file(s) you want to search in.
-Example:
-Let's say we have a file called "data.txt" containing the following lines:
+```bash
+accList.txt	meta.txt
+```
 
-bash
-Copy code
-apple
-banana
-cat
-dog
-To search for lines containing the word "cat," you can run the following command:
+However, to use the rest of the symbols we need to use special commands which we will describe below.
 
-kotlin
-Copy code
-grep "cat" data.txt
-Using sed:
-sed is a stream editor that allows you to perform text transformations based on regular expressions. Here's a simple example of using sed with regular expressions:
-arduino
-Copy code
-sed 's/pattern/replacement/g' file
-pattern represents the regular expression pattern you want to search for.
-replacement represents the text you want to replace the matched pattern with.
-file specifies the file(s) you want to perform the replacement on.
-Example:
-Let's say we have a file called "data.txt" containing the following lines:
+## Search Files
 
-bash
-Copy code
-apple
-banana
-cat
-dog
-To replace all occurrences of "cat" with "lion," you can run the following command:
+Regular expressions are a great way to find/manipulate patterns in files. Let's learn how to search for files starting with `a` with `grep`:
 
-kotlin
-Copy code
-sed 's/cat/lion/g' data.txt
-Using awk:
-awk is a versatile programming language for manipulating structured data. It supports regular expressions to select and transform text. Here's a basic example of using awk with regular expressions:
-arduino
-Copy code
+```bash
+ls | grep ^a
+```
+
+!!! info "output"
+
+    ```bash
+    accList.txt
+    ```
+
+We can also search inside files for lines with certain patterns. Let's try to find the line that contains the word "Run" in our meta data file:
+
+
+```bash
+grep "Run" meta.txt 
+``` 
+
+!!! info "output"
+
+    ```bash
+    Run	analyte_type	Assay.Type	body_site
+    ```
+    
+## Replace Patterns
+
+Sometimes you may want to replace a pattern in a file and we can accomplish this with the `sed` command! Let's replace the word "body_site" with "tissue" in our `meta.txt` file:
+
+```bash
+sed s/body_site/tissue/g meta.txt
+```
+
+!!! info "output"
+
+    ```bash
+    Run	analyte_type	Assay.Type	tissue
+    SRR1219879	DNA	WGS	Peripheral blood
+    SRR1219880	DNA	WGS	Peripheral blood
+    ```
+    
+The `sed` command follows the pattern `s/pattern/replacement/g`.
+
+## Manipulating Structured Data
+
+If we have structured data, like a data frame (think csv, tsv, excel file), then we can manipulate the data with `awk` which follows the following pattern:
+
+```bash
 awk '/pattern/ { action }' file
-/pattern/ represents the regular expression pattern you want to search for.
-{ action } represents the action you want to perform on lines matching the pattern.
-file specifies the file(s) you want to process.
+```
+
+Let's print out the first column of our `meta.txt` file with `awk` as an example without a pattern:
+
+```bash
+awk '{print $1}' meta.txt
+```
+
+!!! info "output"
+
+    ```bash
+    Run
+    SRR1219879
+    SRR1219880
+    ```
+    
+You can pick other columns with the `$` and the number of the column. If you choose `$0` the entire file will be printed. For example if we wanted to print any line that had the pattern `SRR` we would use:
+
+
+```bash
+awk '/SRR/ {print $0}' meta.txt 
+```
+
+!!! info "output"
+
+    ```bash
+    Run
+    SRR1219879	DNA	WGS	Peripheral blood
+    SRR1219880	DNA	WGS	Peripheral blood
+    ```
+
+## References
+
+1. [Regular Expressions Tutorial](https://ryanstutorials.net/regular-expressions-tutorial/)
+2. [AWK Quick Guide](https://www.tutorialspoint.com/awk/awk_quick_guide.htm)
