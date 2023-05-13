@@ -47,16 +47,44 @@ ls -l
     drwxr-xr-x  2 username  groupname   64 May 13 09:26 results_folder
     drwxr-xr-x  2 username  groupname   64 May 13 09:26 scripts_folder
     ```
-The long format will usually have 8 columns:
+The long format will usually have 8 columns: 
+- permissions of the file
+    
+    !!! info "permissions"
+    
+        permissions are split into a line of 10 characters. The first character will be a `d` if it is a directory and a `-` if it is a file. Then the characters are read in groups of three - the first three characters are the user's permissions, the next three are the group permissions and the last three are other user permissions. `r` means someone can read the file/folder, `x` means someone can execute (like as in executing a script), and `w` means someone can write to the file/folder. 
+    
+- number of files (folders count as 2, files count as 1, so for example data_folder has 2 files in it)
+- the username
+- the group name
+- size of the file/folder
+- day of modification
+- time of modification
+- file/folder name
 
-- permissions: split by us
+Now let's practice navigating directories by entering our `data_folder`:
 
-The Unix file system is organized in a hierarchical structure, starting from the root directory ("/") and branching out into various directories and subdirectories. Here are some essential commands for navigating the file system:
-pwd: Print the current working directory.
-ls: List files and directories in the current directory.
--l: Long format, providing detailed information about files.
--a: Include hidden files and directories.
-cd: Change directory.
-cd [directory]: Move to the specified directory.
-cd ..: Move up one directory level.
-cd ~: Move to the home directory.
+```bash
+cd data_folder
+pwd
+```
+
+!!! info "output"
+
+    ```bash
+    ~/Documents/unix_tutorial/data_folder
+    ```
+   
+
+To move around we have a few shortcuts. If we want to move to our root folder (where all other folders live) we can use the `cd ~` command. To move one folder up we can use the `cd ..` command:
+
+```bash
+cd ..
+pwd
+```
+
+!!! info "output"
+
+    ```bash
+    ~/Documents/unix_tutorial
+    ```
