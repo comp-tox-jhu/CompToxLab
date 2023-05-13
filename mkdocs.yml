@@ -79,12 +79,12 @@ nav:
         - "Programming Languages/Tools": programming_languages_tools/programming_languages_tools.md
         - Unix:
             - "Introduction To Shell/Unix":
-                - "Introduction": unix/programming_languages_tools/unix/01_introduction.md
-                - "Navigating Files & Directories": unix/programming_languages_tools/unix/02_navigating_files_directories.md
-                - "Managing Files & Directories": unix/programming_languages_tools/unix/03_managing_files_directories.md
-                - "Redirection and Pipes": unix/programming_languages_tools/unix/04_redirection_pipes.md
-                - "Regular Expressions": unix/programming_languages_tools/unix/05_regular_expressions.md
-                - "Shell Scripting": unix/programming_languages_tools/unix/06_shell_scripts.md
+                - "Introduction": programming_languages_tools/unix/01_introduction.md
+                - "Navigating Files & Directories": programming_languages_tools/unix/02_navigating_files_directories.md
+                - "Managing Files & Directories": programming_languages_tools/unix/03_managing_files_directories.md
+                - "Redirection and Pipes": programming_languages_tools/unix/04_redirection_pipes.md
+                - "Regular Expressions": programming_languages_tools/unix/05_regular_expressions.md
+                - "Shell Scripting": programming_languages_tools/unix/06_shell_scripts.md
     - Omics:
         - Omics: omics/omics.md
     - Biostatistics:
