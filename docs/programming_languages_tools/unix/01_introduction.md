@@ -8,7 +8,7 @@ Many software don't have a graphical user interface (or GUI) that users can use 
     2. Managing Files & Directories
     3. Redirection and Pipes
     4. Regular Expressions
-    5. Project Organization
+    5. Shell Scripting
     
     
 ## Getting To the Terminal
