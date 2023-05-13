@@ -54,17 +54,17 @@ ls -l
 The long format will usually have 8 columns: 
 - permissions of the file
     
-    !!! info "permissions"
-    
-        permissions are split into a line of 10 characters. The first character will be a `d` if it is a directory and a `-` if it is a file. Then the characters are read in groups of three - the first three characters are the user's permissions, the next three are the group permissions and the last three are other user permissions. `r` means someone can read the file/folder, `x` means someone can execute (like as in executing a script), and `w` means someone can write to the file/folder. 
-    
-- number of files (folders count as 2, files count as 1, so for example data_folder has 2 files in it)
-- the username
-- the group name
-- size of the file/folder
-- day of modification
-- time of modification
-- file/folder name
+!!! info "Permissions"
+
+    permissions are split into a line of 10 characters. The first character will be a `d` if it is a directory and a `-` if it is a file. Then the characters are read in groups of three - the first three characters are the user's permissions, the next three are the group permissions and the last three are other user permissions. `r` means someone can read the file/folder, `x` means someone can execute (like as in executing a script), and `w` means someone can write to the file/folder. 
+        
+    - number of files (folders count as 2, files count as 1, so for example data_folder has 2 files in it)
+    - the username
+    - the group name
+    - size of the file/folder
+    - day of modification
+    - time of modification
+    - file/folder name
 
 ## Navigation Shortcuts
 
