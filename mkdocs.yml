@@ -91,6 +91,7 @@ nav:
     - Biostatistics:
         - "Biostatistics": biostatistics/biostatistics.md
         - "Setup": biostatistics/biostats.md
+        - "Biostatistics Cheatsheet": biostatistics/biostatistics_cheatsheet.md
         - Variables and Sampling:
             - "Quantitative Variables": biostatistics/quant.md
             - "Qualitative Variables": biostatistics/qual.md
