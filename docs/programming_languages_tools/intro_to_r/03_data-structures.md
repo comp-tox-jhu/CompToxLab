@@ -1,20 +1,8 @@
-# Data Structures
-
-## Data Types
-
-So far we have only dealt with numeric values. However, we are not limited to just numbers we can store:
-
-* ```numeric``` - numeric values that can contain whole numbers and decimals
-* ```character``` - text value that is made a text value by adding quotes. So for example ```1 2 3``` is a numeric data, but ```"1" "2" "3"``` is character data
-* ```integer``` - limited to just whole numbers, but will take up less memory than numeric data. We can specify an integer by adding `L` to a number (e.g. `1L` or `3L`)
-* ```logical``` - These are boolean values so ```TRUE```/```T``` or ```FALSE```/```F```.
-* ```complex``` - complex number such as ```1+6i```
-
 ## Data Structures
 
 So we have all this lovely data to play with and in R we typically organize in a few ways:
 
-### Vectors
+## Vectors
 
 Vectors are collections of data, like a:
 
@@ -25,42 +13,97 @@ Vectors are collections of data, like a:
 !!! note
    It should be noted that a vector needs to be a collection of the **same type** of data. You will also note that each list is separated by commas and surrounded by ```c()```. This is necessary to create vectors so make sure to remember the ```c()```!
 
-### Factors
+On the previous page we mentioned that values in vectors can be selected by their value (e.g. `someVector[4]` to grab the forth element) or their name if they are named (e.g. `someVector["a"]` to grab the element named `a`)
 
-Factors can be used to store categorical data and can be created like this:
+## Strings
+
+When dealing with character data there are a few functions that are helpful when manipulating them. Let's create a few character vectors to play with:
 
 ```R
-size <- c("small", "medium", "small", "large", "medium")
-size
+x=c("a","b","c")
+y=c("d","e","f")
+```
+
+
+```R
+paste(x, y, sep = '_') # join two or more vectors together
 ```
 
 !!! info "output"
 
+    ```R
+    [1] "a_d" "b_e" "c_f"
     ```
-    [1] "small"  "medium" "small"  "large"  "medium"
-    ```
-  
-```R
-size <- factor(size,levels = c("small","medium","large"))
-size
-```
-  
-!!! info "output"
-
-    ```
-    [1] small  medium small  large  medium
     
-    Levels: small medium large
+```R
+paste(x, collapse = '_') # collapes values in a vector together
+```
+
+!!! info "output"
+
+    ```R
+    [1] "a_b_c"
     ```
-  
-Now we have turned this character vector into a factor vector! These will come in handy when we start breaking down data by category.
+
+```R    
+grep("a", x) # Find regular expression matches in x
+```
+
+!!! info "output"
+
+    ```R
+    [1] 1
+    ```
+
+Here we note that the pattern `a` was found 1 time. We can also replace patterns as well
+
+```R
+gsub("a", "A", x) # Replace pattern matches in x 
+```
+
+!!! info "output"
+
+    ```R
+    [1] "A" "b" "c"
+    ```
+    
+```R    
+toupper(x) # Convert to uppercase
+```
+
+!!! info "output"
+
+    ```R
+    [1] "A" "B" "C"
+    ```
+    
+```R    
+tolower(x) # Convert to lowercase.
+```
+
+!!! info "output"
+
+    ```R
+    [1] "a" "b" "c"
+    ```
+
+```R
+nchar(x) # Number of characters in a string
+```
+
+!!! info "output"
+
+    ```R
+    [1] 3
+    ```
 
 ### Matrices
 
 A matrix can be created by combining vectors of the **same length and same data type**. They are used frequently when performing operations on numeric data but can include other data types. In R we can create a matrix with the `matrix()` function:
 
 ```R
-matrix(data=1:9,nrow = 3,ncol=3)
+m <- matrix(data=1:9,nrow = 3,ncol=3)
+m
 ```
 
 !!! info "output"
@@ -72,18 +115,78 @@ matrix(data=1:9,nrow = 3,ncol=3)
     [3,]    3    6    9
     ```
 
-Here we take a vector and specify how many columns and how many rows we'd like. 
+Here we take a vector and specify how many columns and how many rows we'd like. To select elements in a matrix we can use the following:
 
+```R
+m[2, ] # Select a row
+```
+
+!!! info "output"
+
+    ```
+     [1] 2 5 8
+    ```
+    
+```R
+m[ , 1] # Select a column
+```
+
+!!! info "output"
+
+    ```
+    [1] 1 2 3
+    ```
+    
+```R
+m[2, 3] # Select an element
+```
+
+!!! info "output"
+
+    ```
+    [1] 8
+    ```
+    
+```R
+nrow(m) # number of rows 
+```
+
+!!! info "output"
+
+    ```
+    [1] 3
+    ```
+    
+```R
+ncol(m) # number of columns 
+```
+
+!!! info "output"
+
+    ```
+    [1] 3
+    ```
+    
+```R
+dim(m) # number of rows then columns 
+```
+
+!!! info "output"
+
+    ```
+    [1] 3 3
+    ```    
+    
 ### Data Frames
 
 Data frames are also collections of vectors of the **same length**. However, they do not need to be the same data type. Here we create a data.frame with the `data.frame()` function:
 
 ```R
-data.frame(
-characters=c("past","present","future"),
-numbers=c(1,2,3),
-logical=c(TRUE,FALSE,TRUE),
-integer=c(1L,2L,3L)
+df <- data.frame(
+  characters=c("past","present","future"),
+  numbers=c(1,2,3),
+  logical=c(TRUE,FALSE,TRUE),
+  integer=c(1L,2L,3L)
 )
 ```
 
@@ -96,15 +199,27 @@ integer=c(1L,2L,3L)
     3     future       3    TRUE       3
     ```
 
+We can manipulate data frames the same way we manipulate matrices. However, we have a short hand option to grab a column:
+
+```R 
+df$characters # select the column with the title characters
+```
+
+!!! info "output"
+
+    ```R
+    [1] "past"    "present" "future" 
+    ```
+
 ### Lists
 
 Lists are collections of data that **do not** need to be the same type or length. We can create lists with the `list()` function:
 
 ```R
-list(
-data.frame=data.frame(numbers=1:3,characters=c("past","present","future")),
-numbers=1:5,
-characters=c("past","present","future")
+l <- list(
+  data.frame=data.frame(numbers=1:3,characters=c("past","present","future")),
+  numbers=1:5,
+  characters=c("past","present","future")
 )
 ```
 
@@ -123,4 +238,51 @@ characters=c("past","present","future")
     $characters
     [1] "past"    "present" "future" 
     ```
+
+```R
+l[2] # list with just the second thing in the list
+```
+
+
+!!! info "output"
+
+    ```R
+    $numbers
+    [1] 1 2 3 4 5
+    ```
+
+```R
+l[[2]] # select the second thing in the list
+```
+
+!!! info "output"
+
+    ```R
+    [1] 1 2 3 4 5
+    ```
+    
+    
+```R
+l$characters # grab the element named characters
+```
+
+
+!!! info "output"
+
+    ```R
+    [1] "past"    "present" "future" 
+    ```
+    
+    
+```R
+l['numbers'] # list with just the item named numbers
+
+
+!!! info "output"
+
+    ```R
+    $numbers
+    [1] 1 2 3 4 5
+    ```
+    
 
