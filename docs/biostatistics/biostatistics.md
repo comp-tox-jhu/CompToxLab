@@ -1,3 +1,8 @@
+## Setup/Cheatsheet
+
+- [Setup](./biostats.md)
+- [Biostatistics Cheatsheet](./biostatistics_cheatsheet.md)
+
 ## Variables and Sampling
 
 - [Quantitative Variables](./quant.md)
