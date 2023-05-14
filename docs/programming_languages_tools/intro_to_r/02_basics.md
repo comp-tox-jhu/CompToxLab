@@ -45,16 +45,22 @@ Let's look at some examples:
 10 * 3^3
 ```
 
-```
-[1] 270
-```
+!!! info "output"
+
+    ```
+    [1] 270
+    ```
 
 ```R
 (400 / 10) * (4e2) # 4e2 is the same as 4^2
 ```
-```
-[1] 16000
-```
+
+!!! info "output"
+
+    ```
+    [1] 16000
+    ```
+
 
 You'll notice that in the last equation we added words after a `#` and the equation still ran. This is what is known as a comment, where everything after the `#` is not registered as R code. Commenting is immensely valuable for giving your code context so that you and whoever else reads it knows the purpose of a given chunk of code.
 
@@ -64,39 +70,42 @@ Additionally there are functions built in R to perform mathematical calculations
 abs(10) # absolute value
 ```
 
-```
-[1] 10
-```
+!!! info "output"
 
-<details>
-<summary>More Examples</summary>
-<br>
-  
+    ```
+    [1] 10
+    ```
+
 ```R
 sqrt(25) # square root
 ```
 
-```
-[1] 5
-```
+!!! info "output"
+
+    ```
+    [1] 5
+    ```
 
 ```R
 log(10) # natural logarithm
 ```
 
-```
-[1] 2.302585
-```
+!!! info "output"
+
+    ```
+    [1] 2.302585
+    ```
+
 
 ```R
 log10(10) # log base 10
 ```
 
-```
-[1] 1
-```
-  
-</details>
+!!! info "output"
+
+    ```
+    [1] 1
+    ```
 
 ## Comparisons
 
@@ -113,35 +122,36 @@ R can also be used to make comparisons. Here we note the operators used to do so
 2 == 2
 ```
 
-```
-[1] TRUE
-```
+!!! info "output"
 
-<details>
-<summary>More Examples</summary>
-<br>
+    ```
+    [1] TRUE
+    ```
   
 ```R
 2 != 2
 ```
 
-```
-[1] FALSE
-```
+!!! info "output"
+
+    ```
+    [1] FALSE
+    ```
 
 ```R
 3 <= 10
 ```
 
-```
-[1] TRUE
-```
-      
-</details>
+!!! info "output"
 
+    ```
+    [1] TRUE
+    ```
+    
+      
 !!! note
-   Unless the number is an integer, do not use `==` to compare. This is due to the fact that the decimal value may appear the same 
-in R but from a machine level the two values can be very different.
+
+    Unless the number is an integer, do not use `==` to compare. This is due to the fact that the decimal value may appear the same in R but from a machine level the two values can be very different.
 
 ## Variables & Vectors
 
@@ -150,16 +160,26 @@ Dealing with values can be cumbersome. In R, values can be assigned to words usi
 ```R
 x <- 35 # assigning a value of 35
 x
+```
+
+!!! info "output"
+
+    ```
+    [1] 35
+    ```
+    
+```R
 x <- 40 # changing value to 40
 x
 ```
 
-```
-[1] 35
-```
-```
-[1] 40
-```
+
+!!! info "output"
+
+    ```
+    [1] 40
+    ```
+
 You'll notice that we initially assigned `x` to a value of `35` and then updated value to `40`. This is important to keep in mind because the last value assigned to `x` will be kept. Variables can I have a combination lowercase letters, uppercase letters, underscores and periods:
 
 ```R
@@ -168,6 +188,7 @@ biggerValue <- 45
 even_bigger_value <- 50
 biggest.value <- 55
 ```
+
 ```R
 value
 biggerValue
@@ -175,14 +196,18 @@ even_bigger_value
 biggest.value
 ```
 
-```
-[1] 40
-[1] 45
-[1] 50
-[1] 55
-```
+!!! info "output"
+
+    ```
+    [1] 40
+    [1] 45
+    [1] 50
+    [1] 55
+    ```
+
 
 !!! note
+
     Take note that the spelling needs to be consistent to call the variable correctly.
     
 We can also assign a series of values in a specific order to a variable to create what is called a **vector**:
@@ -192,9 +217,11 @@ someVector <- 5:10
 someVector
 ```
 
-```
-[1]  5  6  7  8  9 10
-```
+!!! info "output"
+
+    ```
+    [1]  5  6  7  8  9 10
+    ```
 
 ## Environment
 
@@ -215,38 +242,16 @@ If you would like to declutter your environment, you have a few options:
      
 ## R Packages
 
-Aside from the base functions there are thousands of custom fuctions which are bundled in R packages. We can access these functions by loading the package that contains them. On the Tufts HPC, groups of packages are available. To access them you will need to specify the path where these packages are held. To identify the base group of packages, we can use the `libPaths()` function:
+Aside from the base functions there are thousands of custom fuctions which are bundled in R packages. We can access these functions by loading the package that contains them. To load a package you can use the `library()` function:
 
 ```R
-.libPaths()
+library(dplyr)
 ```
 
-```
-[1] "/opt/shared/R/4.0.0/lib64/R/library"
-```
-
-This is the base R library for OnDemand and it is rather limited. We will pull in a more complete library by pointing to it:
-
+However, sometimes, a function has the same name as a function in another package. This can create conflicts if you load both packages. To resolve this it is often desirable to specify where your function comes from with the `::` symbol. For example, the `select()` function through `dplyr` is a common name for a function. We can specify that we want the `select()` function in `dplyr` with:
+     
 ```R
-.libPaths(c('/cluster/tufts/hpc/tools/R/4.0.0'))
-.libPaths()
+dplyr::select()
 ```
-
-```
-[1] "/cluster/tufts/hpc/tools/R/4.0.0"    "/opt/shared/R/4.0.0/lib64/R/library"
-```
-
-Now you'll note we are first pointing to the `/cluster/tufts/hpc/tools/R/4.0.0` library first for packages! You'll can see what packagews are available in the`Packages` window:
-
-![](images/packages.png)
-
-To load a package you can use the `library()` function:
-
-```R
-library(ggplot2)
-```
-
-!!! note
-     If you need a package installed in this shared library, reach out to TTS Reasarch Technology, at tts-research@tufts.edu
      
      
