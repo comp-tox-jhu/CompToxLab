@@ -223,6 +223,10 @@ someVector
     [1]  5  6  7  8  9 10
     ```
 
+## Selecting Vector Elements
+
+When we assign values to a vector we can select certain elements
+
 ## Environment
 
 As you may have noticed we have been assigning variables and they have been added to your `Environment` window:
