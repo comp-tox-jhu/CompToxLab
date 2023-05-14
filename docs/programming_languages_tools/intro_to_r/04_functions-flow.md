@@ -20,11 +20,17 @@ squareInput <- function(x){
 }
 
 squareInput(5)
-> 25
 ```
 
+!!! info "output"
+
+    ```
+    25
+    ```
+
 !!! note
-   Without `return()` in the function, R will return the last variable in the function. So you can leave out `return()`, however it is best to specify what you are returning for clarity.
+
+    Without `return()` in the function, R will return the last variable in the function. So you can leave out `return()`, however it is best to specify what you are returning for clarity.
    
 ## Additional Arguements
 
@@ -38,9 +44,11 @@ item_in_vector_func <- function(vector, item){
 item_in_vector_func(vector = c(1,2,3), item=2)
 ```
 
-```
-[1] TRUE
-```
+!!! info "output"
+
+    ```
+    [1] TRUE
+    ```
 
 Here we used a new operator, `%in%`, which does exactly what it sounds like - it checks whether some value is in another set of values. We should also note, you can specify values in functions:
 
@@ -67,9 +75,11 @@ if (x == 10){
 }
 ```
 
-```
-[1] "x does not equal 10"
-```
+!!! info "output"
+
+    ```
+    [1] "x does not equal 10"
+    ```
 
 Now what if we wanted to include multiple conditions?
 
@@ -87,11 +97,13 @@ if (x == 10){
 }
 ```
 
-```
-[1] "x is greater than 2"
-```
+!!! info "output"
 
-Here notice something, x meets 2 of the conditions:
+    ```
+    [1] "x is greater than 2"
+    ```
+
+Here notice that, x meets 2 of the conditions:
 
 - `x > 2`
 - `x > 1`
@@ -108,13 +120,16 @@ for (i in 1:5){
 }
 ```
 
-```
-[1] 1
-[1] 4
-[1] 9
-[1] 16
-[1] 25
-```
+!!! info "output"
+
+    ```
+    [1] 1
+    [1] 4
+    [1] 9
+    [1] 16
+    [1] 25
+    ```
+    
 Here we see that `i` is a substitute for some value in the sequence provided - in this case `1,2,3,4,5`. We can also nest a loop inside a loop like so:
 
 ```R
@@ -124,28 +139,34 @@ for (i in 1:3){
   }
 }
 ```
-```
-[1] 3
-[1] 4
-[1] 5
-[1] 6
-[1] 8
-[1] 10
-[1] 9
-[1] 12
-[1] 15
-```
+
+!!! info "output"
+
+    ```
+    [1] 3
+    [1] 4
+    [1] 5
+    [1] 6
+    [1] 8
+    [1] 10
+    [1] 9
+    [1] 12
+    [1] 15
+    ```
 
 You'll notice that for each value i was multiplied by each value j. So:
 
-```
-1*3
-1*4
-1*5
-2*3
-2*5
-2*6
-3*3
-3*4
-3*5
-```
+
+!!! example "Explanation"
+
+    ```
+    1*3
+    1*4
+    1*5
+    2*3
+    2*5
+    2*6
+    3*3
+    3*4
+    3*5
+    ```
