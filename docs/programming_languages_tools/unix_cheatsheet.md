@@ -41,13 +41,16 @@
 ## File Permissions
 
 chmod guo+ file – change the permissions of file/folder for the group (g), user (u), other (o)
+
 - read (r)
 - write (w)
 - execute (x)
+
 Examples:
-chmod gu+rwx file – read, write, execute for everyone in the group and user (file)
-chmod -R gu+rwx folder – read, write, execute for everyone in the group and user (folder)
-chmod g-w - remove write for everyone in the group
+
+- chmod gu+rwx file – read, write, execute for everyone in the group and user (file)
+- chmod -R gu+rwx folder – read, write, execute for everyone in the group and user (folder)
+- chmod g-w - remove write for everyone in the group
 
 
 ## SSH
