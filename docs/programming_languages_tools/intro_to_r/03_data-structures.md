@@ -29,25 +29,29 @@ Vectors are collections of data, like a:
 
 Factors can be used to store categorical data and can be created like this:
 
-  ```R
-  size <- c("small", "medium", "small", "large", "medium")
-  size
-  ```
+```R
+size <- c("small", "medium", "small", "large", "medium")
+size
+```
+
+!!! info "output"
+
+    ```
+    [1] "small"  "medium" "small"  "large"  "medium"
+    ```
   
-  ```
-  [1] "small"  "medium" "small"  "large"  "medium"
-  ```
+```R
+size <- factor(size,levels = c("small","medium","large"))
+size
+```
   
-  ```R
-  size <- factor(size,levels = c("small","medium","large"))
-  size
-  ```
-  
-  ```
-  [1] small  medium small  large  medium
-  
-  Levels: small medium large
-  ```
+!!! info "output"
+
+    ```
+    [1] small  medium small  large  medium
+    
+    Levels: small medium large
+    ```
   
 Now we have turned this character vector into a factor vector! These will come in handy when we start breaking down data by category.
 
@@ -58,12 +62,15 @@ A matrix can be created by combining vectors of the **same length and same data 
 ```R
 matrix(data=1:9,nrow = 3,ncol=3)
 ```
-```
-     [,1] [,2] [,3]
-[1,]    1    4    7
-[2,]    2    5    8
-[3,]    3    6    9
-```
+
+!!! info "output"
+
+    ```
+         [,1] [,2] [,3]
+    [1,]    1    4    7
+    [2,]    2    5    8
+    [3,]    3    6    9
+    ```
 
 Here we take a vector and specify how many columns and how many rows we'd like. 
 
@@ -79,13 +86,15 @@ logical=c(TRUE,FALSE,TRUE),
 integer=c(1L,2L,3L)
 )
 ```
-```
-  characters numbers logical integer
-1       past       1    TRUE       1
-2    present       2   FALSE       2
-3     future       3    TRUE       3
-```
 
+!!! info "output"
+
+    ```
+      characters numbers logical integer
+    1       past       1    TRUE       1
+    2    present       2   FALSE       2
+    3     future       3    TRUE       3
+    ```
 
 ### Lists
 
@@ -98,17 +107,20 @@ numbers=1:5,
 characters=c("past","present","future")
 )
 ```
-```
-$data.frame
-  numbers characters
-1       1       past
-2       2    present
-3       3     future
 
-$numbers
-[1] 1 2 3 4 5
+!!! info "output"
 
-$characters
-[1] "past"    "present" "future" 
-```
+    ```
+    $data.frame
+      numbers characters
+    1       1       past
+    2       2    present
+    3       3     future
+    
+    $numbers
+    [1] 1 2 3 4 5
+    
+    $characters
+    [1] "past"    "present" "future" 
+    ```
 
