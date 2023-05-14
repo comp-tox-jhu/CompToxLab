@@ -85,6 +85,7 @@ nav:
                 - "Redirection and Pipes": programming_languages_tools/unix/04_redirection_pipes.md
                 - "Regular Expressions": programming_languages_tools/unix/05_regular_expressions.md
                 - "Shell Scripting": programming_languages_tools/unix/06_shell_scripts.md
+            - "Unix Cheatsheet": programming_languages_tools/unix_cheatsheet.md
     - Omics:
         - Omics: omics/omics.md
     - Biostatistics:
