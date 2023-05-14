@@ -111,8 +111,39 @@ Just a note on vectors - when we create vectors of other data types, we typicall
 ```R
 character_vec <- c("a","b","c")
 ```
-Here we see that values are separated by commaas and in between `c()`. We can select values in a vector using a few operations:
 
+Here we see that values are separated by commaas and in between `c()`. We can select values in a vector we need to use a few different comparison operators:
+
+- **Equals:** `==`
+- **Does Not Equal:** `!=`
+- **Less Than Or Equal** `<=`
+- **Greater Than Or Equal** `>=`
+- **Greater Than** `>`
+- **Less Than** `<`
+
+Let's try using some!
+
+```R
+someVector[someVector == 10] # Elements which are equal to 10
+```
+
+!!! info "output"
+
+    ```
+    [1] 10
+    ```
+
+```R
+someVector[someVector < 7] # All elements less than seven
+```
+
+
+!!! info "output"
+
+    ```
+    [1] 5 6
+    ```
+    
 ```R
 someVector[-4] # All but the fourth value
 ```
@@ -141,27 +172,6 @@ someVector[c(1, 5)] # Elements one and five
 
     ```
     [1] 5 9
-    ```
-
-```R
-someVector[someVector == 10] # Elements which are equal to 10
-```
-
-!!! info "output"
-
-    ```
-    [1] 10
-    ```
-
-```R
-someVector[someVector < 7] # All elements less than seven
-```
-
-
-!!! info "output"
-
-    ```
-    [1] 5 6
     ```
 
 ```R
