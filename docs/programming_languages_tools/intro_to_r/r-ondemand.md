@@ -1,46 +1,3 @@
-# Introduction To RStudio For Life Sciences
-
-!!! example "Prerequisites"
-    - [Request an account](http://research.uit.tufts.edu/) on the Tufts HPC Cluster
-    - Connect to the [VPN](https://access.tufts.edu/vpn) or the Tufts Secure Network
-
----
-
-## Learning objectives
-
-!!! abstract "Today we are going to learn about"
-
-    - project organization
-    - R packages and how to access them on the tufts HPC
-    - working with variables and data frames
-    - visualizing data
-    - and finally writing a markdown report of our findings
-
----
-
-## Navigate To The Cluster
-
-Once you have an account and are connected to the VPN/Tufts Network, navigate to the [OnDemand Website](https://ondemand.pax.tufts.edu/){:target="_blank" rel="noopener"} and log in with your tufts credentials. Once you are logged in you'll notice a few navigation options:
-
-![](images/ondemand_layout_pic.png)
-
-Click on `Interactive Apps > RStudio Pax` and you will see a form to fill out to request compute resources to use RStudio on the Tufts HPC cluster. We will fill out the form with the following entries:
-
-- `Number of hours` : `3`
-- `Number of cores` : `1`
-- `Amount of memory` : `4GB`
-- `R version` : `4.0.0`
-- `Reservation for class, training, workshop` : `Bioinformatics Workshops`---> NOTE: This reservation closed on Nov 9, 2022, use Default if running through the materials after that date.
-- `Load Supporting Modules`: `boost/1.63.0-python3 java/1.8.0_60 gsl/2.6`
-
-Click `Launch` and wait until your session is ready. Click `Connect To RStudio Server`, and you will notice a new window will pop up with RStudio. 
-
-??? question "Are you connected to RStudio?"
-    - Yes (put up a green check mark in zoom)
-    - No (raise hand in zoom)
-    
----
-
 ## Introduction To RStudio
 
 RStudio is what is known as an Integrated Development Environment or IDE. Here you can write scripts, run R code, use R packages, view plots, and manage projects. This pane is broken up into three panels:
@@ -65,7 +22,6 @@ Then enter in a ~ symbol to go home!
 
 ![](images/getting_home.png)
 
----
 
 ## R Project
 
@@ -86,7 +42,7 @@ You will notice that your RStudio console switches to this project directory. Wh
     - Yes (put up a green check mark in zoom)
     - No (raise hand in zoom)
 
---- 
+ 
 
 ## File Organization
 
@@ -95,7 +51,7 @@ You will notice that your RStudio console switches to this project directory. Wh
 - In the files window click new folder and enter scripts
 - Let's do this again to create a data folder and a results folder
 
----
+
 
 ## Data Principles
 
@@ -107,7 +63,7 @@ You will notice that your RStudio console switches to this project directory. Wh
 !!! tip
     Result files are good candidate files to cut if you are getting low on storage.
 
----
+
 
 ## Getting Data
 
@@ -134,7 +90,7 @@ file.copy(from="/cluster/tufts/bio/tools/training/intro-to-r/scripts/intro-to-r.
 
 Here we copy over our script intro-to-r to the scripts folder.
 
----
+
 
 ## Opening the Script
 
