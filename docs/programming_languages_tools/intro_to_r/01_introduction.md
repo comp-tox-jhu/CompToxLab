@@ -25,33 +25,26 @@ Then enter in a ~ symbol to go home!
 
 ## R Project
 
-To Create a new R project:
+For the following intro to R tutorial we will be using glioblastoma data from [cBioPortal](https://www.cbioportal.org/study/summary?id=gbm_cptac_2021). When working within R it is useful to set up an R project. R projects will set your working directory relative to the project directory. This can help ensure you are only working with files within this project space. To create a new project:
 
 1. Go to `File` > `New Project`
 2. `New Directory`
 3. `New Project`
-4. Create a name for your project (e.g. `R-Practice`)
+4. Create a name for your project (e.g. `biostatistics`)
 5. `Create Project`
+     
+When analyzing data it is useful to create a folder to house your raw data, scripts and results. We can do this by clicking the `New Folder` icon to create these folders:
 
-You will notice that your RStudio console switches to this project directory. When you log out of RStudio you can open this project again by clicking the `.Rproj` file in the project directory. 
+1. Click `New Folder` > Enter `data` > Click OK
+2. Click `New Folder` > Enter `scripts` > Click OK
+3. Click `New Folder` > Enter `results` > Click OK
+    
+Now that we have our project set up we will need to download our data. In the `data` folder we will download our data and decompress it:
 
-!!! note
-    The paths will be relative to this project directory as a safe guard against referencing data from outside sources. 
-
-??? question "Have you created the project?"
-    - Yes (put up a green check mark in zoom)
-    - No (raise hand in zoom)
-
- 
-
-## File Organization
-
-- You noticed now that you are inside your project folder
-- Let's start by creating some folders to you organize our files
-- In the files window click new folder and enter scripts
-- Let's do this again to create a data folder and a results folder
-
-
+``` R
+download.file(url = "https://cbioportal-datahub.s3.amazonaws.com/gbm_cptac_2021.tar.gz",destfile = "./data/gbm_cptac_2021.tar.gz" )
+untar(tarfile = "./data/gbm_cptac_2021.tar.gz",exdir = "./data/")
+```
 
 ## Data Principles
 
@@ -62,7 +55,6 @@ You will notice that your RStudio console switches to this project directory. Wh
 
 !!! tip
     Result files are good candidate files to cut if you are getting low on storage.
-
 
 
 ## Getting Data
