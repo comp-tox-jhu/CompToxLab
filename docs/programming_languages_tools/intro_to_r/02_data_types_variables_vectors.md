@@ -72,6 +72,25 @@ biggest.value
 
     Take note that the spelling needs to be consistent to call the variable correctly.
 
+## Environment
+
+As you may have noticed we have been assigning variables and they have been added to your `Environment` window:
+
+![](images/environment.png)
+
+If you would like to declutter your environment, you have a few options:
+
+- You can use the `rm()` function to remove which ever variables you'd like. To remove more than one just put a comma between variable names.
+- You can clear **all variables** by clicking the broom icon:
+
+![](images/remove-all.png)
+
+
+!!! warning
+
+    Be careful when removing variables, especially if these values took a long time to generate!
+     
+
 ## Vectors
 
 We can also assign a series of values in a specific order to a variable to create what is called a **vector**:
