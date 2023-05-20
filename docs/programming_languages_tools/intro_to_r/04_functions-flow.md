@@ -170,3 +170,55 @@ You'll notice that for each value i was multiplied by each value j. So:
     3*4
     3*5
     ```
+## Avoiding Loops
+
+While we can use a loop to perform repetitive operations, R also offers a suite of `apply()` functions to apply some operation to different data structures in a more concise manner. For instance consider the following loop:
+
+```R
+for (i in 1:5){
+  print(log(i))
+}
+```
+
+!!! info "output"
+
+    ```
+    [1] 0
+    [1] 0.6931472
+    [1] 1.098612
+    [1] 1.386294
+    [1] 1.609438
+    ```
+   
+We can replace this loop with the `sapply()` function which applies some operation to a vector with the following one line of code:
+
+```R
+sapply(1:5,log)
+```
+
+!!! info "output"
+
+    ```
+    [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379
+    ```
+    
+Note, that we don't print the statement as the output is automatically printed to the console. If we wanted to perform an operation on a list we could use the `lapply()` function:
+
+```R
+lapply(list("a","b","c"),toupper)
+```
+
+!!! info "output"
+
+    ```
+    [[1]]
+    [1] "A"
+    
+    [[2]]
+    [1] "B"
+    
+    [[3]]
+    [1] "C"
+    ```
+    
+The `apply` familiy of functions can also be applied to data frames 
