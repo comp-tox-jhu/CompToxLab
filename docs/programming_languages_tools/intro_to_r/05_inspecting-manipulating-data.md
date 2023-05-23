@@ -429,3 +429,7 @@ meta %>%
     For more dplyr data wrangling tips check out the [Data Wrangling with dplyr and tidyr Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
  
 
+## References
+
+1. [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/)
+2. [Base R Cheat Sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
