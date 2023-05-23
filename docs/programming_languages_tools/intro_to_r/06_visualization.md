@@ -98,3 +98,9 @@ ggplot(data = meta, mapping = aes(x = AntibioticUsage, y = OtuCount,fill= Antibi
 ```
 
 ![](images/plot-labels.png)
+
+
+## References
+
+1. [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/)
+2. [Base R Cheat Sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
