@@ -51,7 +51,7 @@ meta <- read.table("data/metadata.tsv",sep="\t",stringsAsFactors=FALSE)
 
 You'll notice in the code above that we include the option, ```stringsAsFactors=FALSE```. If this was set to ```TRUE``` it would coerce your character columns into factor columns and this isn't always desired. So here we explicitly say ```stringsAsFactors=FALSE``` to be safe.
 
-### read.xlsx()
+### Reading Excel Files
 
 While files like the ones mentioned above are popular, so are excel spreadsheets. So it is worth mentioning how to read in excel data as well:
 
