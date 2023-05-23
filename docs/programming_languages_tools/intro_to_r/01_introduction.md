@@ -30,7 +30,7 @@ For the following intro to R tutorial we will be using glioblastoma data from [c
 1. Go to `File` > `New Project`
 2. `New Directory`
 3. `New Project`
-4. Create a name for your project (e.g. `biostatistics`)
+4. Create a name for your project (e.g. `intro_to_r`)
 5. `Create Project`
      
 When analyzing data it is useful to create a folder to house your raw data, scripts and results. We can do this by clicking the `New Folder` icon to create these folders:
@@ -42,8 +42,8 @@ When analyzing data it is useful to create a folder to house your raw data, scri
 Now that we have our project set up we will need to download our data. In the `data` folder we will download our data and decompress it:
 
 ``` R
-download.file(url = "https://cbioportal-datahub.s3.amazonaws.com/gbm_cptac_2021.tar.gz",destfile = "./data/gbm_cptac_2021.tar.gz" )
-untar(tarfile = "./data/gbm_cptac_2021.tar.gz",exdir = "./data/")
+download.file(url = "https://github.com/BioNomad/omicsTrain/tree/main/docs/programming_languages_tools/intro_to_r/data",destfile = "./data/" )
+untar(tarfile = "./data/data",exdir = "./data/")
 ```
 
 ## Data Principles
