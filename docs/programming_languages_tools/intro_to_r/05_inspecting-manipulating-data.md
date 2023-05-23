@@ -1,6 +1,6 @@
 ## Importing Data
 
-When importing data we use a few common functions:
+When importing data, R provides a few base functions:
 
 * ```read.csv()``` - to read in .csv files or files separated by commas
 * ```read.table()``` - to read files separated by delimiters other than commas - like spaces, tabs, semicolons, etc.
@@ -27,12 +27,12 @@ We will now practice inspecting data frames that we will copy over from a shared
 cp /cluster/tufts/bio/tools/training/intro-to-r/data/* data/
 ```
 
-### read.csv()
+### Reading CSV Files
 
 When importing `.csv` files you'll need to specify the path to where you're file is located. So if your `.csv` file is in `data/test.csv`, you can download it like so:
 
 ```R
-read.csv("data/test.csv")
+read.csv("./data/metadata.csv")
 ```
 
 We can also extend this to URL's as well:
@@ -41,7 +41,7 @@ We can also extend this to URL's as well:
 read.csv(url("https://zenodo.org/api/files/739025d8-5111-476a-9bb9-7f28a200ce8e/linked-ee-dataset-v20220524-QT_2022-07-13-sdev.csv"))
 ```
 
-### read.table()
+### Reading Text Delimeted Files
 
 Like ```read.csv()```, ```read.table()``` can also import data. The latter function is very useful in that it can download files not delimted (a.k.a separated) by commas. So to open a ".tsv" file (a.k.a a file delimeted by a tab ```"\t"```):
 
@@ -64,7 +64,7 @@ Now in excel spreadsheets you may only want to pull out one page or start from a
 
 ```R
 library(openxlsx)
-read.xlsx("data/test.xlsx",sheet=1,startRow = 1,colNames = TRUE,rowNames = FALSE)
+read.xlsx("./data/test.xlsx",sheet=1,startRow = 1,colNames = TRUE,rowNames = FALSE)
 ```
 
 So here we are pulling: the document "/Documents/test.xlsx", the second sheet, starting from the fifth row, specifying we do have column names, specifying we do not have row names. 
