@@ -86,6 +86,14 @@ nav:
                 - "Regular Expressions": programming_languages_tools/unix/05_regular_expressions.md
                 - "Shell Scripting": programming_languages_tools/unix/06_shell_scripts.md
             - "Unix Cheatsheet": programming_languages_tools/unix_cheatsheet.md
+        - Intro To R:
+            - "Introduction to R":
+                - "Introduction": programming_languages_tools/intro_to_r/01_introduction.md
+                - "Data Types/Variables/Vectors": programming_languages_tools/intro_to_r/02_data_types_variables_vectors.md
+                - "Data Structures": programming_languages_tools/intro_to_r/03_data-structures.md
+                - "Functions/Flow": programming_languages_tools/intro_to_r/04_functions-flow.md
+                - "Inspecting/Manipulating Data": programming_languages_tools/intro_to_r/05_inspecting-manipulating-data.md
+                - "Data Vizualization": programming_languages_tools/intro_to_r/06_visualization.md
     - Omics:
         - Omics: omics/omics.md
     - Biostatistics:
