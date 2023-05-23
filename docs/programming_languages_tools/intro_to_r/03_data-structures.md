@@ -191,7 +191,7 @@ df <- data.frame(
 ```
 
 !!! info "output"
-
+    
     ```
       characters numbers logical integer
     1       past       1    TRUE       1
@@ -206,7 +206,7 @@ df$characters # select the column with the title characters
 ```
 
 !!! info "output"
-
+    
     ```R
     [1] "past"    "present" "future" 
     ```
@@ -276,7 +276,7 @@ l$characters # grab the element named characters
     
 ```R
 l['numbers'] # list with just the item named numbers
-
+```
 
 !!! info "output"
 
@@ -285,4 +285,7 @@ l['numbers'] # list with just the item named numbers
     [1] 1 2 3 4 5
     ```
     
+## References
 
+1. [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/)
+2. [Base R Cheat Sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
