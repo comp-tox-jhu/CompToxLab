@@ -9,7 +9,9 @@ ggplot(data = meta, mapping = aes(x = Day, y = OtuCount)) +    # specify what da
   geom_point()   # what type of plot do you want to make? here we make a scatterplot
 ```
 
-![](images/scatterplot.png)
+!!! info "Basic Scatterplot"
+
+    ![](images/scatterplot.png)
 
 While we will go through a few plot types in this topic note, we reccomend you check out the [R Graph Gallery](https://r-graph-gallery.com) for a complete list of possible plots and how to make them using the `ggplot2` library.
 
@@ -23,7 +25,9 @@ ggplot(data = meta, mapping = aes(x = Day, y = OtuCount)) +
   theme_bw()
 ```
 
-![](images/theme-bw.png)
+!!! info "Basic Scatterplot - With Theme"
+
+    ![](images/theme-bw.png)
 
 !!! tip
     For a complete list of themes, visit the [Complete ggplot2 Themes page](https://ggplot2.tidyverse.org/reference/ggtheme.html)
@@ -39,7 +43,9 @@ ggplot(data = meta, mapping = aes(x = Day, y = OtuCount)) +
   scale_y_log10()
 ```
 
-![](images/scaling.png)
+!!! info "Basic Scatterplot -  With Log Scaling"
+
+    ![](images/scaling.png)
 
 ## Relationships
 
@@ -53,7 +59,9 @@ ggplot(data = meta, mapping = aes(x = Day, y = OtuCount)) +
   geom_smooth(method="lm")
 ```
 
-![](images/add-line.png)
+!!! info "Basic Scatterplot - With Regression Line"
+
+    ![](images/add-line.png)
 
 ## Panels and Colors
 
@@ -67,7 +75,9 @@ ggplot(data = meta,
   theme_bw()                   
 ```
 
-![](images/facet.png)
+!!! info "Basic Scatterplot - With Pannels and Colors"
+
+    ![](images/facet.png)
 
 ## Modifying Text
 
@@ -80,7 +90,9 @@ ggplot(data = meta, mapping = aes(x = AntibioticUsage,fill = AntibioticUsage)) +
   theme(axis.text.x = element_text(angle = 45,hjust = 1)) # angle the text by 45 degrees and move the text down by 1 point
 ```
 
-![](images/text-style.png)
+!!! info "Basic Barplot - With The Text Modified"
+
+    ![](images/text-style.png)
 
 You can also modify the x label, y label, title, and title of the legend:
 
@@ -97,7 +109,9 @@ ggplot(data = meta, mapping = aes(x = AntibioticUsage, y = OtuCount,fill= Antibi
   )
 ```
 
-![](images/plot-labels.png)
+!!! info "Basic Boxplot - With Plot Labels Changed"
+
+    ![](images/plot-labels.png)
 
 
 ## References
