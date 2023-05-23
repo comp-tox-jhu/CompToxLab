@@ -5,6 +5,7 @@
 - [Unix Cheatsheet](./unix_cheatsheet.md)
 
 ## R
+- [Introduction To R](./intro_to_r/01_introduction.md)
 
 ## Python
 
