@@ -94,6 +94,15 @@ nav:
                 - "Functions/Flow": programming_languages_tools/intro_to_r/04_functions-flow.md
                 - "Inspecting/Manipulating Data": programming_languages_tools/intro_to_r/05_inspecting-manipulating-data.md
                 - "Data Vizualization": programming_languages_tools/intro_to_r/06_visualization.md
+        - Intro To Python:
+            - "Introduction to Python":
+                - "Introduction": programming_languages_tools/intro_to_python/01_introduction.md
+                - "Variables/Data Types": programming_languages_tools/intro_to_python/02_variables-data-types.md
+                - "Libraries/Data Frames": programming_languages_tools/intro_to_python/03_libraries-data-frames.md
+                - "Plotting Data": programming_languages_tools/intro_to_python/04_plotting-plotly.md
+                - "Lists": programming_languages_tools/intro_to_python/05_lists.md
+                - "Loops/Conditionals": programming_languages_tools/intro_to_python/06_loops-conditionals.md
+                - "Functions/Scope": programming_languages_tools/intro_to_python/07_functions-scope.md
     - Omics:
         - Omics: omics/omics.md
     - Biostatistics:
