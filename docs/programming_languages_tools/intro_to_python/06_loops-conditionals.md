@@ -7,14 +7,16 @@ for i in coverage:
     print(i)
 ```
 
-```
-200
-34
-300
-98
-789
-542
-```
+!!! info "output"
+
+    ```
+    200
+    34
+    300
+    98
+    789
+    542
+    ```
 
 Here we see that `i` is a substitute for some value in the sequence provided - in this case 200, `34, 300, 98, 789, 542`. 
 
@@ -28,20 +30,22 @@ for i in [1,2]:
         print(j*2)
 ```
 
-```
-200
-34
-300
-98
-789
-542
-400
-68
-600
-196
-1578
-1084
-```
+!!! info "output"
+
+    ```
+    200
+    34
+    300
+    98
+    789
+    542
+    400
+    68
+    600
+    196
+    1578
+    1084
+    ```
 
 Here we move through the loop and for every value in the first list (`[1,2]`), Then for each pass of the first loop we move through values the second list (`[200, 34, 300, 98, 789, 542]`). Finally for each value `i` we then multiply by each value `j`. 
 
@@ -66,10 +70,12 @@ for i in coverage:
         pass
 ```
 
-```
-789
-542
-```
+!!! info "output"
+
+    ```
+    789
+    542
+    ```
 
 Here we use the comparison operators we mentioned in the [Libraries & Data Frames Topic Note](libraries-data-frames.md) to only print values in `coverage` if they are larger than `500`.
 
@@ -86,11 +92,13 @@ for i in coverage:
         
 ```
 
-```
-This value is less than 500
-This value is less than 500
-This value is less than 500
-This value is less than 500
-789
-542
-```
+!!! info "output"
+
+    ```
+    This value is less than 500
+    This value is less than 500
+    This value is less than 500
+    This value is less than 500
+    789
+    542
+    ```
