@@ -57,14 +57,3 @@ download.file("https://raw.githubusercontent.com/BioNomad/omicsTrain/main/docs/p
 !!! tip
     Result files are good candidate files to cut if you are getting low on storage.
 
-## Creating the Script
-
-Now let's create an R script by:
-
-1. Click `File`
-2. Click `New File`
-3. Click `R Script`
-
-Now we can save this script as:
-5. Click `File`
-6. 
