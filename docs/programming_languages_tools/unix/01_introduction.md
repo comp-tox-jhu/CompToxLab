@@ -16,7 +16,11 @@ Many software don't have a graphical user interface (or GUI) that users can use 
 Getting to a shell terminal will be different based on whether or not you have a Mac or a Windows machine:
 
 - **Mac:** Click the Terminal icon on your application bar at the bottom of your screen to open a shell terminal
-- **Windows:** I recommend using a program like [MobaXterm](https://mobaxterm.mobatek.net/download.html){:target="_blank" rel="noopener"}. MobaXterm is an enhanced terminal for Windows machines that allows you to use Unix commands. This is useful because many bioinformatics programs are written for Unix shells! [Follow the download instructions here](https://mobaxterm.mobatek.net/download.html){:target="_blank" rel="noopener"} to get started!
+- **Windows:** I recommend using a program like [MobaXterm](https://mobaxterm.mobatek.net/download.html){:target="_blank" rel="noopener"}. MobaXterm is an enhanced terminal for Windows machines that allows you to use Unix commands. This is useful because many bioinformatics programs are written for Unix shells! 
+
+
+!!! abstract "[MobaXterm Download Instructions](https://mobaxterm.mobatek.net/download.html){:target="_blank" rel="noopener"}"
+
 
 ## What is a Command?
 
