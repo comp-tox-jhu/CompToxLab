@@ -57,3 +57,7 @@ download.file("https://raw.githubusercontent.com/BioNomad/omicsTrain/main/docs/p
 !!! tip
     Result files are good candidate files to cut if you are getting low on storage.
 
+## References
+
+1. [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/)
+2. [Base R Cheat Sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
