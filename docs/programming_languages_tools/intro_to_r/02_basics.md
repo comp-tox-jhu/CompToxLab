@@ -259,3 +259,7 @@ dplyr::select()
 ```
      
      
+## References
+
+1. [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/)
+2. [Base R Cheat Sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
