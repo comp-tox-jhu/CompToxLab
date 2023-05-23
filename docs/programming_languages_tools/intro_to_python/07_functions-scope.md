@@ -15,9 +15,11 @@ geometric_mean(coverage)
     
 ```
 
-```
-209.88855396892262
-```
+!!! info "output"
+
+    ```
+    209.88855396892262
+    ```
 
 Here we see that we use `def` to define the function and `return` to specify what value you'd like to return. We then call our function and use our `coverage` variable as our set of values. The geometric mean of the set of values in `coverage` are then returned.
 
@@ -40,14 +42,16 @@ This multiline string is also accessible when we run our function through the `h
 help(geometric_mean)
 ```
 
-```py
-Help on function geometric_mean in module __main__:
+!!! info "output"
 
-geometric_mean(values)
-    This function takes a list of
-    values and returns the geometric mean 
-    of those values
-```
+    ```py
+    Help on function geometric_mean in module __main__:
+    
+    geometric_mean(values)
+        This function takes a list of
+        values and returns the geometric mean 
+        of those values
+    ```
 
 ## Variable Scope
 
@@ -65,14 +69,18 @@ def print_x():
 x
 ```
 
-```
-45
-```
+!!! info "output"
+
+    ```
+    45
+    ```
 
 ```py
 print_x()
 ```
 
-```
-30
-```
+!!! info "output"
+
+    ```
+    30
+    ```
