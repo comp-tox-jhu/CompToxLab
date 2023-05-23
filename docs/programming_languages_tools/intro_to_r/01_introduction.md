@@ -6,21 +6,29 @@ RStudio is what is known as an Integrated Development Environment or IDE. Here y
 - **Environment/History/Connections (upper right)**
 - **Files/Plots/Packages/Help/Viewer (lower right)**
 
-![](images/rstudio1.png)
+!!! info "RStudio Layout"
+
+    ![](images/rstudio1.png)
 
 ## Project Management
 
 Before we dive into R it is worth taking a moment to talk about project management. Often times data analysis is incremental and files build up over time resulting in messy directories:
 
-![](images/messy.png)
+!!! info "Example of a Messy Directory"
+
+    ![](images/messy.png)
 
 Sifting through a non-organized file system can make it difficult to find files, share data/scripts, and identify different versions of scripts. To remedy this, It is reccomended to work within an R Project. Before we make this project, we should make sure you are in your home directory. To do this click on the three dots in the files tab:
 
-![](images/three_dots.png)
+!!! info "Navigating Folders"
+
+    ![](images/three_dots.png)
 
 Then enter in a ~ symbol to go home!
 
-![](images/getting_home.png)
+!!! info "Getting Home"
+
+    ![](images/getting_home.png)
 
 
 ## R Project
