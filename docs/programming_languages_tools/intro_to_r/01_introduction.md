@@ -65,6 +65,31 @@ download.file("https://raw.githubusercontent.com/BioNomad/omicsTrain/main/docs/p
 !!! tip
     Result files are good candidate files to cut if you are getting low on storage.
 
+## New R script
+
+Now we will create an R script. R commands can be entered into the console, but saving these commands in a script will allow us to rerun these commands at a later date. To create an R script we will need to either:
+
+- Go to `File > New File > R script`
+- Click the `New File` icon and select R script
+
+!!! info "Creating a New R Script"
+
+    ![](images/newFile.png)
+
+## Running R Code
+
+When running R code you have a few options:
+
+  Running One Line/Chunk:
+  
+  - Put your cursor at the beginning of the line of code and hit `Ctrl + Enter` on Windows or  &#8984; + `Enter` on MacOSX.
+    
+  - Highlight the line/chunk of code and hit `Ctrl + Enter` or &#8984; + `Enter`.
+    
+  Running The Entire Script:
+  
+  - Clicking `Source` at the top of the script window.
+  
 ## References
 
 1. [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/)
