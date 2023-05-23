@@ -1,6 +1,12 @@
 ## Plotting With ggplot2
 
-While it is possible to use the base plotting system in R, we are going to focus on using the `ggplot2` library to create plots due to it's widespread use in scientific figure generation and the versitility of the package. The basic formula for creating a plot is as such:
+While it is possible to use the base plotting system in R, we are going to focus on using the `ggplot2` library to create plots due to it's widespread use in scientific figure generation and the versitility of the package. Let's start by loading some data to plot:
+
+```R
+read.csv()
+```
+
+The basic formula for creating a plot is as such:
 
 ```R
 library(ggplot2)
