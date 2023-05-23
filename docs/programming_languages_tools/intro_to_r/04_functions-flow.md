@@ -221,4 +221,41 @@ lapply(list("a","b","c"),toupper)
     [1] "C"
     ```
     
-The `apply` familiy of functions can also be applied to data frames 
+The `apply` familiy of functions can also be applied to data frames. Data frames have two axes, rows and columns. When using `apply()` on a data frame you specify `1` for rows and `2` for columns. Here is an example for calculating sums:
+
+```R
+df=data.frame(a=1:3,b=1:3,c=1:3,d=1:3)
+df
+```
+
+!!! info "output"
+
+    ```
+      a b c d
+    1 1 1 1 1
+    2 2 2 2 2
+    3 3 3 3 3
+    ```
+
+```R
+# applying sums to rows
+apply(df,1,sum)
+```
+
+!!! info "output"
+
+    ```
+    [1]  4  8 12
+    ```
+    
+```R
+# applying sums to rows
+apply(df,2,sum)
+```
+
+!!! info "output"
+
+    ```
+    a b c d 
+    6 6 6 6 
+    ```
