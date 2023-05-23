@@ -19,9 +19,11 @@ Variables, once we assign them to some value, can be passed into functions to ac
 ```py
 print('The maximum coverage is ', max_coverage)
 ```
-```
-The maximum coverage is  6000
-```
+!!! info "output"
+
+    ```
+    The maximum coverage is  6000
+    ```
 
 Here the function `print()` took in two character values and printed a combined string of words.
 
@@ -41,9 +43,11 @@ So you have a variable, how do you determine the type? Well we can use the `type
 type(max_coverage)
 ```
 
-```
-int
-```
+!!! info "output"
+
+    ```
+    int
+    ```
 
 If you want to convert between data types you can specify with the following functions:
 
@@ -72,9 +76,11 @@ Let's try an few example:
 35 / 7 - 5 + 4 * 4 + 2**2
 ```
 
-```
-20.0
-```
+!!! info "output"
+
+    ```
+    20.0
+    ```
 
 We note that Python calculations follow the order of operations when performing a calculation. We should also bring up two non-standard operations that you may or may not be familiar with: Modulus and Floor division. Modulus is the remainder after division so:
 
@@ -82,9 +88,11 @@ We note that Python calculations follow the order of operations when performing 
 7 % 2
 ```
 
-```
-1
-```
+!!! info "output"
+
+    ```
+    1
+    ```
 
 Floor division is a division operation for which you round the result down to a whole number:
 
@@ -92,9 +100,11 @@ Floor division is a division operation for which you round the result down to a 
 7 // 2
 ```
 
-```
-3
-```
+!!! info "output"
+
+    ```
+    3
+    ```
 
 ## Strings & Operators
 
@@ -104,17 +114,21 @@ You can use `+` and `*` with string data as well to add and multiply, take for i
 antibiotic + antibiotic
 ```
 
-```
-'StreptomycinStreptomycin'
-```
+!!! info "output"
+
+    ```
+    'StreptomycinStreptomycin'
+    ```
 
 ```py
 antibiotic * 4
 ```
 
-```
-'StreptomycinStreptomycinStreptomycinStreptomycin'
-```
+!!! info "output"
+
+    ```
+    'StreptomycinStreptomycinStreptomycinStreptomycin'
+    ```
 
 ## Indexing
 
@@ -122,31 +136,46 @@ Unlike the other data types, strings have lengths. We can use the `len()` functi
 
 ```py
 print(antibiotic)
+```
+
+!!! info "output"
+
+    ```
+    'Streptomycin'
+    ```
+
+
+```py
 len(antibiotic)
 ```
 
-```
-'Streptomycin'
-12
-```
+!!! info "output"
 
+    ```
+    12
+    ```
+    
 We can slice strings if needed to! However, the letters you are grabbing are **zero-indexed** meaning that the first letter is letter 0, the second letter is letter 1, and so on:
 
 ```py
 antibiotic[0]
 ```
 
-```
-'S'
-```
+!!! info "output"
+
+    ```
+    'S'
+    ```
 
 ```py
 antibiotic[1]
 ```
 
-```
-'t'
-```
+!!! info "output"
+
+    ```
+    't'
+    ```
 
 We can grab more letters using the format `[start:stop]`:
 
@@ -154,9 +183,11 @@ We can grab more letters using the format `[start:stop]`:
 antibiotic[1:5]
 ```
 
-```
-'trep'
-```
+!!! info "output"
+
+    ```
+    'trep'
+    ```
 
 ## Comments
 
