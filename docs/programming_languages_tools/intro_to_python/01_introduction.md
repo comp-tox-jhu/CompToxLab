@@ -19,7 +19,9 @@ When you open JupyterLab you will notice:
 - **Left Sidebar**: containing your file browser, list of running kernels/terminals, table of contents, extension manager
 - **Main Work Area**: containing options for file/window types to open (ipykernels, terminal environments, text files, markdown files, and python files)
 
-![](images/jupyterlab.png)
+!!! info "JupyterLab Layout"
+
+    ![](images/jupyterlab.png)
 
 We are going to start by opening up a `.ipynb` file by clicking `Notebook Python 3 (ipykernel)`. These are not python scripts, but notebook files that contain code but also text, links and images. These files can easily be converted to a python script (file ending in `.py`) by going to:
 
@@ -33,7 +35,9 @@ For now let's work in the Jupyter notebook (`.ipynb` file)!
 
 You will notice when you open up your notebook that you are working in blocks:
 
-![](images/blocks.png)
+!!! info "Code/Markdown Blocks"
+
+    ![](images/blocks.png)
 
 These blocks can either be:
 
@@ -96,4 +100,6 @@ Here are a few helpful links to get started:
 
 Now hit either the play button at the top of the screen or hit `Shift + Enter` to run the block:
 
-![](images/markdown-block.png)
+!!! info "Running A Markdown Block"
+
+    ![](images/markdown-block.png)
