@@ -42,7 +42,7 @@ When analyzing data it is useful to create a folder to house your raw data, scri
 Now that we have our project set up we will need to download our data. In the `data` folder we will download our data and decompress it:
 
 ``` R
-download.file(url = "https://github.com/BioNomad/omicsTrain/tree/main/docs/programming_languages_tools/intro_to_r/data",destfile = "./data/" )
+download.file(url = "https://github.com/BioNomad/omicsTrain/tree/main/docs/programming_languages_tools/intro_to_r/data/data.zip",destfile = "./initial_data/" )
 untar(tarfile = "./data/data",exdir = "./data/")
 ```
 
