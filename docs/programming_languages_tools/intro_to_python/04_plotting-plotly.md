@@ -20,7 +20,9 @@ fig = px.scatter(df,                      # the data we are using
 fig.show()
 ```
 
-![](images/scatterplot.png)
+!!! info "Scatterplot"
+
+    ![](images/scatterplot.png)
 
 ## Adding A TrendLine
 
@@ -37,7 +39,9 @@ fig = px.scatter(df,
 fig.show()
 ```
 
-![](images/trend-line.png)
+!!! info "Adding A Trend Line"
+
+    ![](images/trend-line.png)
 
 ## Scaling
 
@@ -54,7 +58,9 @@ fig = px.scatter(df,
 fig.show()
 ```
 
-![](images/scaling.png)
+!!! info "Scaling"
+
+    ![](images/scaling.png)
 
 ## Panels
 
@@ -70,7 +76,9 @@ fig = px.scatter(df,
 fig.show()
 ```
 
-![](images/panels.png)
+!!! info "Adding Panels"
+
+    ![](images/panels.png)
 
 # Modifying Text
 
@@ -89,7 +97,9 @@ fig = px.scatter(df,
 fig.show()
 ```
 
-![](images/text.png)
+!!! info "Modifying Text"
+
+    ![](images/text.png)
 
 !!! tip
     For more plots and plot customization options, checkout the [Plotly Graphing Library Page](https://plotly.com/python/) for more information
