@@ -42,8 +42,9 @@ When analyzing data it is useful to create a folder to house your raw data, scri
 Now that we have our project set up we will need to download our data. In the `data` folder we will download our data and decompress it:
 
 ``` R
-download.file(url = "https://github.com/BioNomad/omicsTrain/tree/main/docs/programming_languages_tools/intro_to_r/data/data.zip",destfile = "./data/initial_data.zip" )
-unzip(tarfile = "./data/data",exdir = "./data/")
+download.file("https://raw.githubusercontent.com/BioNomad/omicsTrain/main/docs/programming_languages_tools/intro_to_r/data/metadata.csv",destfile = "data/metadata.csv")
+download.file("https://raw.githubusercontent.com/BioNomad/omicsTrain/main/docs/programming_languages_tools/intro_to_r/data/metadata.tsv",destfile = "data/metadata.tsv")
+download.file("https://raw.githubusercontent.com/BioNomad/omicsTrain/main/docs/programming_languages_tools/intro_to_r/data/test.xlsx",destfile = "data/test.xlsx")
 ```
 
 ## Data Principles
@@ -56,34 +57,14 @@ unzip(tarfile = "./data/data",exdir = "./data/")
 !!! tip
     Result files are good candidate files to cut if you are getting low on storage.
 
+## Creating the Script
 
-## Getting Data
+Now let's create an R script by:
 
-![](images/data_summary.png)
+1. Click `File`
+2. Click `New File`
+3. Click `R Script`
 
-- Today we will be using a fake dataset assessing the taxa count on the mouse microbiome before and after antibiotic usage.
-- To copy over this data we will use an R function called file.copy. 
-- A function takes some input and delivers an output. 
-- In this case we specify two inputs the location of our file and where we want to copy it to. 
-- The function's output is copying over this file. So let's try it copy over using the following commands:
-
-
-
-```{r data.copy,warning=F,message=F}
-file.copy(from="/cluster/tufts/bio/tools/training/intro-to-r/data/meta.tsv", to="./data/")
-file.copy(from="/cluster/tufts/bio/tools/training/intro-to-r/data/meta2.tsv", to="./data/")
-```
-
-So here you'll note we copied over the file metadata.tsv to the data folder. Let's copy over our script:
-
-```{r script.copy,warning=F,message=F}
-file.copy(from="/cluster/tufts/bio/tools/training/intro-to-r/scripts/intro-to-r.Rmd", to="./scripts")
-```
-
-Here we copy over our script intro-to-r to the scripts folder.
-
-
-
-## Opening the Script
-
-Now let's start by opening our script. Go to scripts and then double click on intro-to-r.Rmd!
+Now we can save this script as:
+5. Click `File`
+6. 
