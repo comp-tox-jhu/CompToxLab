@@ -275,3 +275,210 @@ A popular way to visualize differential expression results is a volcano plot or 
 
     ![](./images/volcano_plot.png)
     
+## Isolate Normalized Expression Data
+
+DESeq2 normalizes your expression data as such if we intend to plot expression data we will need to use this expression data instead:
+
+```R
+# extract normalized data from deseq results
+counts_norm <- counts(dds_res$dds, normalized=TRUE) %>%
+  t() %>%
+  data.frame() %>%
+  rownames_to_column("patient_id")
+
+# ensure patients match
+meta_patient_to_col <- meta_filt %>%
+  rownames_to_column("patient_id")
+
+# merge our data
+merged_norm <- meta_patient_to_col %>%
+  inner_join(
+    .,
+    counts_norm,
+    by="patient_id"
+  )
+```
+
+## Create a Expression Box Plots
+
+Often times we may want to visualize the expression of our top differentially expressed genes. We can do this using a box plot!
+
+```R
+exp_plot <- ggplot(merged_norm,         # data frame to use                     
+       aes(
+         x=diagnosis,                   # x axis
+         y=LINC02615,                   # y axis
+         fill=diagnosis                 # what to fill by
+       ))+
+  geom_jitter(alpha = .5,width = .2)+
+  geom_boxplot(alpha = 0.8)+
+  scale_y_log10()+
+  theme_bw()+
+  scale_fill_manual(values = c(
+    c(                                  # modify the colors manually
+      "Alzheimer's Disease"="mediumvioletred",
+      "Control"="lightsteelblue4")
+  )) +
+  theme(
+    axis.text.x = element_text(         # reference just the axis x text
+      angle = 45,                       # rotate the text 45 degrees
+      hjust = 1                         # move the text horizontally down by one
+    ),
+    text =element_text(size = 14)       # increase base text size to 14
+  )+
+  labs(
+    x="",                               # change x axis title to no text
+    y="LINC02615 Expression",           # change y axis title 
+    fill="Diagnosis",                   # change legend title
+  )
+
+exp_plot
+```
+
+!!! info "Expression Plot"
+
+    ![](./images/exp_plot.png)
+    
+## Creating A Heatmap
+
+Along with our gene expression box plots, it is often useful to create a heatmap of our top differentially expressed genes. We will create one using the pheatmap function!
+
+```R
+# isolate the top 15 degs
+top_15 <- res %>% 
+  filter(pvalue <0.05)%>%
+  arrange(desc(log2FoldChange)) %>% 
+  head(30) %>%
+  rownames(.)
+
+# filter DESeq2 normalized counts to select top 15 genes
+top_15_counts <- counts(dds_res$dds, normalized=TRUE) %>%
+  data.frame() %>%
+  filter(rownames(.) %in% top_15) 
+
+# set the colors for our heatmeap annotation
+anot_colors <- list(Diagnosis=c(                               
+  "Alzheimer's Disease"="mediumvioletred",
+  "Control"="lightsteelblue4"))
+
+# select dianosis and make the patient id the rownames
+anot_col <- merged_norm %>%
+  column_to_rownames("patient_id") %>%
+  select(c(diagnosis)) %>%
+  arrange(diagnosis) %>%
+  dplyr::rename("Diagnosis" = "diagnosis")
+
+heat <- pheatmap::pheatmap(                     # heatmap function
+  top_15_counts[,rownames(anot_col)],           # data to input 
+  color=colorRampPalette(                       # set specific color range
+    c("navy", "white", "red"))(50),
+  scale = "row",                                # scale by row
+  fontsize = 12,                                # set the font size
+  annotation_col =  anot_col,                   # set the annotation variable
+  annotation_colors = anot_colors,              # set annotation variables
+  cluster_cols = F,                             # do not cluster by column
+  cluster_rows = F,                             # do not cluster by row
+  show_colnames = F,                            # do not show column names
+  main="")                                      # set a main title
+heat <- as.ggplot(heat)
+```
+
+!!! info "Heatmap"
+
+    ![](./images/heatmap.png)
+    
+## Using Images in ggplot
+
+Images can also be insterted into a ggplot let's add an image that describes the study design:
+
+
+```R
+# read in image
+img <- readPNG("../data/ad_overview.png", native = TRUE)
+# convert to a grob
+img <- rasterGrob(img, interpolate=TRUE)
+# add grob to a ggplot 
+gg_img <- ggplot()+annotation_custom(img, xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)+theme_void()
+gg_img
+```
+
+!!! info "Study Design Overview"
+
+    ![](./images/ad_overview.png)
+
+## Combining Plots
+
+### Side By Side
+
+We can now combine these into a combined figure with the patchwork package!
+
+```R
+# use "|" to set plot side by side
+top_row <- gg_img|exp_plot
+top_row
+```
+
+!!! info "Top Row Of Figure"
+
+    ![](./images/top_row.png)
+    
+### Bottom/Top Rows
+
+```R
+# define a top and bottom row using "/"
+left_side <- top_row/volcano_plot
+left_side
+```
+
+
+!!! info "Left Side Of Figure"
+
+    ![](./images/left_side.png)
+    
+### Putting It All Together
+
+```R
+# define right side of figure
+right_side <- heat
+
+# combine left and right sides
+combined <- left_side | right_side
+
+combined
+```
+
+!!! info "Combined Figure"
+
+    ![](./images/combined.png)
+
+### Adding Labels
+
+```R
+# now add at title, caption, and annotation levels starting at A
+combined_with_labels <- combined+
+  plot_annotation(
+    tag_levels = 'A',
+    title = "Alzheimer's Disease Neuronal Differential Expression",
+    caption = "For Educational Purposes Only"
+  ) &
+  theme(plot.tag = element_text(size = 20),
+        plot.title = element_text(size = 25),
+        plot.caption = element_text(size = 20))
+
+combined_with_labels
+```
+
+
+!!! info "Combined Figure"
+
+    ![](./images/combined_with_annotations.png)
+    
+## Saving Figures
+
+```R
+# we can save our new ggplot with the ggsave function:
+ggsave(
+  filename = "./results/combined_figures.png",
+  plot = combined_with_labels
+)
+```
