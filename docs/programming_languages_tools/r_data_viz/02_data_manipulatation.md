@@ -13,7 +13,6 @@ library(grid)               # modify png images
 library(pheatmap)           # create heatmaps
 library(patchwork)          # combine multiple plots
 library(DESeq2)             # run differential expression
-source("./de_wrappers.R")   # source custom differential expression function
 ```
 
 ## Loading Data
