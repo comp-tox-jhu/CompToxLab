@@ -94,10 +94,10 @@ nav:
                 - "Functions/Flow": programming_languages_tools/intro_to_r/04_functions-flow.md
                 - "Inspecting/Manipulating Data": programming_languages_tools/intro_to_r/05_inspecting-manipulating-data.md
                 - "Data Vizualization": programming_languages_tools/intro_to_r/06_visualization.md
-            - "Data Manipulation/Vizualization In R":
+            - "Data Manipulation/Visualization In R":
                 - "Introduction": programming_languages_tools/r_data_viz/01_introduction.md
-                - "Data Types/Variables/Vectors": programming_languages_tools/r_data_viz/02_data_manipulatation.md
-                - "Data Structures": programming_languages_tools/r_data_viz/03_data_visualization.md
+                - "Data Manipulation": programming_languages_tools/r_data_viz/02_data_manipulatation.md
+                - "Data Visualization": programming_languages_tools/r_data_viz/03_data_visualization.md
         - Python:
             - "Introduction to Python":
                 - "Introduction": programming_languages_tools/intro_to_python/01_introduction.md
