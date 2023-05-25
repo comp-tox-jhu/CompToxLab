@@ -1,6 +1,10 @@
 ## Introduction To RStudio
 
-RStudio is what is known as an Integrated Development Environment or IDE. Here you can write scripts, run R code, use R packages, view plots, and manage projects. This pane is broken up into three panels:
+RStudio is what is known as an Integrated Development Environment or IDE. Here you can write scripts, run R code, use R packages, view plots, and manage projects. To download RStudio on your own computer, use the link below:
+
+!!! abstract "[Download RStudio](https://posit.co/download/rstudio-desktop/)"
+
+Once downloaded, open RStudio. You'll see the following three panels:
 
 - **The Interactive R console/Terminal (left)**
 - **Environment/History/Connections (upper right)**
