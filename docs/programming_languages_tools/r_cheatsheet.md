@@ -315,8 +315,8 @@ aov # Analysis of variance.
 
 ||Random Variates |Density Function |Cumulative Distribution| Quantile|
 |-|-|-|-|-|
-|Normal |`rnorm `|dnorm` |`pnorm` |`qnorm`|
+|Normal |`rnorm`|`dnorm` |`pnorm` |`qnorm`|
 |Poison |`rpois` |`dpois`| `ppois` |`qpois`|
 |Binomial |`rbinom` |`dbinom` |`pbinom` |`qbinom`|
-|Uniform |`runif` |`dunif `|`punif` |`qunif`|
+|Uniform |`runif` |`dunif` |`punif` |`qunif`|
 
