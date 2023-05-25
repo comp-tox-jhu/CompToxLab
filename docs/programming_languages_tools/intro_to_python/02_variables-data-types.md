@@ -199,3 +199,7 @@ time_of_day = 'Morning'
 ```
 
 Everything after the `#` is not processed as Python code even within a code block in a Jupyter notebook.
+
+## References
+
+1. [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/index.html)
