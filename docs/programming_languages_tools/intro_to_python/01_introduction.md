@@ -103,3 +103,8 @@ Now hit either the play button at the top of the screen or hit `Shift + Enter` t
 !!! info "Running A Markdown Block"
 
     ![](images/markdown-block.png)
+
+
+## References
+
+1. [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/index.html)
