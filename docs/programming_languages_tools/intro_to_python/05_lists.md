@@ -47,3 +47,7 @@ coverage
     ```
     [200, 34, 300, 98, 789, 542]
     ```
+
+## References
+
+1. [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/index.html)
