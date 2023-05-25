@@ -100,7 +100,7 @@ x[‘apple’] Element with name ‘apple’.
 
 ## Programming
 
-### For Loop**
+### For Loop
 
 ```R
 for (variable in sequence){
