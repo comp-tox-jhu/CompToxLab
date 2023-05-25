@@ -54,11 +54,11 @@ setwd(‘C://file/path’)
 
 ||||
 |-|-|-|
-| c(2, 4, 6)| 2 4 6 | Join elements into a vector| 
-|2:6 |2 3 4 5 6 |An integer sequence |
-|seq(2, 3, by=0.5) |2.0 2.5 3.0 |A complex sequence|
-|rep(1:2, times=3)| 1 2 1 2 1 2| Repeat a vector |
-|rep(1:2, each=3)| 1 1 1 2 2 2 |Repeat elements of a vector |
+| `c(2, 4, 6)`| 2 4 6 | Join elements into a vector| 
+|`2:6` |2 3 4 5 6 |An integer sequence |
+|`seq(2, 3, by=0.5)` |2.0 2.5 3.0 |A complex sequence|
+|`rep(1:2, times=3)`| 1 2 1 2 1 2| Repeat a vector |
+|`rep(1:2, each=3)`| 1 1 1 2 2 2 |Repeat elements of a vector |
 
 ### Vector Functions
 
@@ -315,8 +315,8 @@ aov # Analysis of variance.
 
 ||Random Variates |Density Function |Cumulative Distribution| Quantile|
 |-|-|-|-|-|
-|Normal |rnorm |dnorm |pnorm |qnorm|
-|Poison |rpois |dpois| ppois |qpois|
-|Binomial |rbinom |dbinom |pbinom |qbinom|
-|Uniform |runif |dunif |punif |qunif|
+|Normal |`rnorm `|dnorm` |`pnorm` |`qnorm`|
+|Poison |`rpois` |`dpois`| `ppois` |`qpois`|
+|Binomial |`rbinom` |`dbinom` |`pbinom` |`qbinom`|
+|Uniform |`runif` |`dunif `|`punif` |`qunif`|
 
