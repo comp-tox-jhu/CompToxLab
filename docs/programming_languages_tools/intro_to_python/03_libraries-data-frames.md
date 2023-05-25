@@ -269,3 +269,7 @@ df[df["OtuCount"] > 400]   # select samples with an otu count over 400
     4	WT.unt.7	None	DAY0	WT	16S_WT_unt_7_SRR2627465_1	1451
     9	WT.day3.9	Streptomycin	DAY3	WT	16S_WT_day3_9_SRR2628504_1	452
     ```
+
+## References
+
+1. [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/index.html)
