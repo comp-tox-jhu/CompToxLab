@@ -104,3 +104,7 @@ fig.show()
 !!! tip
     For more plots and plot customization options, checkout the [Plotly Graphing Library Page](https://plotly.com/python/) for more information
     
+
+## References
+
+1. [Data Analysis and Visualization in Python for Ecologists](https://datacarpentry.org/python-ecology-lesson/index.html)
