@@ -100,31 +100,50 @@ do
 done
 ```
 
-## Merge SAM Files
-
-
-```sh
-
-picard MergeSamFiles \
-    ASSUME_SORTED=false \
-    CREATE_INDEX=true \                 
-    INPUT= ./*.sorted.bam \
-    MERGE_SEQUENCE_DICTIONARIES=false \
-    OUTPUT= sort.dup.bam \
-    SORT_ORDER=coordinate \
-    USE_THREADING=true \
-    VALIDATION_STRINGENCY=STRICT
-```
-
 
 ## Mark Duplicates
 
 ```sh
+cd aligned_data
+
 # mark duplicates
+for fsortbam in ./*.sorted.bam
+do
+    picard -Xmx7g MarkDuplicates \
+        I=./fsortbam \
+        O=./fsortbam.dup.bam \
+        METRICS_FILE=./fsortbam_dup_metrics.txt
+done
+```
 
-picard -Xmx7g MarkDuplicates \
-    I=output/NA12878.sort.bam \
-    O=output/NA12878.sort.dup.bam \
-    METRICS_FILE=output/marked_dup_metrics.txt
 
+## Base Recalibration
+
+```sh
+
+for fdupbam in ./*.dup.bam
+do
+    # step 1  - Build the model
+    gatk --java-options "-Xmx7g" BaseRecalibrator \
+    -I ./fdupbam \
+    -R ../ref_data/hg19.chr5_12_17.fa.gz \
+    --known-sites ../ref_data/dbsnp_146.hg38.vcf.gz \
+    -O ./fdupbam_recal_data.table
+    
+    # step 2: Apply the model to adjust the base quality scores
+    gatk --java-options "-Xmx7g" ApplyBQSR \
+    -I ./fdupbam \
+    -R ../ref_data/hg19.chr5_12_17.fa.gz \
+    --bqsr-recal-file ./fdupbam_recal_data.table \
+    -O ./fdupbam.sort.dup.bqsr.bam    
+done
+```
+
+## Running the HaplotypeCaller
+
+```sh
+for fbqsr in ./*.sort.dup.bqsr.bam 
+do
+       
+done
 ```
