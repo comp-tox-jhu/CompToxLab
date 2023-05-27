@@ -1,6 +1,11 @@
 
 ## Variant Calling In Tumor Samples
 
+!!! abstract "Tools Used"
+
+    FastQC, Trimmomatic, BWA, Samtools, Picard, GATK, and Funcotator
+    
+
 ```sh
 #!/bin/bash
 
