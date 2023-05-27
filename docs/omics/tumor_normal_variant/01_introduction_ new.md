@@ -10,8 +10,11 @@ fastq2="path/to/tumor_sample_R2.fastq.gz"
 ref_genome="path/to/reference_genome.fasta"
 output_dir="path/to/output_directory"
 
+
 # Step 1: Quality Control with FastQC
 fastqc -o $output_dir $fastq1 $fastq2
+
+echo "Quality Control Completed"
 
 # Step 2: Trimming with Trimmomatic
 trimmomatic PE -threads 4 $fastq1 $fastq2 \
@@ -20,6 +23,8 @@ trimmomatic PE -threads 4 $fastq1 $fastq2 \
     $output_dir/trimmed_tumor_sample_R2.fastq.gz \
     $output_dir/unpaired_tumor_sample_R2.fastq.gz \
     ILLUMINACLIP:adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+echo "Trimming Completed"
 
 # Step 3: Indexing Reference Genome with BWA
 bwa index $ref_genome
@@ -30,15 +35,22 @@ bwa mem -t 4 $ref_genome \
     $output_dir/trimmed_tumor_sample_R2.fastq.gz \
     > $output_dir/aligned_tumor_sample.sam
 
-# Step 5: Sorting and Merging Alignment Files with Samtools
-samtools sort -@ 4 -o $output_dir/sorted_tumor_sample.bam $output_dir/aligned_tumor_sample.sam
-samtools merge -@ 4 $output_dir/merged_tumor_sample.bam $output_dir/sorted_tumor_sample.bam
+echo "Alignment Completed"
+
+# Step 5: Sorting Alignment Files with Samtools
+samtools sort -@ 4 -o $output_dir/sorted_tumor_sample.bam $output_dir/sorted_tumor_sample.bam
+
+echo "Alignment Files Sorted"
 
 # Step 6: Mark Duplicates with Picard
 java -jar picard.jar MarkDuplicates \
     I=$output_dir/merged_tumor_sample.bam \
     O=$output_dir/markduplicates_tumor_sample.bam \
     M=$output_dir/markduplicates_metrics.txt
+
+
+echo "Duplicates Marked"
+
 
 # Step 7: Base Recalibration with GATK
 gatk BaseRecalibrator \
@@ -54,12 +66,16 @@ gatk ApplyBQSR \
     --bqsr-recal-file $output_dir/recalibration_report.table \
     -O $output_dir/recalibrated_tumor_sample.bam
 
+echo "Bases Have Been Recalibrated"
+
 # Step 9: Variant Calling with GATK
 gatk Mutect2 \
     -R $ref_genome \
     -I $output_dir/recalibrated_tumor_sample.bam \
     -tumor tumor_sample \
     -O $output_dir/tumor_sample_variants.vcf
+
+echo "Variant Calling Complete"
 
 # Step 10: Variant Annotation with Funcotator
 gatk Funcotator \
@@ -68,6 +84,8 @@ gatk Funcotator \
     -O $output_dir/annotated_tumor_sample_variants.vcf \
     --data-sources-path funcotator_data_sources
 
+echo "Variant Annotation Complete"
+
 # Step 11: Removing Intermediate Files
 rm $output_dir/aligned_tumor_sample.sam
 rm $output_dir/sorted_tumor_sample.bam
@@ -75,6 +93,6 @@ rm $output_dir/merged_tumor_sample.bam
 rm $output_dir/markduplicates_tumor_sample.bam
 rm $output_dir/recalibration_report.table
 
-echo "Pipeline Finished Running!"
+echo "Tumor Variant Pipeline Complete"
 
 ```
