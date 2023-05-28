@@ -2,7 +2,7 @@
 
 ## Genomics
 
-- [Tumor Variant Calling](./tumor_variant_calling/01_introduction.md)
+- [Tumor Variant Calling](./genomics/tumor_variant_calling/01_introduction.md)
 
 ## Transcriptomics
 
