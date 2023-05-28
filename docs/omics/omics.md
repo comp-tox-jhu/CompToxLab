@@ -10,9 +10,11 @@
 
 ## Epigenetics
 
-- [ChIP-Seq](./epigentics/chip_seq/01_introduction.md)
+- [ChIP-Seq Analayis](./epigentics/chip_seq/01_introduction.md)
 
 ## Proteomics
+
+-[Labelled Proteomics Data Analysis](./proteomics/labelled_data/01_introduction.md)
 
 ## Metagenomics
 
