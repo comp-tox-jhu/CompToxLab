@@ -6,7 +6,11 @@
 
 ## Transcriptomics
 
+- [Bulk RNA-Seq](./transcriptomics/bulk_rna_seq/01_introduction.md)
+
 ## Epigenetics
+
+- [ChIP-Seq](./epigentics/chip_seq/01_introduction.md)
 
 ## Proteomics
 
