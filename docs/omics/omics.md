@@ -14,7 +14,7 @@
 
 ## Proteomics
 
--[Labelled Proteomics Data Analysis](./proteomics/labelled_data/01_introduction.md)
+- [Labelled Proteomics Data Analysis](./proteomics/labelled_data/01_introduction.md)
 
 ## Metagenomics
 
