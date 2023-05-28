@@ -7,6 +7,7 @@
 ## Transcriptomics
 
 - [Bulk RNA-Seq](./transcriptomics/bulk_rna_seq/01_introduction.md)
+- [Single-Cell RNA-Seq](./transcriptomics/single_cell/01_introduction.md)
 
 ## Epigenetics
 
