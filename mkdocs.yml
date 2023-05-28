@@ -115,9 +115,9 @@ nav:
                 - "Introduction": omics/genomics/tumor_variant_calling/01_introduction.md
         - Transcriptomics:
             - "Bulk RNA-Sequencing":
-                - "Introduction" omics/transcriptomics/bulk_rna_seq/01_introduction.md
+                - "Introduction": omics/transcriptomics/bulk_rna_seq/01_introduction.md
             - "Single Cell RNA-Sequencing":
-                - "Introduction" omics/transcriptomics/single_cell/01_introduction.md
+                - "Introduction": omics/transcriptomics/single_cell/01_introduction.md
         - Epigenetics:
             - "ChIP-Seq Analysis":
                 - "Introduction": omics/epigentics/chip_seq/01_introduction.md
