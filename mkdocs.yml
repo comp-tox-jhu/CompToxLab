@@ -119,6 +119,7 @@ nav:
         - Transcriptomics:
             - "Bulk RNA-Sequencing":
                 - "Introduction": omics/transcriptomics/bulk_rna_seq/01_introduction.md
+                - "Setup": omics/transcriptomics/bulk_rna_seq/02_setup.md
             - "Single Cell RNA-Sequencing":
                 - "Introduction": omics/transcriptomics/single_cell/01_introduction.md
         - Epigenetics:
