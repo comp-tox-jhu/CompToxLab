@@ -4,7 +4,7 @@ Sequencing data analysis typically focuses on either assessing DNA or RNA. As a 
 
 !!! info "[Translation: DNA to mRNA to Protein](https://www.nature.com/scitable/topicpage/translation-dna-to-mrna-to-protein-393/)"
 
-    ![](images/dna_to_protien.jpeg)
+    ![](images/dna_to_protein.jpeg)
 
 ### DNA Sequencing
 
