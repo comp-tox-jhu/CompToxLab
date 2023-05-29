@@ -12,4 +12,6 @@
 ## Python
 - [Introduction To Python](./intro_to_python/01_introduction.md)
 
-## Workflows
+## Misc
+- [Github](./misc/github.md)
+- [API](./misc/api.md)
