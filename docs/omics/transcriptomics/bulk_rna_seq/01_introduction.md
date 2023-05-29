@@ -55,7 +55,7 @@ Here we will analyze a DNA sequence using next generation sequencing data. Here 
         
 !!! info "Single-End V. Paired-End Read Data"
 
-    ![](images/single-paired.png)
+    ![](images/single_paired.png)
 
 ## References
 
