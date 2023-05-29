@@ -108,6 +108,9 @@ nav:
                 - "Lists": programming_languages_tools/intro_to_python/05_lists.md
                 - "Loops/Conditionals": programming_languages_tools/intro_to_python/06_loops-conditionals.md
                 - "Functions/Scope": programming_languages_tools/intro_to_python/07_functions-scope.md
+        - Misc:
+            - "Github": programming_languages_tools/misc/api.md
+            - "API": programming_languages_tools/misc/github.md
     - Omics:
         - Omics: omics/omics.md
         - Genomics:
