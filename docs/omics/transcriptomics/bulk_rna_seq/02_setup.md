@@ -59,7 +59,12 @@ nano meta.txt
     SRR8440537  AD  74  female
     SRR8440481  AD  79  male
     ```
-    
+```sh
+vdb-config -i
+```
+
+- Click `X`
+
 ```sh
 fastq-dump -X 9999999999999  --gzip $(<./accList.txt)
 ```
