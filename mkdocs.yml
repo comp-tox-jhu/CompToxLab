@@ -121,6 +121,12 @@ nav:
             - "Bulk RNA-Sequencing":
                 - "Introduction": omics/transcriptomics/bulk_rna_seq/01_introduction.md
                 - "Setup": omics/transcriptomics/bulk_rna_seq/02_setup.md
+                - "Quality Control": omics/transcriptomics/bulk_rna_seq/03_quality_control.md
+                - "Read Alignment": omics/transcriptomics/bulk_rna_seq/04_read_alignment.md
+                - "Gene Quantification": omics/transcriptomics/bulk_rna_seq/05_gene_quantification.md
+                - "Unsupervised Analysis": omics/transcriptomics/bulk_rna_seq/06_unsupervised_analysis.md
+                - "Differential Expression": omics/transcriptomics/bulk_rna_seq/07_differential_expression.md
+                - "Enrichment Analysis": omics/transcriptomics/bulk_rna_seq/08_enrichment.md
             - "Single Cell RNA-Sequencing":
                 - "Introduction": omics/transcriptomics/single_cell/01_introduction.md
         - Epigenetics:
