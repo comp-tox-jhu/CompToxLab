@@ -66,7 +66,7 @@ vdb-config -i
 - Click `X`
 
 ```sh
-fastq-dump -X 9999999999999  --gzip $(<./accList.txt)
+fastq-dump -X 9999999999999  --skip-technical --split-3 --clip --gzip $(<./accList.txt)
 ```
 
 ## Download Reference Data
