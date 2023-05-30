@@ -56,7 +56,7 @@ To check out the intial quality control report go to `qc_output/initial_qc/` and
 
 !!! info "General Statistics: columns for samples, the percent of duplicated sequences, gc content, number of sequences (in million) per sample"
 
-    ![](images/intial_general_stats.png)
+    ![](images/initial_general_stats.png)
 
 !!! info "Sequence Counts: Sequence counts for each sample. Duplicate read counts are an estimate only."
 
