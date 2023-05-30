@@ -19,7 +19,7 @@ Here we see that for each read there are four lines:
 Quality scores are a score representing the probability that a base was called in error. A common score used is the Phred Score:
 
 |Phred Quality Score	|Probability of incorrect base call	|Base call accuracy|
-|-|-|-|-
+|-|-|-|
 |10	|1 in 10|	90%|
 |20	|1 in 100|	99%|
 |30	|1 in 1000|	99.9%|
