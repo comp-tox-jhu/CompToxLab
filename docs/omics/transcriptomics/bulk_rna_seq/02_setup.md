@@ -69,10 +69,10 @@ nano meta.txt
 
     ```sh
     ID	Diagnosis	Age	Sex
-    SRR8440545  	Control	53	male
-    SRR8440550  	Control	81	male
-    SRR8440537 	AD	74	female
-    SRR8440481  	AD	79	male
+    SRR8440545	Control	53	male
+    SRR8440550	Control	81	male
+    SRR8440537	AD	74	female
+    SRR8440481	AD	79	male
     ```
 
 Before we can download our data we will need to configure the sra-toolkit with the following command:
