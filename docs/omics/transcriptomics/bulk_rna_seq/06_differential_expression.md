@@ -149,6 +149,11 @@ EnhancedVolcano::EnhancedVolcano(
   subtitle = "Differential Expression of AD RNA-Seq Data") # subtitle
 ```
 
+
+!!! info "Volcano Plot"
+
+    ![](images/volcano_plot.png)
+    
 ## PCA Plot
 
 PCA or Principal Component Analysis is a way of visualizing the variation in high dimensional data in just a few dimensions. For more information, check out [our tutorial on PCA](../../../machine_learning/unsupervised/dimension-reduction.md). Let's examine the variation in our gene expression data and color by disease status:
@@ -170,6 +175,12 @@ plotPCA(object = rld,               # variance stabilized counts data
   )
 ```
 
+
+!!! info "PCA Plot"
+
+    ![](images/pca_plot.png)
+    
+    
 ## Top DEG Expression
 
 Often times we may want to visualize the expression of our top differentially expressed genes. We can do this using a violin plot!
@@ -197,6 +208,11 @@ ggpubr::ggviolin(
 )
 ```
 
+!!! info "Top DEG Plot"
+
+    ![](images/top_deg.png)
+    
+    
 ## Enrichment Analysis
 
 Our most significant DEGs often represent some biological change. We can better understand the biology behind our gene list by first filtering by some significance threshold (usually an adjusted p-value of 0.05, however given how subsampled our data is we are setting a p-value cutoff of .2) and then running an overrepresentation test on genes that are associated with some gene ontology term. Here we use clusterProfiler to perform gene ontology enrichment!
@@ -237,6 +253,12 @@ enrichplot::dotplot(
   )
 ```
 
+
+!!! info "Enrichment DotPlot"
+
+    ![](images/enrichment_dotplot.png)
+    
+    
 ## References
 
 1. [HBC DGE Workshop](https://hbctraining.github.io/DGE_workshop)
