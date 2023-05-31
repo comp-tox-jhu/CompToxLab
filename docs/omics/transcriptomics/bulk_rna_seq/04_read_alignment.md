@@ -30,8 +30,8 @@ nano index.sh
 
 The choice of annotation is very important when aligning sequencing! Different gene annotation sources will have different coordinates for genes (also called features):
 
-- **GENECODE:** 
-- **UCSC or ENSEMBL:**
+- **GENECODE:** advisable for well annotated species (e.g. human/mouse) as this annotation source aims to classify all gene features
+- **UCSC or ENSEMBL:** advisable for non-model organisms as this annotation source aims to classify well classified gene features
 
 
 ## Read Alignment
@@ -66,3 +66,4 @@ The choice of annotation is very important when aligning sequencing! Different g
 2. [GENECODE](https://www.gencodegenes.org/)
 3. [ENSEMBL](http://www.ensembl.org/index.html?redirect=no)
 4. [UCSC](https://genome.ucsc.edu/cgi-bin/hgGateway)
+5. [Building a genome index](https://sydney-informatics-hub.github.io/training-RNAseq/02-BuildAGenomeIndex/index.html)
