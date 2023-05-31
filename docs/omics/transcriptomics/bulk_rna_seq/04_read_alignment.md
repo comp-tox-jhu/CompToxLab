@@ -58,6 +58,10 @@ The choice of annotation is very important when aligning sequencing! Different g
         --sjdbGTFfile ./data/sequence.gff3 \
         --sjdbOverhang 49
     done
+    
+    # perform quality control on alignment
+    mkdir qc_output/star_qc
+    multiqc -o qc_output/star_qc/ --title "STAR Alignment QC Report" alignment_output/*Log.final.out
     ```
    
 ## References
