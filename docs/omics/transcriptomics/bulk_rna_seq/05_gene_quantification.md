@@ -30,7 +30,18 @@
     multiqc -o ./qc_output/featurecounts_qc --title "featureCounts QC Report" ./featurecounts_output/*.summary
     ```
 
+## featureCounts Quality Control
 
+
+!!! info "featureCounts General Statistics: percent and number of sequences assigned"
+
+    ![](images/featureCounts_general_stats.png)
+    
+    
+!!! info "featureCounts General Statistics: percent and number of sequences assigned, unmapped, multi-mapped, unassigned due to no features present, and unassiged due to ambiguity in mapping"
+
+    ![](images/featureCounts_general_stats.png)
+    
 ## References
 
 1. [featureCounts Overview](https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/lessons/05_counting_reads.html)
