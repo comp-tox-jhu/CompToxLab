@@ -37,14 +37,21 @@ Let's create a script to convert our gff3 file to a gft file (necessary for feat
 !!! example "Explanation of Terms"
 
     **gffread**:
+    
     - `-T -o ./data/sequence.gtf` make a gtf file instead of a gff3 file
+    
     **grep**:
+    
     - `grep -v` match the opposite of this pattern
+    
     **featureCounts**:
+    
     - `-a ./data/sequence_fixed.gtf` path to annotation file
     - `-o featurecounts_output/featurecounts_results.txt` path to output file
     - `alignment_output/*bam` path to our alignment input data
+    
     **multiqc**:
+    
     - `-o ./qc_output/featurecounts_qc ` output path
     - `--title "featureCounts QC Report"` report title
     - `./featurecounts_output/*.summary` file to use to make report
