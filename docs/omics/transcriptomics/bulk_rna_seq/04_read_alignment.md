@@ -51,7 +51,7 @@ The choice of annotation is very important when aligning sequencing! Different g
         base=$(basename $file .fq)
         STAR --genomeDir star_index/ \
         --readFilesIn $file \
-        --outFileNamePrefix alignment_output/$base_ \
+        --outFileNamePrefix alignment_output/${base}_ \
         --outSAMtype BAM SortedByCoordinate \
         --outSAMunmapped Within \
         --outSAMattributes Standard \
