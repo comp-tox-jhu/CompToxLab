@@ -199,7 +199,7 @@ ggpubr::ggviolin(
 
 ## Enrichment Analysis
 
-Our most significant DEGs often represent some biological change. We can better understand the biology behind our gene list by first filtering by some significance threshold (usually an adjusted p-value of 0.05, however given how subsampled our data is we are setting a p-value cutoff of .2) 
+Our most significant DEGs often represent some biological change. We can better understand the biology behind our gene list by first filtering by some significance threshold (usually an adjusted p-value of 0.05, however given how subsampled our data is we are setting a p-value cutoff of .2) and then running an overrepresentation test on genes that are associated with some gene ontology term. Here we use clusterProfiler to perform gene ontology enrichment!
  
 ```R
 # --- ClusterProfiler Enrichment -----------------------------------------------
@@ -236,7 +236,6 @@ enrichplot::dotplot(
     color="Adjusted P-Value"   # change color legend title
   )
 ```
-
 
 ## References
 
