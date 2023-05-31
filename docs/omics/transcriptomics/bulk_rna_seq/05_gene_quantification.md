@@ -1,5 +1,8 @@
 ## Gene Quantification with featureCounts
 
+!!! info "[featureCounts Overview](https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/lessons/05_counting_reads.html)"
+
+    ![](images/featureCounts_overview.png)
 
 ## Gene Quantification
 
@@ -26,3 +29,10 @@
     mkdir ./qc_output/featurecounts_qc 
     multiqc -o ./qc_output/featurecounts_qc --title "featureCounts QC Report" ./featurecounts_output/*.summary
     ```
+
+
+## References
+
+1. [featureCounts Overview](https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/lessons/05_counting_reads.html)
+2. [featureCounts: an efficient general purpose program for assigning sequence reads to genomic features](https://academic.oup.com/bioinformatics/article/30/7/923/232889)
+
