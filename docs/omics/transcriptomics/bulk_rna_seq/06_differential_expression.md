@@ -11,7 +11,7 @@ We will now take these counts and use a differential expression tool, DESeq2, to
 
 !!! info "DESeq2 Normalization" 
 
-    ![](images/deseq2_norm.png)
+    ![](images/deseq2_norm1.png)
     
 DESeq2 also builds a regression model to assess if the slope between two conditions is different. This essentially will tell us, is the gene expression in one group (Alzheimer's patients) higher/lower than another group of patients (Control patients):
 
