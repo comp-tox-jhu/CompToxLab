@@ -129,7 +129,7 @@ nav:
                 - "Introduction": omics/transcriptomics/single_cell/01_introduction.md
                 - "Setup": omics/transcriptomics/single_cell/02_setup.md
             - "WGCNA":
-                - "WGCNA Pipeline": omics/wgcna/wgcna.md
+                - "WGCNA Pipeline": omics/transcriptomics/wgcna/wgcna.md
         - Epigenetics:
             - "ChIP-Seq Analysis":
                 - "Introduction": omics/epigentics/chip_seq/01_introduction.md
