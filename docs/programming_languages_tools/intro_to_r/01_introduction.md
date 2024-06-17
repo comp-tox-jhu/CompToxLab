@@ -4,12 +4,12 @@
 
 !!! info "Learning Objectives"
 
-    - Introduction To RStudio
-    - Data Types/Variables/Vectors
-    - Data Structures
-    - Functions/Flow
-    - Inspecting/Manipulating Data
-    - Data Vizualization
+    - [Introduction To RStudio](programming_languages_tools/intro_to_r/01_introduction.md)
+    - [Data Types/Variables/Vectors](programming_languages_tools/intro_to_r/02_data_types_variables_vectors.md)
+    - [Data Structures](programming_languages_tools/intro_to_r/03_data-structures.md)
+    - [Functions/Flow](programming_languages_tools/intro_to_r/04_functions-flow.md)
+    - [Inspecting/Manipulating Data](programming_languages_tools/intro_to_r/05_inspecting-manipulating-data.md)
+    - [Data Vizualization](programming_languages_tools/intro_to_r/06_visualization.md)
 
 
 RStudio is what is known as an Integrated Development Environment or IDE. Here you can write scripts, run R code, use R packages, view plots, and manage projects. To download RStudio on your own computer, use the link below:
