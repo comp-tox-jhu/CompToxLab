@@ -1,6 +1,7 @@
-# Omics Train 
+## CompTox Lab
+Welcome to the JHU CompTox Lab! Our goal is to make bio/cheminformatics concepts digestible and the application of techniques clear. We aim to cover topics in programming languages, biostatistics, machine learning, and 'omics level analysis. 
 
-The aim of Omics Train is make bioinformatics concepts digestible and the application of techniques clear. We will break down topics using the following categories:
+[![](img/pl_img.png)](programming_languages_tools/programming_languages_tools.md)
 
 - **Programming Languages/Tools:** tutorials in Unix, Python and R
 - **Omics:** covers omics level analyses (RNA-seq, GWAS, Proteomics, etc.)
