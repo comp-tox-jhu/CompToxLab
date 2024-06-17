@@ -110,8 +110,8 @@ nav:
                 - "Functions/Scope": programming_languages_tools/intro_to_python/07_functions-scope.md
             - "Conda Environments": programming_languages_tools/conda/conda_environment.md
         - Misc:
-            - "Github": programming_languages_tools/misc/api.md
-            - "API": programming_languages_tools/misc/github.md         
+            - "Github": programming_languages_tools/misc/github.md
+            - "API": programming_languages_tools/misc/api.md         
     - Biostatistics:
         - "Biostatistics": biostatistics/biostatistics.md
         - "Setup": biostatistics/biostats.md
