@@ -1,5 +1,5 @@
 site_name: Omics Train - Bioinformatics Made Simple
-repo_url: https://github.com/BioNomad/omicsTrain
+repo_url: https://github.com/comp-tox-jhu/CompToxLab
 edit_uri: blob/main/docs/
 
 theme:
