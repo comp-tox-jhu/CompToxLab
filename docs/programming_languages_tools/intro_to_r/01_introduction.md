@@ -3,7 +3,6 @@
 **Author:** Jason Laird, PhD Student, M.Sc.
 
 !!! info "Learning Objectives"
-
    - Introduction To RStudio
    - Data Types/Variables/Vectors
    - Data Structures
