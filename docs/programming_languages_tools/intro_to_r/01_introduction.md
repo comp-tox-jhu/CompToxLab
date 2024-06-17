@@ -3,12 +3,13 @@
 **Author:** Jason Laird, PhD Student, M.Sc.
 
 !!! info "Learning Objectives"
-   - Introduction To RStudio
-   - Data Types/Variables/Vectors
-   - Data Structures
-   - Functions/Flow
-   - Inspecting/Manipulating Data
-   - Data Vizualization
+
+    - Introduction To RStudio
+    - Data Types/Variables/Vectors
+    - Data Structures
+    - Functions/Flow
+    - Inspecting/Manipulating Data
+    - Data Vizualization
 
 
 RStudio is what is known as an Integrated Development Environment or IDE. Here you can write scripts, run R code, use R packages, view plots, and manage projects. To download RStudio on your own computer, use the link below:
