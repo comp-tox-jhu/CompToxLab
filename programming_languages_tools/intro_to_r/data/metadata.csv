@@ -1,0 +1,10 @@
+﻿SampleID,AntibioticUsage,DaySinceExperimentStart,Genotype,Description,OtuCount
+WT.unt.1,None,DAY0,WT,16S_WT_unt_1_SRR2627457_1,1174
+WT.unt.2,None,DAY0,WT,16S_WT_unt_2_SRR2627461_1,1474
+WT.unt.3,None,DAY0,WT,16S_WT_unt_3_SRR2627463_1,1492
+WT.unt.7,None,DAY0,WT,16S_WT_unt_7_SRR2627465_1,1451
+WT.day3.11,Streptomycin,DAY3,WT,16S_WT_day3_11_SRR2628505_1,314
+WT.day3.13,Streptomycin,DAY3,WT,16S_WT_day3_13_SRR2628506_1,189
+WT.day3.15,Streptomycin,DAY3,WT,16S_WT_day3_15_SRR2628507_1,279
+WT.day3.14,Streptomycin,DAY3,WT,16S_WT_day3_14_SRR2627471_1,175
+WT.day3.9,Streptomycin,DAY3,WT,16S_WT_day3_9_SRR2628504_1,452
