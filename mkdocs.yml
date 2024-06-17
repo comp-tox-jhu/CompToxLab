@@ -111,40 +111,7 @@ nav:
             - "Conda Environments": programming_languages_tools/conda/conda_environment.md
         - Misc:
             - "Github": programming_languages_tools/misc/api.md
-            - "API": programming_languages_tools/misc/github.md
-    - Omics:
-        - Omics: omics/omics.md
-        - Genomics:
-            - "Variant Calling in Cancer": 
-                - "Introduction": omics/genomics/tumor_variant_calling/01_introduction.md
-        - Transcriptomics:
-            - "Bulk RNA-Sequencing":
-                - "Introduction": omics/transcriptomics/bulk_rna_seq/01_introduction.md
-                - "Setup": omics/transcriptomics/bulk_rna_seq/02_setup.md
-                - "Quality Control": omics/transcriptomics/bulk_rna_seq/03_quality_control.md
-                - "Read Alignment": omics/transcriptomics/bulk_rna_seq/04_read_alignment.md
-                - "Gene Quantification": omics/transcriptomics/bulk_rna_seq/05_gene_quantification.md
-                - "Differential Expression": omics/transcriptomics/bulk_rna_seq/06_differential_expression.md
-            - "Single Cell RNA-Sequencing":
-                - "Introduction": omics/transcriptomics/single_cell/01_introduction.md
-                - "Setup": omics/transcriptomics/single_cell/02_setup.md
-            - "WGCNA":
-                - "WGCNA Pipeline": omics/transcriptomics/wgcna/wgcna.md
-        - Epigenetics:
-            - "ChIP-Seq Analysis":
-                - "Introduction": omics/epigentics/chip_seq/01_introduction.md
-        - Proteomics:
-            - "Labelled Proteomics Data Analysis":
-                - "Introduction": omics/proteomics/labelled_data/01_introduction.md
-        - Metagenomics:
-            - "16S Amplicon Sequencing":
-                - "Introduction": omics/metagenomics/amplicon_seq/01_introduction.md
-        - Epidemiology:
-            - "Study Design":
-                - "Introduction": omics/metagenomics/amplicon_seq/01_introduction.md
-        - Multiomics:
-            - "Cannonical Correlation Analysis":
-                - "Introduction": omics/metagenomics/amplicon_seq/01_introduction.md          
+            - "API": programming_languages_tools/misc/github.md         
     - Biostatistics:
         - "Biostatistics": biostatistics/biostatistics.md
         - "Setup": biostatistics/biostats.md
@@ -186,3 +153,36 @@ nav:
             - Survival Analysis Part 2: machine_learning/supervised/surv-part2.md
             - Multivariate Regression: machine_learning/supervised/multivariate-regression.md
             - Model Performance: machine_learning/supervised/model-performance.md
+    - Omics:
+        - Omics: omics/omics.md
+        - Genomics:
+            - "Variant Calling in Cancer": 
+              - "Introduction": omics/genomics/tumor_variant_calling/01_introduction.md
+        - Transcriptomics:
+            - "Bulk RNA-Sequencing":
+                - "Introduction": omics/transcriptomics/bulk_rna_seq/01_introduction.md
+                - "Setup": omics/transcriptomics/bulk_rna_seq/02_setup.md
+                - "Quality Control": omics/transcriptomics/bulk_rna_seq/03_quality_control.md
+                - "Read Alignment": omics/transcriptomics/bulk_rna_seq/04_read_alignment.md
+                - "Gene Quantification": omics/transcriptomics/bulk_rna_seq/05_gene_quantification.md
+                - "Differential Expression": omics/transcriptomics/bulk_rna_seq/06_differential_expression.md
+            - "Single Cell RNA-Sequencing":
+                - "Introduction": omics/transcriptomics/single_cell/01_introduction.md
+                - "Setup": omics/transcriptomics/single_cell/02_setup.md
+            - "WGCNA":
+                - "WGCNA Pipeline": omics/transcriptomics/wgcna/wgcna.md
+        - Epigenetics:
+            - "ChIP-Seq Analysis":
+                - "Introduction": omics/epigentics/chip_seq/01_introduction.md
+        - Proteomics:
+            - "Labelled Proteomics Data Analysis":
+                - "Introduction": omics/proteomics/labelled_data/01_introduction.md
+        - Metagenomics:
+            - "16S Amplicon Sequencing":
+                - "Introduction": omics/metagenomics/amplicon_seq/01_introduction.md
+        - Epidemiology:
+            - "Study Design":
+                - "Introduction": omics/metagenomics/amplicon_seq/01_introduction.md
+        - Multiomics:
+            - "Cannonical Correlation Analysis":
+                - "Introduction": omics/metagenomics/amplicon_seq/01_introduction.md 
