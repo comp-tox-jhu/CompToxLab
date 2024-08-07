@@ -1,7 +1,7 @@
 # Introduction To Dimension Reduction
 
 !!! example "Prerequisites"
-    - [Tutorial Setup](../../setup.md) - Create R project, setup workspace, and download data
+    - [Tutorial Setup](machine_learning/setup.md) - Create R project, setup workspace, and download data
     
 - Process of reducing the number of variables to a set of principal values where variation in your data becomes apparent. Here is an example with three dimensions:
 
