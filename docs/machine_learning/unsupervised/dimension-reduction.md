@@ -1,9 +1,7 @@
 # Introduction To Dimension Reduction
 
 !!! example "Prerequisites"
-    - [Request an account](http://research.uit.tufts.edu/) on the Tufts HPC Cluster
-    - Connect to the [VPN](https://access.tufts.edu/vpn)
-    - Please be sure to have followed the instructions on the [setup page](../setup.md)
+    - [Tutorial Setup](../setup.md)
     
 - Process of reducing the number of variables to a set of principal values where variation in your data becomes apparent. Here is an example with three dimensions:
 
