@@ -41,8 +41,7 @@ Let's try this in code! First we will need to do some preprocessing:
 === "R"
 
     ``` R
-    ## load our libraries via our library path
-    .libPaths(c("/cluster/tufts/hpc/tools/R/4.0.0"))
+    ## load our libraries
     library(tidyverse)
     library(FactoMineR)
     library(factoextra)
