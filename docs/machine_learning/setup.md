@@ -20,3 +20,11 @@ Now that we have our project set up we will need to download our data. In the `d
 download.file(url = "https://cbioportal-datahub.s3.amazonaws.com/gbm_cptac_2021.tar.gz",destfile = "./data/gbm_cptac_2021.tar.gz" )
 untar(tarfile = "./data/gbm_cptac_2021.tar.gz",exdir = "./data/")
 ```
+
+## Troubleshooting
+
+If you encounter a timeout error you can manually set the timeout to longer than the standard 60 seconds:
+
+```R
+options(timeout = 9000000000000000000)
+```
