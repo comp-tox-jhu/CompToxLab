@@ -56,6 +56,10 @@ git push -u origin master
 
 !!! info "[GitHub Docs](https://docs.github.com/en){:target="_blank" rel="noopener"}"
 
+- If you are looking for a brief but relatively comprehensive list check out:
+
+!!! info "[git - the simple guide](https://rogerdudler.github.io/git-guide/){:target="_blank" rel="noopener"}"
+
 ## References
 
 !!! abstract ""
