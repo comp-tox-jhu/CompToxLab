@@ -18,9 +18,9 @@ tensor = torch.tensor([[[1, 2, 3], [4, 5, 6], [7, 8, 9]]])  # 3D Tensor
 ```
 
 !!! example "Math Attack!"
-    Scalar: A single number $s \in \mathbb{R}$.
-    Vector: A 1D array $\mathbf{v} \in \mathbb{R}^n$.
-    Matrix: A 2D array $\mathbf{M} \in \mathbb{R}^{m \times n}$.
+    - Scalar: A single number $s \in \mathbb{R}$.
+    - Vector: A 1D array $\mathbf{v} \in \mathbb{R}^n$.
+    - Matrix: A 2D array $\mathbf{M} \in \mathbb{R}^{m \times n}$.
 
 !!! info "Tips and Trickss"
     Dimensions as brackets:
