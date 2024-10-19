@@ -22,8 +22,8 @@ tensor = torch.tensor([[[1, 2, 3], [4, 5, 6], [7, 8, 9]]])  # 3D Tensor
     - Vector: A 1D array $\mathbf{v} \in \mathbb{R}^n$.
     - Matrix: A 2D array $\mathbf{M} \in \mathbb{R}^{m \times n}$.
 
-!!! info "Tips and Trickss"
-    Dimensions as brackets:
+!!! info "Tips and Tricks"
+    - Dimensions as brackets:
     - `[]` → 1D (vector)
     - `[[]]` → 2D (matrix)
     - `[[[]]]` → 3D
@@ -116,10 +116,10 @@ print(x.min(), x.max(), x.mean(), x.sum())
 ```
 
 !!! example "Math Attack!"
-    Min: $\text{min}(x)$ returns the smallest element.
-    Max: $\text{max}(x)$ returns the largest element.
-    Mean: $\text{mean}(x) = \frac{1}{n} \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
-    Sum: $\text{sum}(x) = \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
+    - Min: $\text{min}(x)$ returns the smallest element.
+    - Max: $\text{max}(x)$ returns the largest element.
+    - Mean: $\text{mean}(x) = \frac{1}{n} \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
+    - Sum: $\text{sum}(x) = \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
 
 ### Positional Min/Max
 Get the index of the minimum and maximum values.
