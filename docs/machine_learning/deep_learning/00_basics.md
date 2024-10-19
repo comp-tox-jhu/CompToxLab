@@ -24,9 +24,9 @@ tensor = torch.tensor([[[1, 2, 3], [4, 5, 6], [7, 8, 9]]])  # 3D Tensor
 
 !!! info "Tips and Trickss"
     Dimensions as brackets:
-    `[]` → 1D (vector)
-    `[[]]` → 2D (matrix)
-    `[[[]]]` → 3D
+    - `[]` → 1D (vector)
+    - `[[]]` → 2D (matrix)
+    - `[[[]]]` → 3D
 
 
 ## Basic Operations
@@ -39,11 +39,11 @@ print(tensor * 10)  # Multiplication
 ```
 
 !!! example "Math Attack!"
-    Element-wise addition: $\mathbf{A} + c$, where $c$ is added to each element in $\mathbf{A}$.
-    Element-wise multiplication: $\mathbf{A} \times c$, where $c$ multiplies each element of $\mathbf{A}$.
+    - Element-wise addition: $\mathbf{A} + c$, where $c$ is added to each element in $\mathbf{A}$.
+    - Element-wise multiplication: $\mathbf{A} \times c$, where $c$ multiplies each element of $\mathbf{A}$.
 
 !!! info "Tips and Tricks"
-    Reassign to modify: Operations don’t change the tensor unless you reassign the result back to some variable.
+    - Reassign to modify: Operations don’t change the tensor unless you reassign the result back to some variable.
 
 
 ### Matrix Multiplication
@@ -57,14 +57,14 @@ print(result)
 ```
 
 !!! example "Math Attack!"
-    Matrix multiplication: For $\mathbf{A} \in \mathbb{R}^{m \times n}$ and $\mathbf{B} \in \mathbb{R}^{n \times p}$, the matrix product $\mathbf{C} = \mathbf{A} \cdot \mathbf{B}$ is given by:
-    $c_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj}$
+    - Matrix multiplication: For $\mathbf{A} \in \mathbb{R}^{m \times n}$ and $\mathbf{B} \in \mathbb{R}^{n \times p}$, the matrix product $\mathbf{C} = \mathbf{A} \cdot \mathbf{B}$ is given by:
+    - $c_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj}$
 
 ​
  
 !!! info "Tips and Tricks"
-    Shape matching rule: For multiplication, the inner dimensions must match:
-    $A(m \times n) \cdot B(n \times p) \rightarrow C(m \times p)$
+    - Shape matching rule: For multiplication, the inner dimensions must match:
+    - $A(m \times n) \cdot B(n \times p) \rightarrow C(m \times p)$
     
 ## 3. Tensor Manipulation: Reshaping, Stacking, and Indexing
 ### Reshape and Squeeze
@@ -77,11 +77,11 @@ x_unsqueezed = x.unsqueeze(0)  # Add a dimension
 ```
 
 !!! Math Attack!
-    Reshape: Adjusts tensor dimensions while keeping the same number of elements, i.e., $m \times n = p \times q$.
-    Squeeze: Removes dimensions with size 1.
+    - Reshape: Adjusts tensor dimensions while keeping the same number of elements, i.e., $m \times n = p \times q$.
+    - Squeeze: Removes dimensions with size 1.
     
 !!! info "Tips and Tricks"
-    Squeeze and unsqueeze: Squeeze removes "extra" dimensions, unsqueeze adds them back.
+    - Squeeze and unsqueeze: Squeeze removes "extra" dimensions, unsqueeze adds them back.
 
 ### Stacking Tensors
 Stack multiple tensors along a new dimension.
@@ -92,7 +92,7 @@ print(x_stacked)
 ```
 
 !!! info "Tips and Tricks"
-    Stacking is like a sandwich: You’re adding a new layer (dimension) on top of existing tensors.
+    - Stacking is like a sandwich: You’re adding a new layer (dimension) on top of existing tensors.
 
 ### Indexing
 Select specific elements in tensors.
@@ -104,7 +104,7 @@ print(x[0, 0])  # Element at (0, 0)
 ```
 
 !!! info "Tips and Tricks"
-    Indexing is slicing: You can slice from any dimension of the tensor, similar to cutting bread slices.
+    - Indexing is slicing: You can slice from any dimension of the tensor, similar to cutting bread slices.
 
 ## 4. Tensor Aggregation and Statistics
 ### Aggregation Functions
@@ -129,9 +129,6 @@ x = torch.tensor([10, 20, 30])
 print(x.argmax(), x.argmin())  # Index of max and min
 ```
 
-!!! info "Tips and Tricks"
-    "Where’s the max?": argmax/argmin returns the position of the value, not the value itself.
-
 ## 5. Working with GPUs
 ### Check GPU Availability
 Check if a GPU is available for faster computation.
@@ -139,9 +136,6 @@ Check if a GPU is available for faster computation.
 ```{python}
 torch.cuda.is_available()  # True if GPU is available
 ```
-
-!!! info "Tips and Tricks"
-    Use GPU for speed: A GPU speeds up calculations, especially for large neural networks.
 
 ### Moving Tensors to GPU
 Transfer tensors to the GPU for faster calculations.
@@ -158,9 +152,6 @@ Move tensors back to the CPU for further processing.
 ```{python}
 tensor_cpu = tensor.to('cpu')
 ```
-
-!!! info "Tips and Tricks"
-    Tensors can travel: Move them between CPU and GPU using .to(device).
     
 ## 6. Randomness and Reproducibility
 ### Set Random Seed
