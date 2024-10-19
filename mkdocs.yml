@@ -153,6 +153,8 @@ nav:
             - Survival Analysis Part 2: machine_learning/supervised/surv-part2.md
             - Multivariate Regression: machine_learning/supervised/multivariate-regression.md
             - Model Performance: machine_learning/supervised/model-performance.md
+        - Deep Learning:
+            - Basics: deep_learning/00_basics.md
     - Omics:
         - Omics: omics/omics.md
         - Genomics:
