@@ -154,7 +154,7 @@ nav:
             - Multivariate Regression: machine_learning/supervised/multivariate-regression.md
             - Model Performance: machine_learning/supervised/model-performance.md
         - Deep Learning:
-            - Basics: deep_learning/00_basics.md
+            - Basics: machine_learning/deep_learning/00_basics.md
     - Omics:
         - Omics: omics/omics.md
         - Genomics:
