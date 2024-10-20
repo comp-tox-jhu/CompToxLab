@@ -1,12 +1,8 @@
-## 1. Setup and Basic Operations
-Install and Import PyTorch
-Install PyTorch: Use pip to install PyTorch.
 
-```{bash}
-pip install torch
-```
+!!! example "Prerequisites"
+    - [Deep Learning Setup](./00_setup.md) - Create R project, setup workspace, and download data
 
-## 2. Tensors: Creation and Operations
+## 1. Tensors: Creation and Operations
 ### Creating Tensors
 Tensors are multi-dimensional arrays and the core of PyTorch.
 
@@ -66,7 +62,7 @@ print(result)
     - Shape matching rule: For multiplication, the inner dimensions must match:
     - $A(m \times n) \cdot B(n \times p) \rightarrow C(m \times p)$
     
-## 3. Tensor Manipulation: Reshaping, Stacking, and Indexing
+## 2. Tensor Manipulation: Reshaping, Stacking, and Indexing
 ### Reshape and Squeeze
 Change tensor shapes or remove/add dimensions of size 1.
 
@@ -106,7 +102,7 @@ print(x[0, 0])  # Element at (0, 0)
 !!! info "Tips and Tricks"
     - Indexing is slicing: You can slice from any dimension of the tensor, similar to cutting bread slices.
 
-## 4. Tensor Aggregation and Statistics
+## 3. Tensor Aggregation and Statistics
 ### Aggregation Functions
 Use functions like min, max, mean, and sum to reduce tensors.
 
@@ -129,7 +125,7 @@ x = torch.tensor([10, 20, 30])
 print(x.argmax(), x.argmin())  # Index of max and min
 ```
 
-## 5. Working with GPUs
+## 4. Working with GPUs
 ### Check GPU Availability
 Check if a GPU is available for faster computation.
 
@@ -153,7 +149,7 @@ Move tensors back to the CPU for further processing.
 tensor_cpu = tensor.to('cpu')
 ```
     
-## 6. Randomness and Reproducibility
+## 5. Randomness and Reproducibility
 ### Set Random Seed
 Ensure reproducible results by setting a random seed.
 
@@ -163,7 +159,7 @@ random_tensor = torch.rand(3, 4)
 print(random_tensor)
 ```
 
-## 7. Tensor and NumPy Integration
+## 6. Tensor and NumPy Integration
 Convert Between NumPy and PyTorch
 
 ```{python}
