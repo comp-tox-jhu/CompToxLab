@@ -30,7 +30,7 @@ Now to set up the virtual environment:
 4. Then at the top of VS code select "Select Kernel"
 5. Select "dl"
 
-[Now Let's Start Coding!](./basics.md){ .md-button .md-button--primary}
+[Now Let's Start Coding!](/machine_learning/deep_learning/01_basics.md){ .md-button .md-button--primary}
 
 Now we will use the command palette in VS code!
 
