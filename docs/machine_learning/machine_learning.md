@@ -21,4 +21,4 @@
 ## Deep Learning
 
  - [Deep Learning Setup](./deep_learning/00_setup.md)
- - [Basics](./deep_learning/00_basics.md)
+ - [Basics](./deep_learning/01_basics.md)
