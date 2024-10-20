@@ -2,11 +2,11 @@
 
 First things first you'll need an integrated development environment or IDE to start coding. We recomend VS code for coding in python and really anything other than R. Use the following link to install VS code:
 
-[VS Code Installation](https://code.visualstudio.com/download){ .md-button .md-button--primary :target="_blank"}
+[VS Code Installation](https://code.visualstudio.com/download){:target="_blank" .md-button .md-button--primary}
 
 Additionally, you'll need Anaconda for managing packages, use the following link to install Anaconda:
 
- [Anaconda Installation](https://docs.anaconda.com/anaconda/install/){ .md-button .md-button--primary :target="_blank"}
+ [Anaconda Installation](https://docs.anaconda.com/anaconda/install/){:target="_blank" .md-button .md-button--primary}
 
 ## Extensions
 
@@ -30,7 +30,7 @@ Now to set up the virtual environment:
 4. Then at the top of VS code select "Select Kernel"
 5. Select "dl"
 
-[Now Let's Start Coding!](/machine_learning/deep_learning/01_basics.md){ .md-button .md-button--primary}
+[Now Let's Start Coding!](./01_basics.md){:target="_blank" .md-button .md-button--primary}
 
 Now we will use the command palette in VS code!
 
