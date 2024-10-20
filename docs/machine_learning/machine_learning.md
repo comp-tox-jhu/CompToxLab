@@ -17,3 +17,8 @@
 - [Survival Analysis Part 2](./supervised/surv-part2.md)
 - [Multivariate Regression](./supervised/multivariate-regression.md)
 - [Model Performance](./supervised/model-performance.md)
+
+## Deep Learning
+
+ - [Deep Learning Setup](./deep_learning/00_setup.md)
+ - [Basics](./deep_learning/00_basics.md)
