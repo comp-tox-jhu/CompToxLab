@@ -2,11 +2,11 @@
 
 First things first you'll need an integrated development environment or IDE to start coding. We recomend VS code for coding in python and really anything other than R. Use the following link to install VS code:
 
-[VS Code Installation](https://code.visualstudio.com/download){ .md-button .md-button--primary }
+[VS Code Installation](https://code.visualstudio.com/download){ .md-button .md-button--primary :target="_blank"}
 
 Additionally, you'll need Anaconda for managing packages, use the following link to install Anaconda:
 
- [Anaconda Installation](https://docs.anaconda.com/anaconda/install/){ .md-button .md-button--primary }
+ [Anaconda Installation](https://docs.anaconda.com/anaconda/install/){ .md-button .md-button--primary :target="_blank"}
 
  ## Extensions
 
