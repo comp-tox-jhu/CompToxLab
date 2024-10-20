@@ -8,7 +8,7 @@ Additionally, you'll need Anaconda for managing packages, use the following link
 
  [Anaconda Installation](https://docs.anaconda.com/anaconda/install/){ .md-button .md-button--primary :target="_blank"}
 
- ## Extensions
+## Extensions
 
 Once both are installed you'll need to install some extensions in VS code. We will be working with Jupyter notebooks so we need to install the Jupyter extension:
 
