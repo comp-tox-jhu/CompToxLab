@@ -26,7 +26,11 @@ Now to set up the virtual environment:
 
 1. Go to `View` > `Terminal`
 2. In terminal enter: `conda create -n dl python=3.12 pytorch torchvision plotly`
-3. Then enter `conda activate dl`
+3. Then enter `y`
+4. Then at the top of VS code select "Select Kernel"
+5. Select "dl"
+
+[Now Let's Start Coding!](./basics.md){ .md-button .md-button--primary}
 
 Now we will use the command palette in VS code!
 
