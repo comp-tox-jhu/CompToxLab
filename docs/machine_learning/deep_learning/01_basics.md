@@ -1,6 +1,6 @@
 
 !!! example "Prerequisites"
-    - [Deep Learning Setup](./00_setup.md) - Create R project, setup workspace, and download data
+    - [Deep Learning Setup](./00_setup.md){ .md-button .md-button--primary } : Setup workspace and download python libraries
 
 !!! abstract "Learning Objectives"
     1. Tensors: Creation and Operations
