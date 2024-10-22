@@ -2,6 +2,16 @@
 !!! example "Prerequisites"
     - [Deep Learning Setup](./00_setup.md) - Create R project, setup workspace, and download data
 
+!!! abstract "Learning Objectives"
+
+1. Tensors: Creation and Operations
+2. Tensor Manipulation: Reshaping, Stacking, and Indexing
+3. Tensor Aggregation and Statistics
+4. Working with GPUs
+5. Randomness and Reproducibility
+6. Tensor and NumPy Integration
+
+
 ## 1. Tensors: Creation and Operations
 ### Creating Tensors
 Tensors are multi-dimensional arrays and the core of PyTorch.
@@ -72,7 +82,7 @@ x_squeezed = x.squeeze()  # Remove dimensions of size 1
 x_unsqueezed = x.unsqueeze(0)  # Add a dimension
 ```
 
-!!! Math Attack!
+!!! example "Math Attack!"
     - Reshape: Adjusts tensor dimensions while keeping the same number of elements, i.e., $m \times n = p \times q$.
     - Squeeze: Removes dimensions with size 1.
     
