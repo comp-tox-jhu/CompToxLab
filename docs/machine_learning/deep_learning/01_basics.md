@@ -3,35 +3,6 @@
     - [Deep Learning Setup](./00_setup.md) - Create R project, setup workspace, and download data
 
 !!! abstract "Learning Objectives"
-
-||
-| - |
-|1. Tensors: Creation and Operations|
-|2. Tensor Manipulation: Reshaping, Stacking, and Indexing|
-|3. Tensor Aggregation and Statistics|
-|4. Working with GPUs|
-|5. Randomness and Reproducibility|
-|6. Tensor and NumPy Integration|
-||
-
-
-=== [Learning Objectives](#){ .md-button .md-button--primary }
-
-    1. Tensors: Creation and Operations
-    2. Tensor Manipulation: Reshaping, Stacking, and Indexing
-    3. Tensor Aggregation and Statistics
-    4. Working with GPUs
-    5. Randomness and Reproducibility
-    6. Tensor and NumPy Integration
-
-1. Tensors: Creation and Operations
-2. Tensor Manipulation: Reshaping, Stacking, and Indexing
-3. Tensor Aggregation and Statistics
-4. Working with GPUs
-5. Randomness and Reproducibility
-6. Tensor and NumPy Integration
-
-!!! abstract "Learning Objectives"
     1. Tensors: Creation and Operations
     2. Tensor Manipulation: Reshaping, Stacking, and Indexing
     3. Tensor Aggregation and Statistics
