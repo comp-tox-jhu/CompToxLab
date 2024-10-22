@@ -3,7 +3,7 @@
     - [Deep Learning Setup](./00_setup.md){ .md-button .md-button--primary } : Setup workspace and download python libraries
 
 !!! abstract "Learning Objectives"
-    1. [Tensors: Creation and Operations](1.-Tensors:-Creation-and-Operations)
+    1. [Tensors: Creation and Operations](#1.-Tensors:-Creation-and-Operations)
     2. Tensor Manipulation: Reshaping, Stacking, and Indexing
     3. Tensor Aggregation and Statistics
     4. Working with GPUs
