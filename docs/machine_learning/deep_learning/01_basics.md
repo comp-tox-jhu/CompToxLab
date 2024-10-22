@@ -15,7 +15,8 @@
 ||
 
 
-=== ["Learning Objectives"]{ .md-button .md-button--primary }
+=== [Learning Objectives](#){ .md-button .md-button--primary }
+
     1. Tensors: Creation and Operations
     2. Tensor Manipulation: Reshaping, Stacking, and Indexing
     3. Tensor Aggregation and Statistics
@@ -23,6 +24,12 @@
     5. Randomness and Reproducibility
     6. Tensor and NumPy Integration
 
+1. Tensors: Creation and Operations
+2. Tensor Manipulation: Reshaping, Stacking, and Indexing
+3. Tensor Aggregation and Statistics
+4. Working with GPUs
+5. Randomness and Reproducibility
+6. Tensor and NumPy Integration
 
 ## 1. Tensors: Creation and Operations
 ### Creating Tensors
