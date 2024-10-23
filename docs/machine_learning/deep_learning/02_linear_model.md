@@ -5,7 +5,7 @@
     1. [Getting the Data](#1-getting-the-data)
     2. [Training and Test Data](#2-training-and-test-data)
     3. [Training the Model](#3-training-the-model)
-    4. [Saving Models](4-saving-models)
+    4. [Saving Models](#4-saving-models)
 
 ## 1. Getting the Data
 
