@@ -53,6 +53,11 @@ def plot_predictions(train_data, train_labels, test_data, test_labels, predictio
 plot_predictions(X_train, y_train, X_test, y_test)
 ```
 
+
+!!! info "Features v. Outcome for Testing and Training Data"
+    ![](img/lr_test_train.png)
+    
+
 To create a model we will start by defining a few things. We are goint to make a class, `LrModel`. A class is essentially a map for creating objects and has methods and attributes:
 - Attributes are variables that belong to the class
 - Methods are functions inside that class that help perform some function
@@ -153,6 +158,9 @@ def plot_epoch_losses(epochs, train_losses, test_losses):
 
 plot_epoch_losses(epoch_vals, train_loss_vals, test_loss_vals)
 ```
+
+!!! info "Epochs v. Loss"
+    ![](img/lr_epoch_v_loss.png)
 
 Here we see that the testing error is higher than the training data for the first few hundred epochs until around epoch 300. Now that we have trained our model and see that the loss is quite low, let's compare these predicted values back to the original values.
 
