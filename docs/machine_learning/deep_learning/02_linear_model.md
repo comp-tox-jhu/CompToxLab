@@ -64,7 +64,7 @@ plot_predictions(X_train, y_train, X_test, y_test)
 
 !!! info "Features v. Outcome for Testing and Training Data"
     <figure markdown="span">
-      ![](img/lr_test_train.png){ width="500" }
+      ![](img/lr_test_train.png){ width="600" }
     </figure>
     
 
@@ -185,9 +185,11 @@ with torch.inference_mode():
 # Plot predictions using Plotly
 plot_predictions(X_train, y_train, X_test, y_test, y_preds)
 ```
-!!! info "True and Predicted Data"
-    ![](img/lr_pred.png){width="500", align=center}
 
+!!! info "True and Predicted Data"
+    <figure markdown="span">
+      ![](img/lr_pred.png){ width="500" }
+    </figure>
 
 They look great! The predicted values appear to track both tested and traing values well!
 
