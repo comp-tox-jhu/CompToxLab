@@ -64,9 +64,16 @@ def plot_predictions(train_data, train_labels, test_data, test_labels, predictio
 plot_predictions(X_train, y_train, X_test, y_test)
 ```
 
+<figure markdown="span">
+  ![](img/lr_test_train.png){ width="500" }
+  <figcaption>Features v. Outcome for Testing and Training Data</figcaption>
+</figure>
 
 !!! info "Features v. Outcome for Testing and Training Data"
-    ![](img/lr_test_train.png){width="500", align=center}
+    <figure markdown="span">
+      ![](img/lr_test_train.png){ width="500" }
+      <figcaption>Image caption</figcaption>
+    </figure>
     
 
 To create a model we will start by defining a few things. We are goint to make a class, `LrModel`. A class is essentially a map for creating objects and has methods and attributes:
