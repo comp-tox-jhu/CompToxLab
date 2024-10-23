@@ -184,6 +184,9 @@ with torch.inference_mode():
 # Plot predictions using Plotly
 plot_predictions(X_train, y_train, X_test, y_test, y_preds)
 ```
+!!! info "True and Predicted Data"
+    ![](img/lr_pred.png){width="500", align=center}
+
 
 They look great! The predicted values appear to track both tested and traing values well!
 
