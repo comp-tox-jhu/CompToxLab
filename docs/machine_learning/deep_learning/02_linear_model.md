@@ -88,6 +88,12 @@ Ok so we have the shell of a model, now we need to train it on our data so that 
 - **Backpropagation**: This involves calculating the loss from your input and then using this information you *backpropagate* that information into the model to update the weights. Essentially, allowing the model to learn and improve it's predictions.
 - **Gradient Descent**: So we are left with a question - what weights, lead to the smallest loss value? To get to this minimum we need to use gradient descent, where we calculate the derivative of the loss function with respect to the model weights to get to some minimum loss value that has our desired model weight!
 
+!!! tip "Gradient Descent" 
+    ![](./img/gradient_descent.png)
+
+    Adapted from the [carpentries tutorial on deep learning](https://carpentries-incubator.github.io/deep-learning-intro/3-monitor-the-model.html)
+    
+
 ```{python}
 # Loss function and optimizer
 loss_fn = nn.L1Loss()
