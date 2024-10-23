@@ -1,4 +1,15 @@
-## Building a Model
+!!! example "Prerequisites"
+    - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
+
+!!! abstract "Learning Objectives"
+    1. [Tensors: Creation and Operations](#1-tensors-creation-and-operations)
+    2. [Tensor Manipulation: Reshaping, Stacking, and Indexing](#2-tensor-manipulation-reshaping-stacking-and-indexing)
+    3. [Tensor Aggregation and Statistics](#3-tensor-aggregation-and-statistics)
+    4. [Working with GPUs](#4-working-with-gpus)
+    5. [Randomness and Reproducibility](#5-randomness-and-reproducibility)
+    6. [Tensor and NumPy Integration](#6-tensor-and-numpy-integration)
+
+## 1. Building a Model
 
 We are going to start with a simple example of a line where we know the slope (i.e. the weight), the bias (i.e. the y intercept) and fill it with values from 0 to 1 that increase by 0.02 each value.
 
@@ -13,7 +24,7 @@ X = torch.arange(0, 1, 0.02).unsqueeze(1)
 y = weight * X + bias
 ```
 
-### Training and Test Data
+### 2. Training and Test Data
 
 When we work with models, we often want to **train** our model to predict some result and then **test** it to see if it is working. Usually we allocate the majority of the data (in this case 80%) to the training data, and a minority of the data (20%) as our testing data.
 
@@ -55,7 +66,7 @@ plot_predictions(X_train, y_train, X_test, y_test)
 
 
 !!! info "Features v. Outcome for Testing and Training Data"
-    ![](img/lr_test_train.png)
+    ![](img/lr_test_train.png){width="500", align=center}
     
 
 To create a model we will start by defining a few things. We are goint to make a class, `LrModel`. A class is essentially a map for creating objects and has methods and attributes:
@@ -83,7 +94,7 @@ model = LrModel() # initiate the model and create an instance!
 print(model.state_dict()) 
 ```
 
-## Training the Model
+## 3. Training the Model
 
 Ok so we have the shell of a model, now we need to train it on our data so that it can make predictions! To do this we are going to introduce a couple concepts:
 
@@ -93,7 +104,7 @@ Ok so we have the shell of a model, now we need to train it on our data so that 
 - **Backpropagation**: This involves calculating the loss from your input and then using this information you *backpropagate* that information into the model to update the weights. Essentially, allowing the model to learn and improve it's predictions.
 - **Gradient Descent**: So we are left with a question - what weights, lead to the smallest loss value? To get to this minimum we need to use gradient descent, where we calculate the derivative of the loss function with respect to the model weights to get to some minimum loss value that has our desired model weight!
 
-!!! tip "Gradient Descent" 
+!!! info "Gradient Descent" 
     ![](./img/gradient_descent.png){width="500", align=center}
 
     Adapted from the [carpentries tutorial on deep learning](https://carpentries-incubator.github.io/deep-learning-intro/3-monitor-the-model.html)
@@ -160,7 +171,7 @@ plot_epoch_losses(epoch_vals, train_loss_vals, test_loss_vals)
 ```
 
 !!! info "Epochs v. Loss"
-    ![](img/lr_epoch_v_loss.png)
+    ![](img/lr_epoch_v_loss.png){width="500", align=center}
 
 Here we see that the testing error is higher than the training data for the first few hundred epochs until around epoch 300. Now that we have trained our model and see that the loss is quite low, let's compare these predicted values back to the original values.
 
@@ -177,7 +188,7 @@ plot_predictions(X_train, y_train, X_test, y_test, y_preds)
 They look great! The predicted values appear to track both tested and traing values well!
 
 
-## Saving Models
+## 4. Saving Models
 
 To save your model, you can use `torch.save` and save the current state of the model with `model.state_dict` and then designate where to put your model with a file name (here we call it `lr_model.pth`).
 
