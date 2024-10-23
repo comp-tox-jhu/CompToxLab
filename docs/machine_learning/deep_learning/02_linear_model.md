@@ -81,9 +81,10 @@ print(model.state_dict())
 ## Training the Model
 
 Ok so we have the shell of a model, now we need to train it on our data so that it can make predictions! To do this we are going to introduce a couple concepts:
-- **Loss Function**: measures how far off the predictions are from the real data points. Here we are using the L1 loss AKA Mean Absolute Error (MAE). 
+
+- **Loss Function**: measures how far off the predictions are from the real data points. Here we are using the L1 loss AKA Mean Absolute Error (MAE).
 - **Optimizer**: The optimizer will update the parameters of the model in order to minimize the loss. Here we are using stochastic gradient descent with a learning rate, which controls how big the updates are, of 0.01
-- **Epoch**: An epoch is just how many times the model is reevaluated, and parameters are updated. 
+- **Epoch**: An epoch is just how many times the model is reevaluated, and parameters are updated.
 - **Backpropagation**: This involves calculating the loss from your input and then using this information you *backpropagate* that information into the model to update the weights. Essentially, allowing the model to learn and improve it's predictions.
 - **Gradient Descent**: So we are left with a question - what weights, lead to the smallest loss value? To get to this minimum we need to use gradient descent, where we calculate the derivative of the loss function with respect to the model weights to get to some minimum loss value that has our desired model weight!
 
