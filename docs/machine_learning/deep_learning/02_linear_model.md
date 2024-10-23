@@ -2,14 +2,12 @@
     - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
 
 !!! abstract "Learning Objectives"
-    1. [Tensors: Creation and Operations](#1-tensors-creation-and-operations)
-    2. [Tensor Manipulation: Reshaping, Stacking, and Indexing](#2-tensor-manipulation-reshaping-stacking-and-indexing)
-    3. [Tensor Aggregation and Statistics](#3-tensor-aggregation-and-statistics)
-    4. [Working with GPUs](#4-working-with-gpus)
-    5. [Randomness and Reproducibility](#5-randomness-and-reproducibility)
-    6. [Tensor and NumPy Integration](#6-tensor-and-numpy-integration)
+    1. [Getting the Data](#1-getting-the-data)
+    2. [Training and Test Data](#2-training-and-test-data)
+    3. [Training the Model](#3-training-the-model)
+    4. [Saving Models](4-saving-models)
 
-## 1. Building a Model
+## 1. Getting the Data
 
 We are going to start with a simple example of a line where we know the slope (i.e. the weight), the bias (i.e. the y intercept) and fill it with values from 0 to 1 that increase by 0.02 each value.
 
@@ -24,7 +22,7 @@ X = torch.arange(0, 1, 0.02).unsqueeze(1)
 y = weight * X + bias
 ```
 
-### 2. Training and Test Data
+## 2. Training and Test Data
 
 When we work with models, we often want to **train** our model to predict some result and then **test** it to see if it is working. Usually we allocate the majority of the data (in this case 80%) to the training data, and a minority of the data (20%) as our testing data.
 
@@ -64,15 +62,9 @@ def plot_predictions(train_data, train_labels, test_data, test_labels, predictio
 plot_predictions(X_train, y_train, X_test, y_test)
 ```
 
-<figure markdown="span">
-  ![](img/lr_test_train.png){ width="500" }
-  <figcaption>Features v. Outcome for Testing and Training Data</figcaption>
-</figure>
-
 !!! info "Features v. Outcome for Testing and Training Data"
     <figure markdown="span">
       ![](img/lr_test_train.png){ width="500" }
-      <figcaption>Image caption</figcaption>
     </figure>
     
 
@@ -111,11 +103,12 @@ Ok so we have the shell of a model, now we need to train it on our data so that 
 - **Backpropagation**: This involves calculating the loss from your input and then using this information you *backpropagate* that information into the model to update the weights. Essentially, allowing the model to learn and improve it's predictions.
 - **Gradient Descent**: So we are left with a question - what weights, lead to the smallest loss value? To get to this minimum we need to use gradient descent, where we calculate the derivative of the loss function with respect to the model weights to get to some minimum loss value that has our desired model weight!
 
-!!! info "Gradient Descent" 
-    ![](./img/gradient_descent.png){width="500", align=center}
-
+!!! info "Gradient Descent"
+    <figure markdown="span">
+      ![](./img/gradient_descent.png){ width="500" }
+    </figure>
     Adapted from the [carpentries tutorial on deep learning](https://carpentries-incubator.github.io/deep-learning-intro/3-monitor-the-model.html)
-    
+
 
 ```{python}
 # Loss function and optimizer
@@ -176,9 +169,10 @@ def plot_epoch_losses(epochs, train_losses, test_losses):
 
 plot_epoch_losses(epoch_vals, train_loss_vals, test_loss_vals)
 ```
-
 !!! info "Epochs v. Loss"
-    ![](img/lr_epoch_v_loss.png){width="500", align=center}
+    <figure markdown="span">
+      ![](img/lr_epoch_v_loss.png){ width="500" }
+    </figure>
 
 Here we see that the testing error is higher than the training data for the first few hundred epochs until around epoch 300. Now that we have trained our model and see that the loss is quite low, let's compare these predicted values back to the original values.
 
