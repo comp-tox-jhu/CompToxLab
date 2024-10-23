@@ -210,3 +210,9 @@ Now to load this model we can use `torch.load` and then the path to our model fi
 loaded_model = LrModel()
 loaded_model.load_state_dict(torch.load("lr_model.pth"))
 ```
+
+!!! abstract "Key Points"
+    - It is a good idea to break your data into two parts, training and testing, to see how well your model might do with outside data
+    - A simple linear model is composed of a $y = weight*x + bias$ 
+    - The model weights are updated each time the model is trained (an epoch), where the weights are updated as to minimize the loss, or how far off the predicted data points are from the true data points.
+    - Save your models to use later or on other data
