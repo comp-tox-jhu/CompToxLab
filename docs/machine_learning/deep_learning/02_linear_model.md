@@ -9,6 +9,13 @@
 
 ## 1. Getting the Data
 
+Perhaps the easiest way to get started with deep learning is to predict the values from a simple linear model: $y = weight*x + bias$. This line can be thought of as a set of predicted values and the distance from those values to the real points is the error:
+
+!!! info "Diagram of a Best Fit Line"
+    <figure markdown="span">
+      ![](img/best_fit.png){ width="500" }
+    </figure>
+    
 We are going to start with a simple example of a line where we know the slope (i.e. the weight), the bias (i.e. the y intercept) and fill it with values from 0 to 1 that increase by 0.02 each value.
 
 ```{python}
@@ -126,9 +133,9 @@ for epoch in range(epochs):
     y_pred = model(X_train)  # Forward pass
     loss = loss_fn(y_pred, y_train)  # Calculate loss
     
-    optimizer.zero_grad()  # Zero gradients
-    loss.backward()  # Backpropagation
-    optimizer.step()  # Update parameters
+    optimizer.zero_grad()  # Zero gradients so that we clear updates from the updates from the previous step
+    loss.backward()  # Backpropagation to calculate how each parameter affects the error
+    optimizer.step()  # Update parameters or weights to reduce that error
     
     # Evaluate every 50 epochs
     if epoch % 50 == 0:
