@@ -21,6 +21,16 @@ Now let's set up a space for us to work in. We will start by creating a virtual 
 
 1. Click `Open Folder`
 2. Create a folder and name it `deep_learning`
+3. Go inside the deep learning folder `cd deep_learning`
+4. Create 3 folders inside `deep_learning`:
+5. `mkdir data`
+6. `mkdir scripts`
+7. `mkdir results`
+
+To download the data we will use:
+
+1. Go into the `data` folder: `cd data`
+2. `curl --output gbm_cptac_2021.tar.gz https://cbioportal-datahub.s3.amazonaws.com/gbm_cptac_2021.tar.gz`
 
 Now to set up the virtual environment:
 
@@ -31,40 +41,3 @@ Now to set up the virtual environment:
 5. Select "dl"
 
 [Now Let's Start Coding!](./01_basics.md){:target="_blank" .md-button .md-button--primary}
-
-Now we will use the command palette in VS code!
-
-1. Use `cmd+shift+p`
-2. Type and choose "Create: New Jupyter Notebook"
-3. In the notebook select `Select Kernel`
-4. Then select `Python Environments..`
-5. Then "Create Python Environment"
-6. Then "Conda" and select "Python 3.12"
-
-Now in the notebook, create a code chunk and run:
-
-```
-!conda install pytorch torchvision
-!conda install plotly
-```
-
-
-## Project Setup
-
-1. Go to `View` > `Terminal`
-2. In terminal enter: `python3 -m venv dl_venv`
-3. Then enter: `source dl_venv/bin/activate`
-4. Then enter: `pip3 install ipykernel`
-5. Then enter: `python3 -m ipykernel install --user --name=dl_kernel`
-
-## Notebook Setup
-
-Now we will use the command palette in VS code!
-
-1. Use `cmd+shift+p`
-2. Type and choose "Create: New Jupyter Notebook"
-3. Use `cmd+shift+p` again
-4. Type and choose "Notebook: Select Notebook Kernel"
-5. Select "Jupyter Kernal.."
-6. Choose `dl_kernel`
-7. In the notebook enter the following in a code cell: `pip install python=3.12 pytorch torchvision plotly`
