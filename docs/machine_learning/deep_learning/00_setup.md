@@ -31,6 +31,7 @@ To download the data we will use:
 
 1. Go into the `data` folder: `cd data`
 2. `curl --output gbm_cptac_2021.tar.gz https://cbioportal-datahub.s3.amazonaws.com/gbm_cptac_2021.tar.gz`
+3. Extract the contents: `tar -zxvf`
 
 Now to set up the virtual environment:
 
