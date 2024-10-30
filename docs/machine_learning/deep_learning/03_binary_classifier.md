@@ -83,7 +83,7 @@ fig.show()
 
 !!! info "Pairplot of Selected Features"
     <figure markdown="span">
-      ![](img/pairplot.png){ width="350" }
+      ![](img/classifier_pairplot.png){ width="350" }
     </figure>
 
 
