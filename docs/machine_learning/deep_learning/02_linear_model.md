@@ -218,6 +218,26 @@ loaded_model = LrModel()
 loaded_model.load_state_dict(torch.load("lr_model.pth"))
 ```
 
+## 5. Into the Neuralverse
+
+## Into the Neuralverse
+
+We have created a simple situation where there is one input and one output. However, the power in deep learning lies in connecting what we call nodes into complex architectures, which we typically call our input layer, a set of hidden layers and an output layer:
+
+!!! info "Neural Network Architecture Overview "
+    <figure markdown="span">
+      ![](img/nn_overview.png){ width="500" }
+    </figure>
+
+What does each node look like though? Well each node is like a neuron, it takes a set of inputs, processes them and creates an output. 
+
+!!! info "Neural Network Node Overview "
+    <figure markdown="span">
+      ![](img/node_overview.png){ width="500" }
+    </figure>
+
+Here we see that each node is the sum of the products of the variables and weights, then that sum is fed through an activation function, which decides, hey is that sum enough to trigger an output. We will get more into that later though!
+
 !!! abstract "Key Points"
     - It is a good idea to break your data into two parts, training and testing, to see how well your model might do with outside data
     - A simple linear model is composed of a $y = weight*x + bias$ 
