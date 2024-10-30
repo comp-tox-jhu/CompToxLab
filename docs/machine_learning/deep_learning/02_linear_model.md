@@ -226,7 +226,7 @@ We have created a simple situation where there is one input and one output. Howe
 
 !!! info "Neural Network Architecture Overview "
     <figure markdown="span">
-      ![](img/nn_overview.png){ width="500" }
+      ![](img/nn_overview.png){ width="200" }
     </figure>
 
 What does each node look like though? Well each node is like a neuron, it takes a set of inputs, processes them and creates an output. 
