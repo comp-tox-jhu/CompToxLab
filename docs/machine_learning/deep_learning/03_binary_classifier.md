@@ -274,39 +274,19 @@ fig = go.Figure()
 
 # Add traces for each metric
 # add in loss 
-fig.add_trace(go.Scatter(
-    x=list(range(1, len(epoch_vals) + 1)),
-      y=loss_vals,
-        mode='lines+markers',
-          name='Loss'))
+fig.add_trace(go.Scatter(x=list(range(1, len(epoch_vals) + 1)), y=loss_vals, mode='lines+markers', name='Loss'))
 # add in accuracy
-fig.add_trace(go.Scatter(
-    x=list(range(1, len(epoch_vals) + 1)),
-      y=acc_vals,
-        mode='lines+markers', 
-        name='Accuracy'))
+fig.add_trace(go.Scatter(x=list(range(1, len(epoch_vals) + 1)), y=acc_vals, mode='lines+markers', name='Accuracy'))
 # add in precision
-fig.add_trace(go.Scatter(
-    x=list(range(1, len(epoch_vals) + 1)),
-      y=pre_vals,
-        mode='lines+markers', 
-        name='Precision'))
+fig.add_trace(go.Scatter(x=list(range(1, len(epoch_vals) + 1)), y=pre_vals, mode='lines+markers', name='Precision'))
 # add in recall
-fig.add_trace(go.Scatter(
-    x=list(range(1, len(epoch_vals) + 1)), 
-    y=recall_vals, 
-    mode='lines+markers', 
-    name='Recall'))
+fig.add_trace(go.Scatter(x=list(range(1, len(epoch_vals) + 1)), y=recall_vals, mode='lines+markers', name='Recall'))
 # add in F1 score
-fig.add_trace(go.Scatter(
-    x=list(range(1, len(epoch_vals) + 1)),
-      y=f1_vals, 
-      mode='lines+markers', 
-      name='F1 Score'))
+fig.add_trace(go.Scatter(x=list(range(1, len(epoch_vals) + 1)), y=f1_vals, mode='lines+markers', name='F1 Score'))
 
 # Update layout
 fig.update_layout(
-    title='Training Metrics Over Epochs',
+    title='Test Metrics Over Epochs',
     xaxis_title='Epoch',
     yaxis_title='Value',
     legend_title='Metric',
