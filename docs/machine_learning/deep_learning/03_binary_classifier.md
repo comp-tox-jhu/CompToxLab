@@ -191,9 +191,9 @@ You'll notice that we have a new element in our model, `nn.ReLU`. ReLU is a popu
 
 $f(x) = max(0,x)$
 
-Now let's specify our optimizer (to get to our optimum weights) and our loss function (to specify how far away our model is from the truth):
-
 ## Train and Evaluate the Model 
+
+Now let's specify our optimizer (to get to our optimum weights) and our loss function (to specify how far away our model is from the truth):
 
 ```{py}
 # Specify the loss function and optimizer
