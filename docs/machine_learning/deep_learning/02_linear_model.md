@@ -220,13 +220,11 @@ loaded_model.load_state_dict(torch.load("lr_model.pth"))
 
 ## 5. Into the Neuralverse
 
-## Into the Neuralverse
-
 We have created a simple situation where there is one input and one output. However, the power in deep learning lies in connecting what we call nodes into complex architectures, which we typically call our input layer, a set of hidden layers and an output layer:
 
 !!! info "Neural Network Architecture Overview "
     <figure markdown="span">
-      ![](img/nn_overview.png){ width="200" }
+      ![](img/nn_overview.png){ width="350" }
     </figure>
 
 What does each node look like though? Well each node is like a neuron, it takes a set of inputs, processes them and creates an output. 
