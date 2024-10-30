@@ -1,3 +1,12 @@
+!!! example "Prerequisites"
+    - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
+
+!!! abstract "Learning Objectives"
+    1. [Binary Classifiers](#binary-classifiers)
+    2. [Data Preparation and Exploration](#data-preparation-and-exploration)
+    3. [Build the Model](#build-the-model)
+    4. [Train and Evaluate the Model](#train-and-evaluate-the-model)
+    
 ## Binary Classifiers
 
 In the previous section, we predicted numeric values using in a regression model. However, deep learning is not limited to predicting numbers but classes as well. So how do we do this? 
@@ -145,6 +154,8 @@ train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 ```
 
+## Build the Model 
+
 With our data prepared, we can make our model! Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, and returns two output layers or the number of classes:
 
 ```{py}
@@ -182,6 +193,7 @@ $f(x) = max(0,x)$
 
 Now let's specify our optimizer (to get to our optimum weights) and our loss function (to specify how far away our model is from the truth):
 
+## Train and Evaluate the Model 
 
 ```{py}
 # Specify the loss function and optimizer
@@ -307,7 +319,7 @@ fig.show()
 
 !!! info "Classifier Performance Metrics"
     <figure markdown="span">
-      ![](img/classifier_metrics.png){ width="200" }
+      ![](img/classifier_metrics.png){ width="500" }
     </figure>
 
     
