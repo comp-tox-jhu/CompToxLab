@@ -6,6 +6,12 @@
     2. [Data Preparation and Exploration](#data-preparation-and-exploration)
     3. [Build the Model](#build-the-model)
     4. [Train and Evaluate the Model](#train-and-evaluate-the-model)
+
+!!! info "Overview of Binary Classification"
+    <figure markdown="span">
+      ![](img/bc_ga.png){ width="600" }
+      <figcaption>Generated with [Napkin](https://app.napkin.ai/)</figcaption>
+    </figure>
     
 ## Binary Classifiers
 
