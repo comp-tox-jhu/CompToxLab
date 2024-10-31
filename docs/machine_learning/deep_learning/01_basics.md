@@ -10,7 +10,7 @@
     5. [Randomness and Reproducibility](randomness-and-reproducibility)
     6. [Tensor and NumPy Integration](tensor-and-numpy-integration)
 
-1. Tensors: Creation and Operations
+## Tensors: Creation and Operations
 
 Machine learning is all about manipulating numbers and to do that we have different ways of storing those numbers, typically in structures called tensors. Tensors can be a single number (scalar), a list or vector of numbers (1D tensor), a matrix (2D tensor), a list of matrices (3D tensor), so on and so forth:
 
@@ -46,13 +46,22 @@ Now in python these tensors are shown using different numbers of brackets:
 
 
 ## Basic Operations
-Perform element-wise operations on tensors.
+
+Again, tensors are just numbers and we can perform basic operations on them, like addition, subtraction, multiplication and division. Let's go through how we would do that!
 
 ```{python}
 tensor = torch.tensor([1, 2, 3])
 print(tensor + 10)  # Addition
 print(tensor * 10)  # Multiplication
 ```
+
+!!! info "output"
+    ```{python}
+    tensor([11, 12, 13])
+    tensor([10, 20, 30])
+    ```
+
+Now in math speak we represent 
 
 !!! example "Math Attack!"
     - Element-wise addition: $\mathbf{A} + c$, where $c$ is added to each element in $\mathbf{A}$.
@@ -62,26 +71,56 @@ print(tensor * 10)  # Multiplication
     - Reassign to modify: Operations don’t change the tensor unless you reassign the result back to some variable.
 
 
-### Matrix Multiplication
-Matrix multiplication combines data, requiring matching inner dimensions.
+## Matrix Multiplication
+
+A lot of machine learning relies heavily on matrix operations and often times multiplying matrices together. When we multiple matrices we need to match the inner dimensions and then we end up with a matrix with the outer dimensions:
+
+!!! success "This Works!"
+    $A(4 \times 2) \cdot B(2 \times 3) \rightarrow C(4 \times 3)$
+    This works because the inner dimensions are 2 and 2
+
+!!! failure "This Doesn't Work!"
+    $A(4 \times 3) \cdot B(2 \times 3) \rightarrow X $
+    This does not work because the inner dimensions are 3 and 2. The are different!
+
+Let's do this in PyTorch!
 
 ```{python}
-A = torch.tensor([[1, 2], [3, 4]])
-B = torch.tensor([[5, 6], [7, 8]])
+# Define A as a 2x3 tensor
+A = torch.tensor([[1, 2, 3], [4, 5, 6]])
+# Define B as a 3x2 tensor
+B = torch.tensor([[7, 8], [9, 10], [11, 12]])
+# Perform matrix multiplication
 result = torch.matmul(A, B)
 print(result)
 ```
 
-!!! example "Math Attack!"
-    - Matrix multiplication: For $\mathbf{A} \in \mathbb{R}^{m \times n}$ and $\mathbf{B} \in \mathbb{R}^{n \times p}$, the matrix product $\mathbf{C} = \mathbf{A} \cdot \mathbf{B}$ is given by:
-    - $c_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj}$
+!!! info "output"
+    ```{python}
+    tensor([[ 58,  64],
+            [139, 154]])
+    ```
 
-​
- 
-!!! info "Tips and Tricks"
-    - Shape matching rule: For multiplication, the inner dimensions must match:
-    - $A(m \times n) \cdot B(n \times p) \rightarrow C(m \times p)$
+!!! tip "Tips and Tricks"
+    - Instead of writing out `torch.matmul(A,B)` you can use the shorthand `A @ B` for the same result!
+
+Now what would this look like in math speak?
+
+!!! example "Math Attack!"
+    - Matrix multiplication: For:
+    $\mathbf{A} \in \mathbb{R}^{m \times n}$ 
+    $\mathbf{B} \in \mathbb{R}^{n \times p}$
+    the matrix product is:
+    $\mathbf{C} = \mathbf{A} \cdot \mathbf{B}$ 
+    and each value is calculated by
+    $c_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj}$
+
+Now that's a lot, let's just look at a visualization of how you multiply matrices:
     
+<video width="626" height="364" controls>
+  <source src="img/mat_mult.mp4" type="video/mp4">
+</video>
+
 ## 2. Tensor Manipulation: Reshaping, Stacking, and Indexing
 ### Reshape and Squeeze
 Change tensor shapes or remove/add dimensions of size 1.
