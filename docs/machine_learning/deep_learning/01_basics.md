@@ -125,6 +125,12 @@ Now that's a lot, let's just look at a visualization of how you multiply matrice
 <source src="img/mat_mult.mp4" type="video/mp4">
 </video>
 
+<source src="../img/mat_mult.mp4" type="video/mp4">
+
+<video controls>
+<source src="../img/mat_mult.mp4" type="video/mp4">
+</video>
+
 ## 2. Tensor Manipulation: Reshaping, Stacking, and Indexing
 ### Reshape and Squeeze
 Change tensor shapes or remove/add dimensions of size 1.
