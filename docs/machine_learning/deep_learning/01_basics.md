@@ -4,12 +4,15 @@
 
 **Learning Objectives**
 
-1. [Tensors: Creation and Operations](tensors-creation-and-operations)
-2. [Tensor Manipulation: Reshaping, Stacking, and Indexing](tensor-manipulation-reshaping-stacking-and-indexing)
-3. [Tensor Aggregation and Statistics](tensor-aggregation-and-statistics)
-4. [Working with GPUs](working-with-gpus)
-5. [Randomness and Reproducibility](randomness-and-reproducibility)
-6. [Tensor and NumPy Integration](tensor-and-numpy-integration)
+1. [What is a Tensor?](#what-is-a-tensor)
+2. [Basic Operations](#basic-operations)
+3. [Matrix Multiplication](#matrix-multiplication)
+4. [Tensor Manipulation](#tensor-manipulation)
+5. [Accessing Elements in a Tensor](#accessing-elements-in-a-tensor)
+6. [Tensor Statistics](#tensor-statistics)
+7. [Working with GPUs](#working-with-gpus)
+8. [Random Values and Reproducibility](#random-values-and-reproducibility)
+9. [Tensor and NumPy Integration](#tensor-and-numpy-integration)
 
 ## What is a Tensor?
 
@@ -299,7 +302,7 @@ print(x.min(), x.max(), x.mean(), x.sum())
 - **Sum**: $\text{sum}(x) = \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
 
 
-It may be important to grab _where_ in the tensor our minimum or maximum is as well
+It may be important to grab _where_ in the tensor our minimum or maximum is as well:
 
 ```{python}
 x = torch.tensor([10, 20, 30])
@@ -324,22 +327,22 @@ torch.cuda.is_available()  # True if GPU is available
     True
     ```
 
+Now to move a tensor to GPU:
+
 ```{python}
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 tensor = torch.tensor([1, 2, 3]).to(device)
 print(tensor)
 ```
-
-### Moving Back to CPU
-Move tensors back to the CPU for further processing.
+To move it back to the central processing unit or CPU, just do the following:
 
 ```{python}
 tensor_cpu = tensor.to('cpu')
 ```
     
-## 5. Randomness and Reproducibility
-### Set Random Seed
-Ensure reproducible results by setting a random seed.
+## Random Values and Reproducibility
+
+Now we often times initialize model values with random numbers to ensure those numbers are consistent, you can set a "seed" number to ensure consistency:
 
 ```{python}
 torch.manual_seed(42)
@@ -347,8 +350,16 @@ random_tensor = torch.rand(3, 4)
 print(random_tensor)
 ```
 
-## 6. Tensor and NumPy Integration
-Convert Between NumPy and PyTorch
+!!! info "output"
+    ```
+    tensor([[0.8823, 0.9150, 0.3829, 0.9593],
+            [0.3904, 0.6009, 0.2566, 0.7936],
+            [0.9408, 0.1332, 0.9346, 0.5936]])
+    ```
+    
+## Tensor and NumPy Integration
+
+Tensors are special objects designed for complex operations. However, we may want to convert them back to numpy objects so that we can do things like plot model results. First we will show you how to take a numpy array and make a tensor:
 
 ```{python}
 # NumPy to PyTorch
@@ -358,9 +369,31 @@ tensor = torch.from_numpy(np_array)
 print(tensor)
 ```
 
+!!! info "output"
+    ```
+    tensor([1, 2, 3], dtype=torch.int32)
+    ```
+
+Now let's convert that back to numpy!
+
 ```{python}
 # PyTorch to NumPy
 numpy_array = tensor.numpy()
 print(numpy_array)
 ```
 
+!!! info "output"
+    ```
+    [1, 2, 3]
+    ```
+
+**Key Points**
+
+- Tensors store data across different dimensions: scalars (0D), vectors (1D), matrices (2D), and higher.
+- Basic element-wise operations can be used to modify tensors (i.e. addition, subtraction, multiplication, division, etc.).
+- For matrix multiplication, the inner dimensions must match!
+- Tensor shapes can be manipulated which can be necessary for things like matrix multiplication.
+- Tensor elements are accessed by the bracket they are in
+- GPUs can be used for faster computation.
+- Set random seeds with torch.manual_seed() for reproducibility.
+- Converting between PyTorch tensors and NumPy arrays can be useful when plotting model metrics
