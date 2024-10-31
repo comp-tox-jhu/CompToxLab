@@ -2,13 +2,14 @@
 !!! example "Prerequisites"
     - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
 
-!!! abstract "Learning Objectives"
-    1. [Tensors: Creation and Operations](tensors-creation-and-operations)
-    2. [Tensor Manipulation: Reshaping, Stacking, and Indexing](tensor-manipulation-reshaping-stacking-and-indexing)
-    3. [Tensor Aggregation and Statistics](tensor-aggregation-and-statistics)
-    4. [Working with GPUs](working-with-gpus)
-    5. [Randomness and Reproducibility](randomness-and-reproducibility)
-    6. [Tensor and NumPy Integration](tensor-and-numpy-integration)
+**Learning Objectives**
+
+1. [Tensors: Creation and Operations](tensors-creation-and-operations)
+2. [Tensor Manipulation: Reshaping, Stacking, and Indexing](tensor-manipulation-reshaping-stacking-and-indexing)
+3. [Tensor Aggregation and Statistics](tensor-aggregation-and-statistics)
+4. [Working with GPUs](working-with-gpus)
+5. [Randomness and Reproducibility](randomness-and-reproducibility)
+6. [Tensor and NumPy Integration](tensor-and-numpy-integration)
 
 ## Tensors: Creation and Operations
 
@@ -30,11 +31,10 @@ tensor = torch.tensor([[[1, 2, 3], [4, 5, 6], [7, 8, 9]]])  # 3D Tensor
 
 Machine learning papers always include a lot of math jargon, but don't be afraid! Let's go through a few of the symbols for tensors! 
 
-!!! example "Math Attack!"
-    - Scalar: A single number $s \in \mathbb{R}$.
-    - Vector: A 1D array or vector is shown as: $\mathbf{v} \in \mathbb{R}^n$.
-    - Matrix: A 2D array or matrix with m rows and n columns is shown as: $\mathbf{M} \in \mathbb{R}^{m \times n}$.
-    - 3D Tensor: a list of o matrices with m rows and n columns is shown as: $\mathbf{M} \in \mathbb{R}^{o \times m \times n}$.
+- Scalar: A single number $s \in \mathbb{R}$.
+- Vector: A 1D array or vector is shown as: $\mathbf{v} \in \mathbb{R}^n$.
+- Matrix: A 2D array or matrix with m rows and n columns is shown as: $\mathbf{M} \in \mathbb{R}^{m \times n}$.
+- 3D Tensor: a list of o matrices with m rows and n columns is shown as: $\mathbf{M} \in \mathbb{R}^{o \times m \times n}$.
 
 Now in python these tensors are shown using different numbers of brackets:
 
@@ -63,9 +63,8 @@ print(tensor * 10)  # Multiplication
 
 Now in math speak we represent 
 
-!!! example "Math Attack!"
-    - Element-wise addition: $\mathbf{A} + c$, where $c$ is added to each element in $\mathbf{A}$.
-    - Element-wise multiplication: $\mathbf{A} \times c$, where $c$ multiplies each element of $\mathbf{A}$.
+- Element-wise addition: $\mathbf{A} + c$, where $c$ is added to each element in $\mathbf{A}$.
+- Element-wise multiplication: $\mathbf{A} \times c$, where $c$ multiplies each element of $\mathbf{A}$.
 
 !!! info "Tips and Tricks"
     - Reassign to modify: Operations don’t change the tensor unless you reassign the result back to some variable.
@@ -106,14 +105,13 @@ print(result)
 
 Now what would this look like in math speak?
 
-!!! example "Math Attack!"
-    - Matrix multiplication: For:
-    $\mathbf{A} \in \mathbb{R}^{m \times n}$ 
-    $\mathbf{B} \in \mathbb{R}^{n \times p}$
-    the matrix product is:
-    $\mathbf{C} = \mathbf{A} \cdot \mathbf{B}$ 
-    and each value is calculated by
-    $c_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj}$
+- Matrix multiplication:
+$\mathbf{A} \in \mathbb{R}^{m \times n}$ 
+$\mathbf{B} \in \mathbb{R}^{n \times p}$
+the matrix product is:
+$\mathbf{C} = \mathbf{A} \cdot \mathbf{B}$ 
+and each value is calculated by
+$c_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj}$
 
 Now that's a lot, let's just look at a visualization of how you multiply matrices:
     
@@ -170,11 +168,10 @@ x = torch.tensor([1, 2, 3, 4])
 print(x.min(), x.max(), x.mean(), x.sum())
 ```
 
-!!! example "Math Attack!"
-    - Min: $\text{min}(x)$ returns the smallest element.
-    - Max: $\text{max}(x)$ returns the largest element.
-    - Mean: $\text{mean}(x) = \frac{1}{n} \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
-    - Sum: $\text{sum}(x) = \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
+- Min: $\text{min}(x)$ returns the smallest element.
+- Max: $\text{max}(x)$ returns the largest element.
+- Mean: $\text{mean}(x) = \frac{1}{n} \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
+- Sum: $\text{sum}(x) = \sum_{i=1}^{n} x_i$, where $n$ is the number of elements.
 
 ### Positional Min/Max
 Get the index of the minimum and maximum values.
