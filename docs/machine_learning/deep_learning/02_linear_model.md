@@ -9,7 +9,8 @@
 
 !!! info "Overview of Linear Regression with PyTorch"
     <figure markdown="span">
-      ![](img/lr_ga.png){ width="500" }
+      ![](img/lr_ga.png){ width="600" }
+      <figcaption>Generated with [Napkin](https://app.napkin.ai/)</figcaption>
     </figure>
 
 
