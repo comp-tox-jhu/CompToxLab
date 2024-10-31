@@ -80,7 +80,7 @@ A lot of machine learning relies heavily on matrix operations and often times mu
     This works because the inner dimensions are 2 and 2
 
 !!! failure "This Doesn't Work!"
-    $A(4 \times 3) \cdot B(2 \times 3) \rightarrow X $
+    $A(4 \times 3) \cdot B(2 \times 3) \rightarrow X$
     This does not work because the inner dimensions are 3 and 2. The are different!
 
 Let's do this in PyTorch!
@@ -119,6 +119,10 @@ Now that's a lot, let's just look at a visualization of how you multiply matrice
     
 <video width="626" height="364" controls>
   <source src="img/mat_mult.mp4" type="mp4">
+</video>
+
+<video controls>
+<source src="img/mat_mult.mp4" type="video/mp4">
 </video>
 
 ## 2. Tensor Manipulation: Reshaping, Stacking, and Indexing
