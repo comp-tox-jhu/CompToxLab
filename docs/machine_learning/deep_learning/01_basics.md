@@ -3,16 +3,23 @@
     - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
 
 !!! abstract "Learning Objectives"
-    1. [Tensors: Creation and Operations](#1-tensors-creation-and-operations)
-    2. [Tensor Manipulation: Reshaping, Stacking, and Indexing](#2-tensor-manipulation-reshaping-stacking-and-indexing)
-    3. [Tensor Aggregation and Statistics](#3-tensor-aggregation-and-statistics)
-    4. [Working with GPUs](#4-working-with-gpus)
-    5. [Randomness and Reproducibility](#5-randomness-and-reproducibility)
-    6. [Tensor and NumPy Integration](#6-tensor-and-numpy-integration)
+    1. [Tensors: Creation and Operations](tensors-creation-and-operations)
+    2. [Tensor Manipulation: Reshaping, Stacking, and Indexing](tensor-manipulation-reshaping-stacking-and-indexing)
+    3. [Tensor Aggregation and Statistics](tensor-aggregation-and-statistics)
+    4. [Working with GPUs](working-with-gpus)
+    5. [Randomness and Reproducibility](randomness-and-reproducibility)
+    6. [Tensor and NumPy Integration](tensor-and-numpy-integration)
 
-## 1. Tensors: Creation and Operations
-### Creating Tensors
-Tensors are multi-dimensional arrays and the core of PyTorch.
+1. Tensors: Creation and Operations
+
+Machine learning is all about manipulating numbers and to do that we have different ways of storing those numbers, typically in structures called tensors. Tensors can be a single number (scalar), a list or vector of numbers (1D tensor), a matrix (2D tensor), a list of matrices (3D tensor), so on and so forth:
+
+!!! info "What is a Tensor?"
+    <figure markdown="span">
+      ![](img/tensors.png){ width="500" }
+    </figure>
+
+Now let's see how we make a tensor in PyTorch!
 
 ```{python}
 scalar = torch.tensor(7)  # Scalar
@@ -21,10 +28,15 @@ matrix = torch.tensor([[1, 2], [3, 4]])  # Matrix
 tensor = torch.tensor([[[1, 2, 3], [4, 5, 6], [7, 8, 9]]])  # 3D Tensor
 ```
 
+Machine learning papers always include a lot of math jargon, but don't be afraid! Let's go through a few of the symbols for tensors! 
+
 !!! example "Math Attack!"
     - Scalar: A single number $s \in \mathbb{R}$.
-    - Vector: A 1D array $\mathbf{v} \in \mathbb{R}^n$.
-    - Matrix: A 2D array $\mathbf{M} \in \mathbb{R}^{m \times n}$.
+    - Vector: A 1D array or vector is shown as: $\mathbf{v} \in \mathbb{R}^n$.
+    - Matrix: A 2D array or matrix with m rows and n columns is shown as: $\mathbf{M} \in \mathbb{R}^{m \times n}$.
+    - 3D Tensor: a list of o matrices with m rows and n columns is shown as: $\mathbf{M} \in \mathbb{R}^{o \times m \times n}$.
+
+Now in python these tensors are shown using different numbers of brackets:
 
 !!! info "Tips and Tricks"
     - Dimensions as brackets:
