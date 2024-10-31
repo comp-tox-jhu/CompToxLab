@@ -11,7 +11,7 @@
 5. [Randomness and Reproducibility](randomness-and-reproducibility)
 6. [Tensor and NumPy Integration](tensor-and-numpy-integration)
 
-## Tensors: Creation and Operations
+## What is a Tensor?
 
 Machine learning is all about manipulating numbers and to do that we have different ways of storing those numbers, typically in structures called tensors. Tensors can be a single number (scalar), a list or vector of numbers (1D tensor), a matrix (2D tensor), a list of matrices (3D tensor), so on and so forth:
 
@@ -311,16 +311,18 @@ print(x.argmax(), x.argmin())  # Index of max and min
     tensor(2) tensor(0)
     ```
 
-## 4. Working with GPUs
-### Check GPU Availability
-Check if a GPU is available for faster computation.
+## Working with GPUs
+
+Machine learning can be hard and often needs computer power to make it happen. One way it can make that happen is with graphic processing units or GPUs. These are hardware that are great at handling certain tasks like matrix math really fast. So it can be useful to move our tensors to a GPU so that our AI models can run faster! But first let's check to see if they are available:
 
 ```{python}
 torch.cuda.is_available()  # True if GPU is available
 ```
 
-### Moving Tensors to GPU
-Transfer tensors to the GPU for faster calculations.
+!!! info "output"
+    ```
+    True
+    ```
 
 ```{python}
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
