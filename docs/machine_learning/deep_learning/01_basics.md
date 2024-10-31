@@ -118,7 +118,7 @@ Now what would this look like in math speak?
 Now that's a lot, let's just look at a visualization of how you multiply matrices:
     
 <video width="626" height="364" controls>
-  <source src="img/mat_mult.mp4" type="video/mp4">
+  <source src="img/mat_mult.mp4" type="mp4">
 </video>
 
 ## 2. Tensor Manipulation: Reshaping, Stacking, and Indexing
