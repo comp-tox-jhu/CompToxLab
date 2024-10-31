@@ -7,6 +7,12 @@
     3. [Training the Model](#3-training-the-model)
     4. [Saving Models](#4-saving-models)
 
+!!! info "Overview of Linear Regression with PyTorch"
+    <figure markdown="span">
+      ![](img/lr_ga.png){ width="500" }
+    </figure>
+
+
 ## 1. Getting the Data
 
 Perhaps the easiest way to get started with deep learning is to predict the values from a simple linear model: $y = weight*x + bias$. This line can be thought of as a set of predicted values and the distance from those values to the real points is the error:
