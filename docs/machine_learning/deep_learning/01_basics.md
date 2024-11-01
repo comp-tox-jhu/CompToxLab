@@ -2,17 +2,17 @@
 !!! example "Prerequisites"
     - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
 
-**Learning Objectives**
-
-1. [What is a Tensor?](#what-is-a-tensor)
-2. [Basic Operations](#basic-operations)
-3. [Matrix Multiplication](#matrix-multiplication)
-4. [Tensor Manipulation](#tensor-manipulation)
-5. [Accessing Elements in a Tensor](#accessing-elements-in-a-tensor)
-6. [Tensor Statistics](#tensor-statistics)
-7. [Working with GPUs](#working-with-gpus)
-8. [Random Values and Reproducibility](#random-values-and-reproducibility)
-9. [Tensor and NumPy Integration](#tensor-and-numpy-integration)
+|**Learning Objectives**|
+|-|
+|1. [What is a Tensor?](#what-is-a-tensor)|
+|2. [Basic Operations](#basic-operations)|
+|3. [Matrix Multiplication](#matrix-multiplication)|
+|4. [Tensor Manipulation](#tensor-manipulation)|
+|5. [Accessing Elements in a Tensor](#accessing-elements-in-a-tensor)|
+|6. [Tensor Statistics](#tensor-statistics)|
+|7. [Working with GPUs](#working-with-gpus)|
+|8. [Random Values and Reproducibility](#random-values-and-reproducibility)|
+|9. [Tensor and NumPy Integration](#tensor-and-numpy-integration)|
 
 ## What is a Tensor?
 
