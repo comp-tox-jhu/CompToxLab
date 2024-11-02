@@ -175,6 +175,8 @@ This is great starting point with neural networks as we are not doing anything f
 
 ### Loss Functions
 
+As a review loss functions tell us how far off our predicted value is to our real value and there are a few different ways to define loss:
+
 | **Loss Function**                       | **Task**                        | **Equation**                                                                                              | **Description**                                                                                 | **PyTorch Function**                  |
 |-----------------------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------|
 | **Binary Cross-Entropy Loss**           | Binary classification           | $\text{BCE} = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i) \right]$ | - $y$: true label <br> - $\hat{y}$: predicted probability <br> - $N$: number of samples | `torch.nn.BCELoss` or `torch.nn.BCEWithLogitsLoss` |
@@ -194,6 +196,7 @@ Now how about optimizers?
 
 ### Optimizers
 
+Optimizers tweak our model so that we _optimize_ our model parameters to minimize the loss:
 
 | **Optimizer**              | **Task**                        | **Equation** / **Update Rule**                                                                                       | **Description**                                                                                 | **PyTorch Function**                  |
 |----------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -282,6 +285,20 @@ Eww that is a lot of math feel free to click the example below to see how a simp
     - **Updated $b$**: 0.099
     
     And that update to our model parameter is a step towards improving our model!
+
+### Activation Functions 
+
+Once we have updated our model parameters to optimize our loss, we need to decide what to do with the output. Depending on our goal we will use different activation functions:
+
+# Most Common Activation Functions in Neural Networks
+
+| **Activation Function** | **Equation**                                  | **Description** | **Typical Use** | **PyTorch Function** |
+|--------------------------|-----------------------------------------------|------------------|------------------|-----------------------|
+| **ReLU (Rectified Linear Unit)** | $\text{ReLU}(x) = \max(0, x)$          | - Outputs the input directly if positive, otherwise outputs zero <br> - Helps mitigate the vanishing gradient problem | Hidden layers of deep neural networks | `torch.nn.ReLU()` or `torch.relu()` |
+| **Sigmoid**              | $\sigma(x) = \frac{1}{1 + e^{-x}}$            | - Squashes input to a range between 0 and 1 <br> - Useful for probabilities | Output layers in binary classification | `torch.nn.Sigmoid()` or `torch.sigmoid()` |
+| **Tanh**                 | $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ | - Squashes input to a range between -1 and 1 <br> - Centered around zero, leading to better convergence than Sigmoid | Hidden layers in neural networks | `torch.nn.Tanh()` or `torch.tanh()` |
+| **Softmax**              | $\sigma(\vec{z})_{i} = \frac{e^{z_{i}}}{\sum_{j=1}^{K} e^{z_j}}$ | - Converts an input vector $\vec{z}$ into a probability distribution over $K$ classes <br> - $e^{z_i}$: standard exponential function for input vector <br> - $K$: number of classes in the multi-class classifier <br> - Ensures that outputs sum to 1 | Output layer for multi-class classification | `torch.nn.Softmax()` or `torch.softmax()` |
+| **Leaky ReLU**           | $\text{Leaky ReLU}(x) = \begin{cases} x, & \text{if } x > 0 \\ \alpha x, & \text{if } x \leq 0 \end{cases}$ | - Similar to ReLU but with a small slope $\alpha$ for negative $x$ <br> - Prevents the dying ReLU problem by allowing small gradients when $x \leq 0$ | Hidden layers in deep networks | `torch.nn.LeakyReLU()` |
 
 
 Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, and returns two output layers or the number of classes:
