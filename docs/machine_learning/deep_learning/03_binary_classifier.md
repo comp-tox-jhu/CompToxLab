@@ -1,11 +1,10 @@
 !!! example "Prerequisites"
     - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
 
-!!! abstract "Learning Objectives"
-    1. [Binary Classifiers](#binary-classifiers)
-    2. [Data Preparation and Exploration](#data-preparation-and-exploration)
-    3. [Build the Model](#build-the-model)
-    4. [Train and Evaluate the Model](#train-and-evaluate-the-model)
+1. [Binary Classifiers](#binary-classifiers)
+2. [Data Preparation and Exploration](#data-preparation-and-exploration)
+3. [Build the Model](#build-the-model)
+4. [Train and Evaluate the Model](#train-and-evaluate-the-model)
 
 !!! info "Overview of Binary Classification"
     <figure markdown="span">
@@ -162,7 +161,34 @@ test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
 ## Build the Model 
 
-With our data prepared, we can make our model! Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, and returns two output layers or the number of classes:
+With our data prepared, we can make our model! But we have decisions to make. Our model is going to be a little more complex than our previous simple linear model. We are going to make what is called a multilayer perceptron. It sounds complicated but all it is is a neural network where all nodes in one layer are connected to all nodes in the next layer:
+
+!!! info "Multilayer Perceptron Architecture"
+    <figure markdown="span">
+      ![](img/nn_overview.png){ width="400" }
+      <figcaption></figcaption>
+    </figure>
+
+This is great starting point with neural networks as we are not doing anything funky with connecting nodes. Each node is just connected to all nodes in the next layer. But we still need to make decisions about our loss function, the optimizer and now our **activation function** given we are connecting multiple layers.
+
+**Loss Functions**:
+
+| **Loss Function**                       | **Task**                        | **Equation**                                                                                              | **Description**                                                                                 | **PyTorch Function**                  |
+|-----------------------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------|
+| **Binary Cross-Entropy Loss**           | Binary classification           | $\text{BCE} = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i) \right]$ | - $y$: true label <br> - $\hat{y}$: predicted probability <br> - $N$: number of samples | `torch.nn.BCELoss` or `torch.nn.BCEWithLogitsLoss` |
+| **Cross-Entropy Loss (Multi-Class)**    | Multi-class classification      | $\text{CE} = -\sum_{i=1}^{C} y_i \log(\hat{y}_i)$                                          | - $C$: number of classes <br> - $y_i$: one-hot encoded true label <br> - $\hat{y}_i$: predicted probability for class $i$ | `torch.nn.CrossEntropyLoss`           |
+| **Mean Absolute Error (MAE) / L1 Loss** | Regression                      | $\text{MAE} = \frac{1}{N} \sum_{i=1}^{N} \|y_i - \hat{y}_i\|$                               | - $y$: true value <br> - $\hat{y}$: predicted value | `torch.nn.L1Loss`                     |
+| **Mean Squared Error (MSE) / L2 Loss**  | Regression                      | $\text{MSE} = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2$                              | - $y$: true value <br> - $\hat{y}$: predicted value | `torch.nn.MSELoss`                    |
+
+Now you may notice that when using the cross-entropy loss, labels are one-hot encoded. What does that even mean? Well all this means is that in a column with two or more unique values, unique values are made into new columns, and if the original column had that value, you put a 1, if not, you put a 0. Take a look at this visualization:
+
+!!! info "One-Hot Encoding"
+    <figure markdown="span">
+      ![](img/![](img/onehot.png)){ width="400" }
+      <figcaption></figcaption>
+    </figure>
+
+Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, and returns two output layers or the number of classes:
 
 ```{py}
 class SSModel(nn.Module):
