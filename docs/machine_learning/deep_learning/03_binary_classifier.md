@@ -1,6 +1,8 @@
 !!! example "Prerequisites"
     - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
 
+**Learning Objectives**
+
 1. [Binary Classifiers](#binary-classifiers)
 2. [Data Preparation and Exploration](#data-preparation-and-exploration)
 3. [Build the Model](#build-the-model)
@@ -171,7 +173,7 @@ With our data prepared, we can make our model! But we have decisions to make. Ou
 
 This is great starting point with neural networks as we are not doing anything funky with connecting nodes. Each node is just connected to all nodes in the next layer. But we still need to make decisions about our loss function, the optimizer and now our **activation function** given we are connecting multiple layers.
 
-**Loss Functions**:
+### Loss Functions
 
 | **Loss Function**                       | **Task**                        | **Equation**                                                                                              | **Description**                                                                                 | **PyTorch Function**                  |
 |-----------------------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -190,9 +192,8 @@ Now you may notice that when using the cross-entropy loss, labels are one-hot en
 
 Now how about optimizers?
 
-**Optimizers**
+### Optimizers
 
-# Common Optimizers in Machine Learning
 
 | **Optimizer**              | **Task**                        | **Equation** / **Update Rule**                                                                                       | **Description**                                                                                 | **PyTorch Function**                  |
 |----------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -231,7 +232,7 @@ Eww that is a lot of math feel free to click the example below to see how a simp
     
     $\frac{\partial J}{\partial w} = -(y - \hat{y}) \cdot x$
     
-    **Step 2: Plug in the Values**
+    **Plug in the Values:**
     
     With our data point $(x, y) = (2, 3)$ and initial parameters $w_0 = 1.5$, $b_0 = 0.1$:
     
@@ -241,25 +242,25 @@ Eww that is a lot of math feel free to click the example below to see how a simp
     
     $\frac{\partial J}{\partial w} = -(3 - 3.1) \cdot 2 = 0.2$
     
-    **Step 3: Partial Derivative with Respect to $b$**
+    **Step 2: Partial Derivative with Respect to $b$**
     
     Now let’s see what happens when we change $b$:
     
     $\frac{\partial J}{\partial b} = -(y - \hat{y})$
     
-    Plug in the values:
+    **Plug in the values:**
     
     $\frac{\partial J}{\partial b} = -(3 - 3.1) = 0.1$
     
-    **Step 4: Combine into a Gradient**
+    **Step 3: Combine into a Gradient**
     
     We store these partial derivatives in a gradient:
     
     $\nabla J(w, b) = \begin{bmatrix} \frac{\partial J}{\partial w} \\ \frac{\partial J}{\partial b} \end{bmatrix} = \begin{bmatrix} 0.2 \\ 0.1 \end{bmatrix}$
     
-    **Step 5: Update the Parameters**
+    **Step 4: Update the Parameters**
     
-    Finally, we use the gradient descent update rule:
+    Finally, we use the gradient descent update rule (with $\eta$ being our learning rate - here it is 0.01):
     
     $\theta_{t+1} = \theta_t - \eta \nabla_\theta J(\theta_t)$
     
