@@ -6,13 +6,13 @@
 3. [Build the Model](#build-the-model)
 4. [Train and Evaluate the Model](#train-and-evaluate-the-model)
 
-!!! info "Overview of Binary Classification"
+!!! info "Overview of Classification"
     <figure markdown="span">
       ![](img/bc_ga.png){ width="600" }
       <figcaption>Generated with [Napkin](https://app.napkin.ai/)</figcaption>
     </figure>
     
-## Binary Classifiers
+## Classifiers
 
 In the previous section, we predicted numeric values using in a regression model. However, deep learning is not limited to predicting numbers but classes as well. So how do we do this? 
 
@@ -203,17 +203,17 @@ Eww that is a lot of math feel free to click the example below to see how a simp
 
 ??? info "Gradient Descent Example"
     
-    Now that we have our data, it's time to dive into the details of how our model learns! To start, let’s break down what it means to calculate the gradient     and update the parameters in simple terms.
-    
     When we train our model, we need to know how changing the parameters—like weights and biases—affects the output. This is where partial derivatives come in.     Think of them as tiny nudges in different directions that tell us how much each part of our function changes when we adjust one variable while keeping the     others fixed.
     We’re going to look at how to find these nudges step by step, using a simple linear regression model:
     
     $J(w, b) = \frac{1}{2} (y - \hat{y})^2$
     
     where $\hat{y}$ is our prediction:
+    
     $\hat{y} = w \cdot x + b$
     
-    Step 1: Partial Derivative with Respect to $w$
+    **Step 1: Partial Derivative with Respect to $w$**
+    
     First up, we need to figure out how changing $w$ affects our loss $J$. Mathematically, that looks like this:
     
     $\frac{\partial J}{\partial w} = \frac{\partial}{\partial w} \left[ \frac{1}{2} (y - \hat{y})^2 \right]$
@@ -221,6 +221,7 @@ Eww that is a lot of math feel free to click the example below to see how a simp
     Let’s plug in our prediction:
     
     $\frac{\partial J}{\partial w} = \frac{\partial}{\partial w} \left[ \frac{1}{2} (y - (w \cdot x + b))^2 \right]$
+    
     We apply the chain rule here:
     
     - The outer part, $(y - \hat{y})^2$, becomes $(y - \hat{y}) \cdot (-1)$ when we differentiate.
@@ -230,7 +231,7 @@ Eww that is a lot of math feel free to click the example below to see how a simp
     
     $\frac{\partial J}{\partial w} = -(y - \hat{y}) \cdot x$
     
-    Step 2: Plug in the Values
+    **Step 2: Plug in the Values**
     
     With our data point $(x, y) = (2, 3)$ and initial parameters $w_0 = 1.5$, $b_0 = 0.1$:
     
@@ -240,7 +241,7 @@ Eww that is a lot of math feel free to click the example below to see how a simp
     
     $\frac{\partial J}{\partial w} = -(3 - 3.1) \cdot 2 = 0.2$
     
-    Step 3: Partial Derivative with Respect to $b$
+    **Step 3: Partial Derivative with Respect to $b$**
     
     Now let’s see what happens when we change $b$:
     
@@ -250,19 +251,13 @@ Eww that is a lot of math feel free to click the example below to see how a simp
     
     $\frac{\partial J}{\partial b} = -(3 - 3.1) = 0.1$
     
-    Step 4: Combine into a Gradient
+    **Step 4: Combine into a Gradient**
+    
     We store these partial derivatives in a gradient:
     
-    $
-    \nabla J(w, b) = \begin{bmatrix}
-    \frac{\partial J}{\partial w} \\
-    \frac{\partial J}{\partial b}
-    \end{bmatrix} = \begin{bmatrix}
-    0.2 \\
-    0.1
-    \end{bmatrix}$
+    $\nabla J(w, b) = \begin{bmatrix} \frac{\partial J}{\partial w} \\ \frac{\partial J}{\partial b} \end{bmatrix} = \begin{bmatrix} 0.2 \\ 0.1 \end{bmatrix}$
     
-    Step 5: Update the Parameters
+    **Step 5: Update the Parameters**
     
     Finally, we use the gradient descent update rule:
     
@@ -278,13 +273,14 @@ Eww that is a lot of math feel free to click the example below to see how a simp
     
     $b_{1} = 0.1 - 0.01 \cdot 0.1 = 0.099$
     
-    The Result
+    **The Result**
     
     After one step, our new parameters are:
+    
     - **Updated $w$**: 1.498
     - **Updated $b$**: 0.099
-
-And that’s how we take a step towards improving our model!
+    
+    And that update to our model parameter is a step towards improving our model!
 
 
 Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, and returns two output layers or the number of classes:
