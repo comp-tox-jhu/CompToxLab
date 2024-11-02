@@ -297,11 +297,10 @@ Once we have updated our model parameters to optimize our loss, we need to decid
 | **ReLU (Rectified Linear Unit)** | $\text{ReLU}(x) = \max(0, x)$          | - Outputs the input directly if positive, otherwise outputs zero <br> - Helps mitigate the vanishing gradient problem | Hidden layers of deep neural networks | `torch.nn.ReLU()` or `torch.relu()` |
 | **Sigmoid**              | $\sigma(x) = \frac{1}{1 + e^{-x}}$            | - Squashes input to a range between 0 and 1 <br> - Useful for probabilities | Output layers in binary classification | `torch.nn.Sigmoid()` or `torch.sigmoid()` |
 | **Tanh**                 | $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ | - Squashes input to a range between -1 and 1 <br> - Centered around zero, leading to better convergence than Sigmoid | Hidden layers in neural networks | `torch.nn.Tanh()` or `torch.tanh()` |
-| **Softmax**              | $\sigma(\vec{z})_{i} = \frac{e^{z_{i}}}{\sum_{j=1}^{K} e^{z_j}}$ | - Converts an input vector $\vec{z}$ into a probability distribution over $K$ classes <br> - $e^{z_i}$: standard exponential function for input vector <br> - $K$: number of classes in the multi-class classifier <br> - Ensures that outputs sum to 1 | Output layer for multi-class classification | `torch.nn.Softmax()` or `torch.softmax()` |
-| **Leaky ReLU**           | $\text{Leaky ReLU}(x) = \begin{cases} x, & \text{if } x > 0 \\ \alpha x, & \text{if } x \leq 0 \end{cases}$ | - Similar to ReLU but with a small slope $\alpha$ for negative $x$ <br> - Prevents the dying ReLU problem by allowing small gradients when $x \leq 0$ | Hidden layers in deep networks | `torch.nn.LeakyReLU()` |
+| **Softmax**              | $\sigma(\vec{z})\_{i} = \frac{e^{z\_{i}}}{\sum_{j=1}^{K} e^{z\_j}}$ | - Converts an input vector $\vec{z}$ into a probability distribution over $K$ classes <br> - $e^{z_i}$: standard exponential function for input vector <br> - $K$: number of classes in the multi-class classifier <br> - Ensures that outputs sum to 1 | Output layer for multi-class classification | `torch.nn.Softmax()` or `torch.softmax()` |
 
 
-Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, and returns two output layers or the number of classes:
+Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, uses a ReLU activation function, and returns one output layer:
 
 ```{py}
 class SSModel(nn.Module):
@@ -327,14 +326,7 @@ input_size = X_train.shape[1]
 model = SSModel(input_size)
 ```
 
-You'll notice that we have a new element in our model, `nn.ReLU`. ReLU is a popular activation function that is often used to determine, the output of a node, if the value is negative the output is 0 and if the value is positive the output is 1. The power of an activation function is that it can introduce non-linearity into the model. This allows for the learning of complex patterns - patterns that a linear model might miss. 
-
-!!! info "ReLU Activation Function"
-    <figure markdown="span">
-      ![](img/relu.png){ width="200" }
-    </figure>
-
-$f(x) = max(0,x)$
+The power of an activation function is that it can introduce non-linearity into the model. This allows for the learning of complex patterns - patterns that a linear model might miss. 
 
 ## Train and Evaluate the Model 
 
