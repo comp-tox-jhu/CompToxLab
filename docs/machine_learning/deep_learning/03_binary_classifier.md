@@ -184,7 +184,7 @@ Now you may notice that when using the cross-entropy loss, labels are one-hot en
 
 !!! info "One-Hot Encoding"
     <figure markdown="span">
-      ![](img/![](img/onehot.png)){ width="400" }
+      ![](img/onehot.png){ width="400" }
       <figcaption></figcaption>
     </figure>
 
