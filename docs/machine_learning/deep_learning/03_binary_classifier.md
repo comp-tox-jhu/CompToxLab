@@ -188,6 +188,105 @@ Now you may notice that when using the cross-entropy loss, labels are one-hot en
       <figcaption></figcaption>
     </figure>
 
+Now how about optimizers?
+
+**Optimizers**
+
+# Common Optimizers in Machine Learning
+
+| **Optimizer**              | **Task**                        | **Equation** / **Update Rule**                                                                                       | **Description**                                                                                 | **PyTorch Function**                  |
+|----------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------|
+| **Stochastic Gradient Descent (SGD)** | General optimization          | $\theta_{t+1} = \theta_t - \eta \nabla_\theta J(\theta_t)$                                                            | $\theta_t$: parameters at step $t$ <br> $\eta$: learning rate <br> $\nabla_\theta J(\theta_t)$: gradient of the loss function <br> Basic optimization algorithm | `torch.optim.SGD`                     |
+| **Adam**                   | Adaptive momentum and learning rate | $m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla_\theta J(\theta_t)$ <br> $v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla_\theta J(\theta_t))^2$ <br> $\hat{m}\_t = \frac{m_t}{1 - \beta_1^t}$ <br> $\hat{v}\_t = \frac{v_t}{1 - \beta_2^t}$ <br> $\theta_{t+1} = \theta_t - \frac{\eta \hat{m}_t}{\sqrt{\hat{v}_t + \epsilon}}$ | $\theta_t$: parameters at step $t$ <br> $m_t$: first moment (mean) estimate <br> $v_t$: second moment (variance) estimate <br> $\hat{m}_t$, $\hat{v}_t$: bias-corrected moment estimates <br> $\eta$: learning rate <br> $\beta_1$, $\beta_2$: exponential decay rates <br> $\epsilon$: small constant for numerical stability | `torch.optim.Adam`                    |
+
+Eww that is a lot of math feel free to click the example below to see how a simple gradient descent is calculated using SGD and an MSE loss function:
+
+??? info "Gradient Descent Example"
+    
+    Now that we have our data, it's time to dive into the details of how our model learns! To start, let’s break down what it means to calculate the gradient     and update the parameters in simple terms.
+    
+    When we train our model, we need to know how changing the parameters—like weights and biases—affects the output. This is where partial derivatives come in.     Think of them as tiny nudges in different directions that tell us how much each part of our function changes when we adjust one variable while keeping the     others fixed.
+    We’re going to look at how to find these nudges step by step, using a simple linear regression model:
+    
+    $J(w, b) = \frac{1}{2} (y - \hat{y})^2$
+    
+    where $\hat{y}$ is our prediction:
+    $\hat{y} = w \cdot x + b$
+    
+    Step 1: Partial Derivative with Respect to $w$
+    First up, we need to figure out how changing $w$ affects our loss $J$. Mathematically, that looks like this:
+    
+    $\frac{\partial J}{\partial w} = \frac{\partial}{\partial w} \left[ \frac{1}{2} (y - \hat{y})^2 \right]$
+    
+    Let’s plug in our prediction:
+    
+    $\frac{\partial J}{\partial w} = \frac{\partial}{\partial w} \left[ \frac{1}{2} (y - (w \cdot x + b))^2 \right]$
+    We apply the chain rule here:
+    
+    - The outer part, $(y - \hat{y})^2$, becomes $(y - \hat{y}) \cdot (-1)$ when we differentiate.
+    - The inner part, $\hat{y}$, with respect to $w$ is just $x$.
+    
+    Putting it together:
+    
+    $\frac{\partial J}{\partial w} = -(y - \hat{y}) \cdot x$
+    
+    Step 2: Plug in the Values
+    
+    With our data point $(x, y) = (2, 3)$ and initial parameters $w_0 = 1.5$, $b_0 = 0.1$:
+    
+    $\hat{y} = 1.5 \cdot 2 + 0.1 = 3.1$
+    
+    Gradient with respect to $w$:
+    
+    $\frac{\partial J}{\partial w} = -(3 - 3.1) \cdot 2 = 0.2$
+    
+    Step 3: Partial Derivative with Respect to $b$
+    
+    Now let’s see what happens when we change $b$:
+    
+    $\frac{\partial J}{\partial b} = -(y - \hat{y})$
+    
+    Plug in the values:
+    
+    $\frac{\partial J}{\partial b} = -(3 - 3.1) = 0.1$
+    
+    Step 4: Combine into a Gradient
+    We store these partial derivatives in a gradient:
+    
+    $
+    \nabla J(w, b) = \begin{bmatrix}
+    \frac{\partial J}{\partial w} \\
+    \frac{\partial J}{\partial b}
+    \end{bmatrix} = \begin{bmatrix}
+    0.2 \\
+    0.1
+    \end{bmatrix}$
+    
+    Step 5: Update the Parameters
+    
+    Finally, we use the gradient descent update rule:
+    
+    $\theta_{t+1} = \theta_t - \eta \nabla_\theta J(\theta_t)$
+    
+    For $w$ and $b$, this means:
+    
+    - **Update $w$**:
+    
+    $w_{1} = 1.5 - 0.01 \cdot 0.2 = 1.498$
+    
+    - **Update $b$**:
+    
+    $b_{1} = 0.1 - 0.01 \cdot 0.1 = 0.099$
+    
+    The Result
+    
+    After one step, our new parameters are:
+    - **Updated $w$**: 1.498
+    - **Updated $b$**: 0.099
+
+And that’s how we take a step towards improving our model!
+
+
 Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, and returns two output layers or the number of classes:
 
 ```{py}
