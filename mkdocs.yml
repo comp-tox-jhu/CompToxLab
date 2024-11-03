@@ -157,7 +157,7 @@ nav:
             - Setup: machine_learning/deep_learning/00_setup.md
             - Basics: machine_learning/deep_learning/01_basics.md
             - Linear Models: machine_learning/deep_learning/02_linear_model.md
-            - Binary Classifiers: machine_learning/deep_learning/03_binary_classifier.md
+            - Classifier/Multilayer Perceptron: machine_learning/deep_learning/03_classifier_mlp.md
     - Omics:
         - Omics: omics/omics.md
         - Genomics:
