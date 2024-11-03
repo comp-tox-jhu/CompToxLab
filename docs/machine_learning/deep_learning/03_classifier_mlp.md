@@ -469,6 +469,9 @@ for X_batch, y_batch in test_loader:
 - Iterates over batches in the test set, runs model outputs, applies the sigmoid function to convert logits to probabilities, and thresholds probabilities to generate binary labels.
 - Appends the predictions and true labels to their respective lists for later metric calculations
 
+### The Logit, the probability and the label
+
+We are going to break here before moving on to explain the rest of the code to talk a bit about logits, probabilities and labels. We are predicting smoker or not smoker. But the output we get from our model is not a 1 or 0. To get that label we need to first take the output of our model (or **logit**) and convert it to a **probability** using the sigmoid activation function. This will squeeze the values between 0 and 1. Then we can set some threshold, here over 0.5, and if the value is over that threshold we **label** it 1 and if it is below we **label** it 0. And that is how we get labels from our model output! Now back to the rest of the code:
 
 ```py
 accuracy = accuracy_score(all_labels, all_preds)
@@ -484,6 +487,19 @@ f1_vals.append(f1)
 ```
 - Calculates evaluation metrics: accuracy, precision, recall, and F1-score based on the collected predictions and true labels.
 - Appends these values to their respective list 
+
+### Evaluation Metrics
+
+You'll notice that at the end of our evaluation loop we calculate some metrics to see how well our model is doing:
+
+| **Metric** | **Formula** | **Explanation** |
+|------------|-------------|------------------|
+| **Accuracy** | $\text{Accuracy} = \frac{\text{Number of Correct Predictions}}{\text{Total Number of Predictions}}$ | Measures the ratio of correctly predicted labels to the total number of labels. It gives an overall indication of model performance. |
+| **Precision** | $\text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}$ | Measures how many of the predicted positive labels are actually positive. It indicates the model’s ability to avoid false positives. |
+| **Recall** | $\text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}$ | Measures how many actual positive labels were correctly predicted. It shows the model’s ability to capture all positive cases. |
+| **F1-score** | $\text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$ | The harmonic mean of precision and recall. It balances the trade-off between precision and recall and is useful when both are important. |
+
+Now let's visualize how these change over different numbers of epochs:
 
 ```py
 import plotly.graph_objects as go
@@ -521,4 +537,14 @@ fig.show()
       ![](img/classifier_metrics.png){ width="500" }
     </figure>
 
-    
+Great! Here we see that after around epoch 700 these metrics plateau. However, that is not to say that with more epochs we couldn't get better performance!
+
+## Key Points
+
+- Deep learning models can be used for both regression (predicting numbers) and classification (predicting classes).
+- Data preparation usually involves cleaning, creating relevant columns, visualizing data, and normalizing features to ensure consistency in the model.
+- The data is usually split into training and test sets.
+- We can convert this data into PyTorch tensors and TensorDataset objects for efficient batch processing.
+- Multilayer perceptrons are neural networks wehere all nodes in one layer are connected to all nodes in the next layer
+- The training loop includes forward passes, loss calculation, backpropagation, and parameter updates.
+- We can evaluate our model using metrics like accuracy, precision, recall, and F1-score  to gauge model performance.
