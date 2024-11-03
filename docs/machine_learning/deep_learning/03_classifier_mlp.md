@@ -3,7 +3,7 @@
 
 **Learning Objectives**
 
-1. [Binary Classifiers](#binary-classifiers)
+1. [Classifiers](#classifiers)
 2. [Data Preparation and Exploration](#data-preparation-and-exploration)
 3. [Build the Model](#build-the-model)
 4. [Train and Evaluate the Model](#train-and-evaluate-the-model)
@@ -22,7 +22,7 @@ In the previous section, we predicted numeric values using in a regression model
 
 We are going to start by scoping a problem for our model to solve. In this case we are going to use glioblastoma gene expression data, where we will use a gene's expression (level of RNA that gene has made) to predict a phenotype. To start we will try to predict smoking status. First, let's load the data and take a peak!
 
-```{python}
+```py
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -39,18 +39,18 @@ gbm.shape
 ```
 
 !!! info "output"
-    ```{python}
+    ```py
     (87, 133)
     ```
 
 Great! We can see that this data frame contains 87 rows and 133 columns. Let's take a peak at the column that would contain smoking status:
 
-```{python}
+```py
 gbm.loc[:,"SMOKING_HISTORY"]
 ```
 
 !!! info "output"
-    ```{python}
+    ```py
     0          Current reformed smoker within past 15 years
     1          Current reformed smoker within past 15 years
     2                                                   NaN
@@ -62,14 +62,14 @@ gbm.loc[:,"SMOKING_HISTORY"]
     
 This doesn't look particularly clean, so we will just have to make a new column with the smoking status. We will do this by saying that if we see "non-smoker" in the text, then we classify the sample as coming from a non-smoker. But before this we should remove the NA rows, given we don't have any smoking information on them!
 
-```{py}
+```py
 gbm = gbm[gbm['SMOKING_HISTORY'].notna()]
 gbm['smoking_status'] = np.where(gbm['SMOKING_HISTORY'].str.contains('non-smoker'), 'non-smoker', 'smoker')
 gbm.loc[:,"smoking_status"]
 ```
 
 !!! info "output"
-    ```{python}
+    ```py
     0         smoker
     1         smoker
     3         smoker
@@ -83,7 +83,7 @@ gbm.loc[:,"smoking_status"]
 Now before going forward, it is critical to take a look at our data. Are there any obvious patterns right off the bat? Let's visualize the first few variables using a pairplot:
 
 
-```{py}
+```py
 # Create a pair plot
 fig = px.scatter_matrix(gbm, 
             dimensions=['LINC00159','EFTUD1P1','C20orf202','KRT17P8','RPL7L1P9'],
@@ -106,14 +106,14 @@ fig.show()
 We can see that a few of our variables can sort of startify smokers and non-smokers. Now that we have the smoking status variable in our data frame and we have a few features to use, we can start getting our data ready for our model! However, to give this to a machine learning model we need to make this into a number (Here we will do 0 and 1).
 
 
-```{py}
+```py
 gbm_filt = gbm.loc[:,['LINC00159','EFTUD1P1','C20orf202','KRT17P8','RPL7L1P9','smoking_status']]
 gbm_filt['smoking_status'] = gbm_filt['smoking_status'].astype('category').cat.codes
 gbm_filt['smoking_status']
 ```
 
 !!! info "output"
-    ```{python}
+    ```py
     0     1
     1     1
          ..
@@ -124,7 +124,7 @@ gbm_filt['smoking_status']
 
 Now let's split our data into our features (things used to predict) and outcome (the thing to be predicted):
 
-```{py}
+```py
 # Split the data into features and outcome variable
 X = gbm_filt.drop('smoking_status', axis=1).values
 y = gbm_filt['smoking_status'].values
@@ -132,7 +132,7 @@ y = gbm_filt['smoking_status'].values
 
 When dealing with variables we often need to make sure they are on the same scale. That way, one variable doesn't have way more pull than another just because one is an order of magnitude larger.
 
-```{py}
+```py
 # Normalize the features
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
@@ -140,7 +140,7 @@ X = scaler.fit_transform(X)
 
 Now we are going to split our data into training and test sets. Then we will convert our data into tensors so Pytorch can use the data: 
 
-```{py}
+```py
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=81)
 
@@ -153,7 +153,7 @@ y_test_tensor = torch.tensor(y_test, dtype=torch.long)
 
 We will now convert our training and test data into a `TensorDataset` object, then we manage that object using `DataLoader`, which acts to process the data in batches for parallel processing: 
 
-```{py}
+```py
 # Create DataLoader
 train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
 test_dataset = TensorDataset(X_test_tensor, y_test_tensor)
@@ -303,7 +303,7 @@ Once we have updated our model parameters to optimize our loss, we need to decid
 
 Let's create a model that takes in our 5 genes, creates two hidden layers with 64 nodes, uses a ReLU activation function, and returns one output layer:
 
-```{py}
+```py
 class SSModel(nn.Module):
     '''
     Create a model to predict smoking status
@@ -333,7 +333,7 @@ The power of an activation function is that it can introduce non-linearity into 
 
 Now let's specify our optimizer (to get to our optimum weights) and our loss function (to specify how far away our model is from the truth):
 
-```{py}
+```py
 # Specify the loss function and optimizer
 criterion = nn.BCEWithLogitsLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
@@ -341,7 +341,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 With all the pieces in place, we can train and evaluate our model!
 
-```{py}
+```py
 # Training loop
 num_epochs = 1000
 epoch_vals = []
@@ -406,20 +406,86 @@ for epoch in range(num_epochs):
 
 Woah that is a lot! Let's break it down piece by piece:
 
-| **Code** | **What is it doing?** |
-|-------------------|------------------|
-| `num_epochs = 1000` <br> `epoch_vals = []` <br> `loss_vals = []` <br> `acc_vals = []` <br> `pre_vals = []` <br> `recall_vals = []` <br> `f1_vals = []` | Initializes the number of epochs for training and lists to store the epoch numbers, loss, and evaluation metrics (accuracy, precision, recall, F1-score) throughout training. |
-| `for epoch in range(num_epochs):` <br> `model.train()` <br> `running_loss = 0.0` | Begins the training loop that runs for each epoch. Sets the model to training mode and initializes a variable to accumulate the total loss for the epoch. |
-| `for X_batch, y_batch in train_loader:` <br> `outputs = model(X_batch)` <br> `y_long = y_batch.view(-1, 1).float()` <br> `loss = criterion(outputs, y_long)` <br> `optimizer.zero_grad()` <br> `loss.backward()` <br> `optimizer.step()` <br> `running_loss += loss.item()` | Iterates over batches in the training set. Performs a forward pass to get predictions, computes the loss, clears previous gradients, backpropagates the loss to calculate new gradients, and updates the model parameters using the optimizer. The batch loss is accumulated for the epoch. |
-| `loss_vals.append(running_loss / len(train_loader))` | Calculates and appends the average loss for the epoch to `loss_vals`. |
-| `model.eval()` <br> `with torch.inference_mode():` <br> `all_preds = []` <br> `all_labels = []` | Switches the model to evaluation mode and ensures no gradients are computed, saving memory and computation. Initializes lists to store predictions and true labels. |
-| `for X_batch, y_batch in test_loader:` <br> `outputs = model(X_batch)` <br> `probabilities = torch.sigmoid(outputs)` <br> `predicted = (probabilities > 0.5).float()` <br> `all_preds.extend(predicted.cpu().numpy())` <br> `all_labels.extend(y_batch.cpu().numpy())` | Iterates over batches in the test set, gets model outputs, applies the sigmoid function to convert logits to probabilities, and thresholds probabilities to create binary labels. Appends the predictions and true labels for evaluation. |
-| `accuracy = accuracy_score(all_labels, all_preds)` <br> `precision = precision_score(all_labels, all_preds, average='binary', zero_division=0)` <br> `recall = recall_score(all_labels, all_preds, average='binary')` <br> `f1 = f1_score(all_labels, all_preds, average='binary')` | Calculates evaluation metrics (accuracy, precision, recall, F1-score) based on predictions and true labels. |
-| `epoch_vals.append(epoch)` <br> `acc_vals.append(accuracy)` <br> `pre_vals.append(precision)` <br> `recall_vals.append(recall)` <br> `f1_vals.append(f1)` | Appends the current epoch number and calculated metrics to their respective lists. |
+```py
+num_epochs = 1000
+epoch_vals = []
+loss_vals = []
+acc_vals = []
+pre_vals = []
+recall_vals = []
+f1_vals = []
+```
+- Sets the number of epochs for training and lists to store epoch numbers, loss, accuracy, precision, recall, and F1-score throughout training.
+
+```py
+for epoch in range(num_epochs):
+    model.train()
+    running_loss = 0.0
+```
+
+- Begins the training loop that runs for each epoch.
+- Sets the model to training mode and initializes a variable to accumulate the total loss for the current epoch.
+
+```py
+for X_batch, y_batch in train_loader:
+    outputs = model(X_batch)
+    y_long = y_batch.view(-1, 1).float()
+    loss = criterion(outputs, y_long)
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+    running_loss += loss.item()
+```
+
+- Iterates over batches in the training set.
+- Runs a forward pass to get predictions, calculates the loss, clears the previous gradients, performs backpropagation to calculate new gradients, and updates the model parameters using the optimizer.
+- Accumulates the batch loss into running_loss.
+
+```py
+loss_vals.append(running_loss / len(train_loader))
+```
+
+- Calculates and appends the average loss for the epoch to `loss_vals`.
+
+```py
+model.eval()
+with torch.inference_mode():
+    all_preds = []
+    all_labels = []
+```
+
+- Switches the model to evaluation mode, disabling certain training-specific behaviors and ensuring no gradients are computed for memory and computation efficiency.
+- Creates lists to store predictions and true labels for evaluation.
+
+```py
+for X_batch, y_batch in test_loader:
+    outputs = model(X_batch)
+    probabilities = torch.sigmoid(outputs)
+    predicted = (probabilities > 0.5).float()
+    all_preds.extend(predicted.cpu().numpy())
+    all_labels.extend(y_batch.cpu().numpy())
+```
+
+- Iterates over batches in the test set, runs model outputs, applies the sigmoid function to convert logits to probabilities, and thresholds probabilities to generate binary labels.
+- Appends the predictions and true labels to their respective lists for later metric calculations
 
 
+```py
+accuracy = accuracy_score(all_labels, all_preds)
+precision = precision_score(all_labels, all_preds, average='binary', zero_division=0)
+recall = recall_score(all_labels, all_preds, average='binary')
+f1 = f1_score(all_labels, all_preds, average='binary')
 
-```{py}
+epoch_vals.append(epoch)
+acc_vals.append(accuracy)
+pre_vals.append(precision)
+recall_vals.append(recall)
+f1_vals.append(f1)
+```
+- Calculates evaluation metrics: accuracy, precision, recall, and F1-score based on the collected predictions and true labels.
+- Appends these values to their respective list 
+
+```py
 import plotly.graph_objects as go
 
 # Create a figure
