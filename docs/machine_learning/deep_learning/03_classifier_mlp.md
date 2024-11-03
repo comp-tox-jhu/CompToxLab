@@ -163,7 +163,7 @@ test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
 ## Build the Model 
 
-With our data prepared, we can make our model! But we have decisions to make. Our model is going to be a little more complex than our previous simple linear model. We are going to make what is called a multilayer perceptron. It sounds complicated but all it is is a neural network where all nodes in one layer are connected to all nodes in the next layer:
+With our data prepared, we can make our model! But we have decisions to make. Our model is going to be a little more complex than our previous simple linear model. We are going to make what is called a **multilayer perceptron**. It sounds complicated but all it is is a neural network where all nodes in one layer are connected to all nodes in the next layer:
 
 !!! info "Multilayer Perceptron Architecture"
     <figure markdown="span">
@@ -403,6 +403,13 @@ for epoch in range(num_epochs):
         recall_vals.append(recall)
         f1_vals.append(f1)
 ```
+
+Woah that is a lot! Let's break it down piece by piece, we will start with the training loop:
+
+!!! info "Classifier Training Loop"
+    <figure markdown="span">
+      ![](img/mlp_train.png){ width="600" }
+    </figure>
 
 ```{py}
 import plotly.graph_objects as go
