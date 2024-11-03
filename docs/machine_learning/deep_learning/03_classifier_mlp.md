@@ -404,12 +404,20 @@ for epoch in range(num_epochs):
         f1_vals.append(f1)
 ```
 
-Woah that is a lot! Let's break it down piece by piece, we will start with the training loop:
+Woah that is a lot! Let's break it down piece by piece:
 
-!!! info "Classifier Training Loop"
-    <figure markdown="span">
-      ![](img/mlp_train.png){ width="600" }
-    </figure>
+| **Code** | **What is it doing?** |
+|-------------------|------------------|
+| `num_epochs = 1000` <br> `epoch_vals = []` <br> `loss_vals = []` <br> `acc_vals = []` <br> `pre_vals = []` <br> `recall_vals = []` <br> `f1_vals = []` | Initializes the number of epochs for training and lists to store the epoch numbers, loss, and evaluation metrics (accuracy, precision, recall, F1-score) throughout training. |
+| `for epoch in range(num_epochs):` <br> `model.train()` <br> `running_loss = 0.0` | Begins the training loop that runs for each epoch. Sets the model to training mode and initializes a variable to accumulate the total loss for the epoch. |
+| `for X_batch, y_batch in train_loader:` <br> `outputs = model(X_batch)` <br> `y_long = y_batch.view(-1, 1).float()` <br> `loss = criterion(outputs, y_long)` <br> `optimizer.zero_grad()` <br> `loss.backward()` <br> `optimizer.step()` <br> `running_loss += loss.item()` | Iterates over batches in the training set. Performs a forward pass to get predictions, computes the loss, clears previous gradients, backpropagates the loss to calculate new gradients, and updates the model parameters using the optimizer. The batch loss is accumulated for the epoch. |
+| `loss_vals.append(running_loss / len(train_loader))` | Calculates and appends the average loss for the epoch to `loss_vals`. |
+| `model.eval()` <br> `with torch.inference_mode():` <br> `all_preds = []` <br> `all_labels = []` | Switches the model to evaluation mode and ensures no gradients are computed, saving memory and computation. Initializes lists to store predictions and true labels. |
+| `for X_batch, y_batch in test_loader:` <br> `outputs = model(X_batch)` <br> `probabilities = torch.sigmoid(outputs)` <br> `predicted = (probabilities > 0.5).float()` <br> `all_preds.extend(predicted.cpu().numpy())` <br> `all_labels.extend(y_batch.cpu().numpy())` | Iterates over batches in the test set, gets model outputs, applies the sigmoid function to convert logits to probabilities, and thresholds probabilities to create binary labels. Appends the predictions and true labels for evaluation. |
+| `accuracy = accuracy_score(all_labels, all_preds)` <br> `precision = precision_score(all_labels, all_preds, average='binary', zero_division=0)` <br> `recall = recall_score(all_labels, all_preds, average='binary')` <br> `f1 = f1_score(all_labels, all_preds, average='binary')` | Calculates evaluation metrics (accuracy, precision, recall, F1-score) based on predictions and true labels. |
+| `epoch_vals.append(epoch)` <br> `acc_vals.append(accuracy)` <br> `pre_vals.append(precision)` <br> `recall_vals.append(recall)` <br> `f1_vals.append(f1)` | Appends the current epoch number and calculated metrics to their respective lists. |
+
+
 
 ```{py}
 import plotly.graph_objects as go
