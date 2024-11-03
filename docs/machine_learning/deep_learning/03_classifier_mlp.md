@@ -6,7 +6,12 @@
 1. [Classifiers](#classifiers)
 2. [Data Preparation and Exploration](#data-preparation-and-exploration)
 3. [Build the Model](#build-the-model)
-4. [Train and Evaluate the Model](#train-and-evaluate-the-model)
+4. [Loss Functions](#loss-functions)
+5. [Optimizers](#optimizers)
+6. [Activation Functions](#activation-functions)
+8. [Train and Evaluate the Model](#train-and-evaluate-the-model)
+9. [The Logit, the Probability and the Label](#the-logit-the-probability-and-the-label)
+10. [Evaluation Metrics](#evaluation-metrics)
 
 !!! info "Overview of Classification"
     <figure markdown="span">
@@ -469,7 +474,7 @@ for X_batch, y_batch in test_loader:
 - Iterates over batches in the test set, runs model outputs, applies the sigmoid function to convert logits to probabilities, and thresholds probabilities to generate binary labels.
 - Appends the predictions and true labels to their respective lists for later metric calculations
 
-### The Logit, the probability and the label
+### The Logit, the Probability and the Label
 
 We are going to break here before moving on to explain the rest of the code to talk a bit about logits, probabilities and labels. We are predicting smoker or not smoker. But the output we get from our model is not a 1 or 0. To get that label we need to first take the output of our model (or **logit**) and convert it to a **probability** using the sigmoid activation function. This will squeeze the values between 0 and 1. Then we can set some threshold, here over 0.5, and if the value is over that threshold we **label** it 1 and if it is below we **label** it 0. And that is how we get labels from our model output! Now back to the rest of the code:
 
@@ -539,7 +544,7 @@ fig.show()
 
 Great! Here we see that after around epoch 700 these metrics plateau. However, that is not to say that with more epochs we couldn't get better performance!
 
-## Key Points
+**Key Points**
 
 - Deep learning models can be used for both regression (predicting numbers) and classification (predicting classes).
 - Data preparation usually involves cleaning, creating relevant columns, visualizing data, and normalizing features to ensure consistency in the model.
