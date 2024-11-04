@@ -37,3 +37,5 @@ $$
 - $\hat{x}_i$: predicted value after endcoding and decoding
 
 With a lower $L_{reconstruction}$, the model is doing a better job of reconstructing the original data!
+
+
