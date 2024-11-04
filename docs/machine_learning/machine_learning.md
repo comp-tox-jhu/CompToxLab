@@ -23,4 +23,4 @@
  - [Deep Learning Setup](./deep_learning/00_setup.md)
  - [Basics](./deep_learning/01_basics.md)
  - [Linear Models](./deep_learning/02_linear_model.md)
- - [Binary Classifiers](./deep_learning/03_binary_classifier.md)
+ - [Classifiers/Multilayer Perceptrons](./deep_learning/03_classifier_mlp.md)
