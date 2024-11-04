@@ -3,10 +3,11 @@
     - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
 
 **Learning Objectives**
+
 1. [XXX](#)
 2. [XXX](#)
 
-## Introduction
+## Introduction to Autoencoders
 
 Neural networks can be great at learning patterns in data. But the trade off is that the model can be too good, meaning it essentially memorizes all the training data and is not generalizable to other data - in other words the model is overfit:
 
@@ -25,17 +26,135 @@ So enter autoencoders! Autoencoders take input from a higher dimensional space a
     </figure>
 
 
-So, why bother - how does this contribute to prevent overfitting? Well, by encoding and decoding the input data we tend to "denoise" our data, allowing the model to learn general patterns without memorizing our data. To assess an autoencoder we typically use the mean squared error (MSE) for our loss:
+So, why bother - how does this contribute to prevent overfitting? Well, by encoding and decoding the input data we tend to "denoise" our data, allowing the model to learn general patterns without memorizing our data. To assess an autoencoder we use the loss function that makes most sense for our problem. In this tutorial we are going to be predicting smoking status again (a binary variable) so we need the binary cross entropy loss function!
 
 $$
-L_{reconstruction} = \frac{1}{N} \sum_{i=1}^N (x_i - \hat{x}_i)
+L_{BCE} = - \frac{1}{N} \sum_{i=1}^N [y_i log({\hat{y}_i}) + (1-y_i)log(1- \hat{y}_i)]
 $$
 
-- $L_{reconstruction}$: loss after encoding and decoding
+- $L_{BCE}$: loss after encoding and decoding
 - $N$: number of observations
-- $x_i$: true value
-- $\hat{x}_i$: predicted value after endcoding and decoding
+- $y_i$: true value
+- $\hat{y}_i$: predicted value after endcoding and decoding
 
-With a lower $L_{reconstruction}$, the model is doing a better job of reconstructing the original data!
+With a lower $L_{BCE}$, the model is doing a better job of reconstructing the original data! 
 
+## Building an Autoencoder
+
+Let's make ourselves an autoencoder then! We will pull in our glioblastoma data from the classifier example:
+
+```py
+# pandas and numpy for data manipulation and plotly for plotting
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+
+# sklearn for model metrics, normalization and data splitting
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# torch for tensor operations and neural network functions
+import torch
+from torch.utils.data import DataLoader, TensorDataset
+import torch.nn as nn
+import torch.optim as optim
+
+# read in data and filter out na values
+gbm = pd.read_csv("../data/gbm_data.csv",on_bad_lines='skip')
+gbm = gbm[gbm['SMOKING_HISTORY'].notna()]
+
+# make a new column for smoking status
+gbm['smoking_status'] = np.where(gbm['SMOKING_HISTORY'].str.contains('non-smoker'), 'non-smoker', 'smoker')
+
+# filter our data for features of interest
+gbm_filt = gbm.loc[:,['LINC00159','EFTUD1P1','C20orf202','KRT17P8','RPL7L1P9','smoking_status']]
+gbm_filt['smoking_status'] = gbm_filt['smoking_status'].astype('category').cat.codes
+```
+
+Now we will split our data into training and test datasets and normalize:
+
+```py
+# Split the data into features and outcome variable
+X = gbm_filt.drop('smoking_status', axis=1).values
+y = gbm_filt['smoking_status'].values
+
+# Normalize the features
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=81)
+
+# Convert to PyTorch tensors
+X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
+y_train_tensor = torch.tensor(y_train, dtype=torch.long)
+X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
+y_test_tensor = torch.tensor(y_test, dtype=torch.long)
+```
+
+Great, let's make that autoencoder now!
+
+```py
+class AutoEncoder(nn.Module):
+    def __init__(self, input_dim, latent_dim):
+        super(AutoEncoder, self).__init__()
+        # encoder 
+        self.encoder = nn.Sequential(
+            nn.Linear(input_dim, 64),
+            nn.ReLU(),
+            nn.Linear(64, latent_dim)
+        )
+        # decoder 
+        self.decoder = nn.Sequential(
+            nn.Linear(latent_dim, 64),
+            nn.ReLU(),
+            nn.Linear(64, 1),
+            nn.Sigmoid()
+
+        )
+    # define the flow through the nodes
+    def forward(self, x):
+        latent = self.encoder(x)
+        reconstructed = self.decoder(latent)
+        return reconstructed
+```
+
+Here we see create an autoencoder where the encoder takes our initial inputs and sends to two hidden layers with 64 nodes and a ReLU activation function, then squeezes the input to some latent dimension. Next in the decoder, we take the input from the latent space and send it to two more layers with the original dimensions of the hidden layers - 64. Then it outputs probabilities for binary classification! Finally, we define how is data going to move through our model - it is encoded by our encoder and then decoded by our decoder.
+
+Let's train our autoencoder and see how well it does!
+
+```py
+# Correct input dimension
+input_dim = X_train_tensor.shape[1]
+
+model = AutoEncoder(input_dim=input_dim, latent_dim=2)
+criterion = nn.BCELoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
+# Convert target tensors to float32
+y_train_tensor = y_train_tensor.float()
+y_test_tensor = y_test_tensor.float()
+
+loss_vals = []
+for epoch in range(1000):
+    model.train()
+
+    output = model(X_train_tensor)
+    loss = criterion(output.squeeze(), y_train_tensor)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    # Loss for each epoch
+    loss_vals.append(loss.item())
+```
+
+!!! info "output"
+    <figure markdown="span">
+      ![](img/autoencoder_loss.png){ width="400" }
+      <figcaption></figcaption>
+    </figure>
 
