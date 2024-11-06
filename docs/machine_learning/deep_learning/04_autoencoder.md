@@ -121,7 +121,14 @@ class AutoEncoder(nn.Module):
         return reconstructed
 ```
 
-Here we see create an autoencoder where the encoder takes our initial inputs and sends to two hidden layers with 64 nodes and a ReLU activation function, then squeezes the input to some latent dimension. Next in the decoder, we take the input from the latent space and send it to two more layers with the original dimensions of the hidden layers - 64. Then it outputs probabilities for binary classification! Finally, we define how is data going to move through our model - it is encoded by our encoder and then decoded by our decoder.
+Here we:
+
+- Create an autoencoder where the encoder takes our initial inputs
+- Sends to two hidden layers with 64 nodes and a ReLU activation function
+- Squeezes the input to some latent dimension
+- Next in the decoder, we take the input from the latent space and send it to two more layers with the original dimensions of the hidden layers - 64
+- Then it outputs probabilities for binary classification!
+- Finally, we define how is data going to move through our model - it is encoded by our encoder and then decoded by our decoder.
 
 Let's train our autoencoder and see how well it does!
 
@@ -152,9 +159,45 @@ for epoch in range(1000):
     loss_vals.append(loss.item())
 ```
 
+You'll see our familiar flow, where we:
+
+- call our model with the our number of input features, and the number of nodes in the latent space
+- define our loss function and optimizer
+- convert our outcome variables to float values
+- loop through our epochs in training mode
+- plug and chug our model
+- get our loss
+- clear our gradients
+- backpropogate to update our model weights
+- perform gradient descent to find the optimal weights
+
+Now let's see how our loss changes as the number of epochs increases!
+
+```py
+# Create the plot
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(x=list(range(1000)), y=loss_vals, mode='lines+markers', name='Loss'))
+
+# Add titles and labels
+fig.update_layout(
+    title='Loss vs. Epoch',
+    xaxis_title='Epoch',
+    yaxis_title='Loss',
+    template='plotly_white')
+
+# Show the plot
+fig.show()
+```
+
 !!! info "output"
     <figure markdown="span">
       ![](img/autoencoder_loss.png){ width="400" }
       <figcaption></figcaption>
     </figure>
 
+Great! we see that as the number of epochs increases the loss decreases and that this loss seems to level out after epoch 300.
+
+## Variational Autoencoders
+
+A recent improvement on the autoencoder is the variational autoencoder. 
