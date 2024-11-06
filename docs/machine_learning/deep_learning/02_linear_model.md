@@ -1,11 +1,12 @@
 !!! example "Prerequisites"
     - [Deep Learning Setup](./00_setup.md) : Setup workspace and download python libraries
 
-!!! abstract "Learning Objectives"
-    1. [Getting the Data](#1-getting-the-data)
-    2. [Training and Test Data](#2-training-and-test-data)
-    3. [Training the Model](#3-training-the-model)
-    4. [Saving Models](#4-saving-models)
+**Learning Objectives**
+
+1. [Getting the Data](#1-getting-the-data)
+2. [Training and Test Data](#2-training-and-test-data)
+3. [Training the Model](#3-training-the-model)
+4. [Saving Models](#4-saving-models)
 
 !!! info "Overview of Linear Regression with PyTorch"
     <figure markdown="span">
@@ -243,8 +244,9 @@ What does each node look like though? Well each node is like a neuron, it takes 
 
 Here we see that each node is the sum of the products of the variables and weights, then that sum is fed through an activation function, which decides, hey is that sum enough to trigger an output. We will get more into that later though!
 
-!!! abstract "Key Points"
-    - It is a good idea to break your data into two parts, training and testing, to see how well your model might do with outside data
-    - A simple linear model is composed of a $y = weight*x + bias$ 
-    - The model weights are updated each time the model is trained (an epoch), where the weights are updated as to minimize the loss, or how far off the predicted data points are from the true data points.
-    - Save your models to use later or on other data
+**Key Points**
+
+- It is a good idea to break your data into two parts, training and testing, to see how well your model might do with outside data
+- A simple linear model is composed of a $y = weight*x + bias$ 
+- The model weights are updated each time the model is trained (an epoch), where the weights are updated as to minimize the loss, or how far off the predicted data points are from the true data points.
+- Save your models to use later or on other data
