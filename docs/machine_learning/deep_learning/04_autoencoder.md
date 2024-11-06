@@ -200,4 +200,20 @@ Great! we see that as the number of epochs increases the loss decreases and that
 
 ## Variational Autoencoders
 
-A recent improvement on the autoencoder is the variational autoencoder. 
+A recent improvement on the autoencoder is the variational autoencoder (VAE). So a normal autoencoder is returning a reconstructed value in an effort to avoid overfitting the model. A VAE will turn the latent space into a distribution instead of a vector by returning two things from the latent space:
+
+- **Mean ($\mu$)**: the central point of the distribution.
+- **Log variance $log(\sigma^2)$**: describes how spread out or “wide” the distribution should be around the mean.
+
+Now to get data points they essentially sample from a normal distribution defined by the mean and variance output from the VAE and output another data point $z$: 
+
+$z = \mu + \sigma \odot \epsilon$
+
+Where:
+
+- $\mu$ is the mean
+- $\sigma$ is the standard variation (which you get by converting the log variance with $exp(0.5⋅log(\sigma^2))$ )
+- $\epsilon$ is the sample from $\mathcal{N}(0,1)$ (a normal distribution with a mean of 0 and a standard deviation of 1)
+- $\odot$ is the element wise product
+
+What is cool about this is that we can use variational autoencoders to model the underlying distribution. However, the loss may not square up with our 
