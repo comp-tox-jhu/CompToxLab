@@ -4,8 +4,12 @@
 
 **Learning Objectives**
 
-1. [XXX](#)
-2. [XXX](#)
+1. [Autoencoder Background](#background)
+2. [Building an Autoencoder](#building-an-autoencoder)
+3. [Training and Evaluating an Autoencoder](#train-the-autoencoder)
+4. [Variational Autoencoder (VAE) Background](#background_1)
+5. [Building a VAE](#building-a-vae)
+6. [Training and Evaluating a VAE](#train-a-vae)
 
 ## Autoencoders
 
@@ -213,7 +217,7 @@ fig.show()
 
 !!! info "output"
     <figure markdown="span">
-      ![](img/autoencoder_loss.png){ width="400" }
+      ![](img/autoencoder_loss.png){ width="500" }
       <figcaption></figcaption>
     </figure>
 
@@ -419,9 +423,16 @@ fig.show()
 
 !!! info "output"
     <figure markdown="span">
-      ![](img/vae_loss.png){ width="400" }
+      ![](img/vae_loss.png){ width="500" }
       <figcaption></figcaption>
     </figure>
 
 
 **Key Points**
+
+- Neural networks can learn patterns but risk overfitting.
+- Autoencoders solve this by compressing (encoding) input data to a smaller, lower-dimensional latent space, and then reconstructing (decoding) it back.
+- Variational Autoencoders (VAEs) improve on autoencoders by modeling the latent space as a distribution (mean and log variance), better matching the underlying distribution of the data
+- The KL divergence term in the VAE loss penalizes deviations from a standard normal distribution, ensuring the latent space is smooth and structured.
+
+  
