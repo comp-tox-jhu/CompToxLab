@@ -132,33 +132,49 @@ Here we:
 - Then it outputs probabilities for binary classification!
 - Finally, we define how is data going to move through our model - it is encoded by our encoder and then decoded by our decoder.
 
+### Train the Autoencoder 
+
 Let's train our autoencoder and see how well it does!
 
 ```py
-# Correct input dimension
+# get input dimension
 input_dim = X_train_tensor.shape[1]
 
 model = AutoEncoder(input_dim=input_dim, latent_dim=2)
 criterion = nn.BCELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-# Convert target tensors to float32
+# convert target tensors to float32
 y_train_tensor = y_train_tensor.float()
 y_test_tensor = y_test_tensor.float()
 
-loss_vals = []
-for epoch in range(1000):
-    model.train()
+# set a list for our training and test loss values
+ae_train_loss_vals = []
+ae_test_loss_vals = []
 
+# training loop
+for epoch in range(300):
+    model.train()
+    
+    # what is our model output and loss
     output = model(X_train_tensor)
     loss = criterion(output.squeeze(), y_train_tensor)
 
+    # clear our gradients, backpropagate and 
+    # perform gradient descent
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
 
-    # Loss for each epoch
-    loss_vals.append(loss.item())
+    # loss for each training epoch
+    ae_train_loss_vals.append(loss.item())
+
+    # evaluate on test data
+    model.eval()
+    with torch.inference_mode():
+        recon_test = model(X_test_tensor)
+        test_loss = criterion(recon_test.squeeze(), y_test_tensor)
+        ae_test_loss_vals.append(test_loss.item())
 ```
 
 You'll see our familiar flow, where we:
@@ -176,19 +192,22 @@ You'll see our familiar flow, where we:
 Now let's see how our loss changes as the number of epochs increases!
 
 ```py
-# Create the plot
+# create an empty plot
 fig = go.Figure()
 
-fig.add_trace(go.Scatter(x=list(range(1000)), y=loss_vals, mode='lines+markers', name='Loss'))
+# add training and test loss values
+fig.add_trace(go.Scatter(x=list(range(300)), y=ae_train_loss_vals, mode='lines', name='Training Loss'))
+fig.add_trace(go.Scatter(x=list(range(300)), y=ae_test_loss_vals, mode='lines', name='Test Loss'))
 
-# Add titles and labels
+# update labels & layout
 fig.update_layout(
-    title='Loss vs. Epoch',
+    title='Autoencoder Loss vs. Epoch',
     xaxis_title='Epoch',
     yaxis_title='Loss',
-    template='plotly_white')
+    template = 'plotly_white'
+)
 
-# Show the plot
+# show the plot
 fig.show()
 ```
 
@@ -227,7 +246,7 @@ $L_{KL} = -\frac{1}{2} \sum_{j=1}^{d} \left( 1 + \log \sigma_j^2 - \mu_j^2 - \si
 
 ??? tip "How did we get to this?"
        
-    1. **What is KL Divergence?**:
+    - **What is KL Divergence?**:
     
     - The KL divergence between two distributions $q(z|x)$ and $p(z)$ is:
        
@@ -235,7 +254,7 @@ $L_{KL} = -\frac{1}{2} \sum_{j=1}^{d} \left( 1 + \log \sigma_j^2 - \mu_j^2 - \si
          
        - For a VAE, $q(z|x)$ has a mean $\mu$ and a variance $\sigma^2$ (encoded for each input by the encoder network).
     
-    2. **Plugging in the Standard Normal Distribution**:
+    - **Plugging in the Standard Normal Distribution**:
     
        - $p(z)$ is a standard normal distribution $N(0, 1)$, so it has the following formula:
        
@@ -243,7 +262,7 @@ $L_{KL} = -\frac{1}{2} \sum_{j=1}^{d} \left( 1 + \log \sigma_j^2 - \mu_j^2 - \si
          
        - $q(z|x)$, has a mean $\mu$ and variance $\sigma^2$, and is a normal distribution for each input sample: $q(z|x) = N(\mu, \sigma^2)$.
     
-    3. **Solving the KL Divergence Integral**:
+    - **Solving the KL Divergence Integral**:
     
        - Substituting the expressions for $q(z|x)$ and $p(z)$ into the KL divergence formula, we get:
     
@@ -260,6 +279,7 @@ $L_{VAE} =  L_{BCE} + \beta L_{KL}$
 Where $\beta$ is a term for how much we want to penalize the latent space. Now enough math, let's make a VAE!
 
 ### Building a VAE
+
 ```py
 class VAEClassifier(nn.Module):
     def __init__(self, input_dim, latent_dim):
@@ -268,7 +288,7 @@ class VAEClassifier(nn.Module):
         # encoder: compresses input to a smaller space
         self.encoder = nn.Sequential(
             nn.Linear(input_dim, 64), 
-            nn.ReLU()  # ReLU activation for non-linearity
+            nn.ReLU() 
         )
         
         # latent space parameters: calculates the mean (mu) and log variance (logvar)
@@ -309,3 +329,99 @@ class VAEClassifier(nn.Module):
         return output, mu, logvar  
 ```
 ​
+Here is what is going on:
+
+- **Encoder:** Compresses the input into latent space.
+- **Latent Space Parameters:** Calculates the mean (mu) and log variance (logvar) for the latent space.
+- **Classifier:** Uses a linear layer, ReLU, and sigmoid to produce a probability, predicting the binary class (e.g., 0 or 1).
+- **Reparameterization:** Samples from the latent distribution, turning logvar into standard deviation and adding random value from normal distribution $\mathcal{N}(0,1)$.
+- **Forward Pass:** Passes data through the encoder, computes mean and log variance, and then reparameterizes to get a sample point.
+- **Sampling:** Combines mean with a standard deviation-scaled data point to produce z, a point in the latent space.
+- **Binary Classification:** Uses z to predict a binary outcome, outputting a probability with the sigmoid activation.
+- **Outputs:** Returns the probability, along with mean and log variance (which we will need to calcualte the KL divergence!).
+
+### Train a VAE
+
+Let's get to training our new VAE!
+
+```py
+# call our model and set the number of dimensions for the input and
+# latent space
+vae = VAEClassifier(input_dim=X_train_tensor.shape[1], latent_dim=2)
+optimizer = torch.optim.Adam(vae.parameters(), lr=0.001)
+
+# define our VAE loss using the reconstructed loss value
+# the mean and log variance
+def vae_loss(recon_x, x, mu, logvar):
+    recon_loss = nn.BCELoss()(recon_x.squeeze(), x)
+    kl_divergence = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
+    return recon_loss + kl_divergence
+
+vae_train_loss_vals = []
+vae_test_loss_vals = []
+
+# loop through and train the VAE
+for epoch in range(300):
+    vae.train()
+
+    # grab out reconstruction loss, mean and log variance
+    recon, mu, logvar = vae(X_train_tensor)
+    # calcluate our loss
+    loss = vae_loss(recon, y_train_tensor, mu, logvar)
+
+    # clear our gradients, backpropagate and 
+    # perform gradient descent
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    # append to list
+    vae_train_loss_vals.append(loss.item())
+
+    # evaluate on test data
+    vae.eval()
+    with torch.inference_mode():
+        recon_test, mu_test, logvar_test = vae(X_test_tensor)
+        test_loss = vae_loss(recon_test, y_test_tensor, mu_test, logvar_test)
+        vae_test_loss_vals.append(test_loss.item())
+```
+
+Here we are:
+
+- Defining our loss function and optimizer.
+- Defining a function to calculate our VAE loss using our reconstructed loss value, the mean and log variance.
+- Setting a training loop and calculating our loss.
+- Clearing our gradients, backpropogating and running gradient descent
+- Adding that loss to our list of losses
+- Evaluating our model on test data and adding the test loss to our list
+
+Let's see how our VAE did with our test and training data!
+
+```py
+# create an empty plot
+fig = go.Figure()
+
+# add training and test loss values
+fig.add_trace(go.Scatter(x=list(range(300)), y=vae_train_loss_vals, mode='lines', name='Training Loss'))
+fig.add_trace(go.Scatter(x=list(range(300)), y=vae_test_loss_vals, mode='lines', name='Test Loss'))
+
+# update labels & layout
+fig.update_layout(
+    title='VAE Loss vs. Epoch',
+    xaxis_title='Epoch',
+    yaxis_title='Loss',
+    template = 'plotly_white'
+)
+
+# show the plot
+fig.show()
+```
+
+!!! info "output"
+    <figure markdown="span">
+      ![](img/vae_loss.png){ width="400" }
+      <figcaption></figcaption>
+    </figure>
+
+
+**Key Points**
