@@ -163,18 +163,27 @@ for epoch in range(1000):
 !!! info "Diagram of Model Workflow"
 
     ``` mermaid
-    graph LR
-    A[Initialize Model, Criterion, and Optimizer]
-    A --> B[Convert Target Tensors to float32]
-    B --> C[Loop: 1000 Epochs]
-    
-    C -->|Each Epoch| D[Generate Output]
-    D --> E[Calculate Loss]
-    E --> F[Backpropagate and Update Model]
-    F --> G[Record Loss]
-    
-    G --> C[Repeat until 1000 Epochs Complete]
-    G --> H[Output Loss Values]
+    flowchart LR
+    subgraph Initialization
+        A[Initialize Model, Criterion, and Optimizer]
+        B[Convert Target Tensors to float32]
+    end
+
+    subgraph Training Loop
+        C[Loop: 1000 Epochs]
+        C -->|Each Epoch| D[Generate Output]
+        D --> E[Calculate Loss]
+        E --> F[Backpropagate and Update Model]
+        F --> G[Record Loss]
+        G --> C[Repeat until 1000 Epochs Complete]
+    end
+
+    subgraph Output
+        H[Output Loss Values]
+    end
+
+    A --> B --> C
+    G --> H
     ```
 
 You'll see our familiar flow, where we:
