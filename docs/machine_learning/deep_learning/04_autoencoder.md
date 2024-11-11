@@ -159,6 +159,37 @@ for epoch in range(1000):
     loss_vals.append(loss.item())
 ```
 
+
+!!! info "Diagram of Model Workflow"
+
+    ```mermaid
+    graph TD
+    A[Initialize Model and Parameters] --> B[Set input_dim]
+    B --> C[Define AutoEncoder Model with input_dim and latent_dim]
+    C --> D[Define BCELoss Criterion]
+    D --> E[Define Adam Optimizer]
+    
+    E --> F[Convert Target Tensors to float32]
+    
+    F --> G[Loop: 1000 Epochs]
+    
+    G -->|Train Mode| H[Generate Output using Model on X_train_tensor]
+    
+    H --> I[Calculate Loss using BCELoss]
+    
+    I --> J[Zero Gradients in Optimizer]
+    
+    J --> K[Backpropagate Loss]
+    
+    K --> L[Update Model Parameters]
+    
+    L --> M[Append Loss to loss_vals]
+    
+    M --> G[Repeat for Next Epoch]
+    
+    M --> N[Output Loss Values after Training Complete]
+    ```
+
 You'll see our familiar flow, where we:
 
 - call our model with the our number of input features, and the number of nodes in the latent space
