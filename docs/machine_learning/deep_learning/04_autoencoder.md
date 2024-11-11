@@ -7,7 +7,9 @@
 1. [XXX](#)
 2. [XXX](#)
 
-## Introduction to Autoencoders
+## Autoencoders
+
+### Background
 
 Neural networks can be great at learning patterns in data. But the trade off is that the model can be too good, meaning it essentially memorizes all the training data and is not generalizable to other data - in other words the model is overfit:
 
@@ -39,7 +41,7 @@ $$
 
 With a lower $L_{BCE}$, the model is doing a better job of reconstructing the original data! 
 
-## Building an Autoencoder
+### Building an Autoencoder
 
 Let's make ourselves an autoencoder then! We will pull in our glioblastoma data from the classifier example:
 
@@ -198,7 +200,9 @@ fig.show()
 
 Great! we see that as the number of epochs increases the loss decreases and that this loss seems to level out after epoch 300.
 
-## Introduction to Variational Autoencoders
+## Variational Autoencoders (VAE)
+
+### Background
 
 A recent improvement on the autoencoder is the variational autoencoder (VAE). So a normal autoencoder is returning a reconstructed value in an effort to avoid overfitting the model. A VAE will turn the latent space into a distribution instead of a vector by returning two things from the latent space:
 
@@ -224,6 +228,7 @@ $L_{KL} = -\frac{1}{2} \sum_{j=1}^{d} \left( 1 + \log \sigma_j^2 - \mu_j^2 - \si
 ??? tip "How did we get to this?"
        
     1. **What is KL Divergence?**:
+    
     - The KL divergence between two distributions $q(z|x)$ and $p(z)$ is:
        
          $L_{KL} = D_{KL}(q(z|x) \parallel p(z)) = \int q(z|x) \log \frac{q(z|x)}{p(z)} \, dz$
@@ -231,6 +236,7 @@ $L_{KL} = -\frac{1}{2} \sum_{j=1}^{d} \left( 1 + \log \sigma_j^2 - \mu_j^2 - \si
        - For a VAE, $q(z|x)$ has a mean $\mu$ and a variance $\sigma^2$ (encoded for each input by the encoder network).
     
     2. **Plugging in the Standard Normal Distribution**:
+    
        - $p(z)$ is a standard normal distribution $N(0, 1)$, so it has the following formula:
        
          $p(z) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{z^2}{2}}$
@@ -238,6 +244,7 @@ $L_{KL} = -\frac{1}{2} \sum_{j=1}^{d} \left( 1 + \log \sigma_j^2 - \mu_j^2 - \si
        - $q(z|x)$, has a mean $\mu$ and variance $\sigma^2$, and is a normal distribution for each input sample: $q(z|x) = N(\mu, \sigma^2)$.
     
     3. **Solving the KL Divergence Integral**:
+    
        - Substituting the expressions for $q(z|x)$ and $p(z)$ into the KL divergence formula, we get:
     
          $L_{KL} = \int N(\mu, \sigma^2) \log \frac{N(\mu, \sigma^2)}{N(0, 1)} \, dz$
@@ -252,43 +259,53 @@ $L_{VAE} =  L_{BCE} + \beta L_{KL}$
 
 Where $\beta$ is a term for how much we want to penalize the latent space. Now enough math, let's make a VAE!
 
+### Building a VAE
 ```py
 class VAEClassifier(nn.Module):
     def __init__(self, input_dim, latent_dim):
         super(VAEClassifier, self).__init__()
         
-        # Encoder: Compresses input to a smaller representation
+        # encoder: compresses input to a smaller space
         self.encoder = nn.Sequential(
             nn.Linear(input_dim, 64), 
             nn.ReLU()  # ReLU activation for non-linearity
         )
         
-        # Latent space parameters: Computes the mean (mu) and log variance (logvar)
-        self.fc_mu = nn.Linear(64, latent_dim)  # Layer for mean of latent distribution
-        self.fc_logvar = nn.Linear(64, latent_dim)  # Layer for log variance of latent distribution
+        # latent space parameters: calculates the mean (mu) and log variance (logvar)
+        self.fc_mu = nn.Linear(64, latent_dim)  
+        self.fc_logvar = nn.Linear(64, latent_dim) 
         
         # Classifier: Outputs a probability for each binary label (0 or 1)
+        # uses a ReLU activation function and
+        # sigmoid function to get class probabilities
         self.classifier = nn.Sequential(
-            nn.Linear(latent_dim, 64),  # Linear layer from latent dimension to 64 units
-            nn.ReLU(),  # ReLU activation
-            nn.Linear(64, 1),  # Linear layer down to single output for binary classification
-            nn.Sigmoid()  # Sigmoid activation to produce probability between 0 and 1
+            nn.Linear(latent_dim, 64), 
+            nn.ReLU(), 
+            nn.Linear(64, 1), 
+            nn.Sigmoid()  
         )
 
-    # Reparameterization trick: Samples from the latent distribution
+    # Reparameterization: Samples from the latent distribution
     # using mean (mu) and standard deviation derived from log variance (logvar)
     def reparameterize(self, mu, logvar):
-        std = torch.exp(0.5 * logvar)  # Calculate standard deviation from log variance
-        eps = torch.randn_like(std)  # Sample epsilon from standard normal distribution
-        return mu + eps * std  # Return sampled point: mu + (std * epsilon)
+        # get standard deviation
+        std = torch.exp(0.5 * logvar)
+        # sample from a normal distribution
+        eps = torch.randn_like(std)
+        # output a sampled point 
+        return mu + eps * std  
 
     # Forward pass: Defines data flow through the network
     def forward(self, x):
-        encoded = self.encoder(x)  # Encode the input data
-        mu = self.fc_mu(encoded)  # Compute mean of latent distribution
-        logvar = self.fc_logvar(encoded)  # Compute log variance of latent distribution
-        z = self.reparameterize(mu, logvar)  # Sample point from latent space
-        output = self.classifier(z)  # Classify based on sampled latent representation
-        return output, mu, logvar  # Return probability, mean, and log variance
+        # encode the input
+        encoded = self.encoder(x)
+        # calcluate the mean and log variance of the latent space
+        mu = self.fc_mu(encoded)  
+        logvar = self.fc_logvar(encoded)
+        # sample points from latent space
+        z = self.reparameterize(mu, logvar)
+        # classify samples and return the output, mean and log variance
+        output = self.classifier(z)  
+        return output, mu, logvar  
 ```
 ​
