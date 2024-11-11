@@ -162,7 +162,7 @@ for epoch in range(1000):
 
 !!! info "Diagram of Model Workflow"
 
-    ```mermaid
+    ``` mermaid
     graph TD
     A[Initialize Model and Parameters] --> B[Set input_dim]
     B --> C[Define AutoEncoder Model with input_dim and latent_dim]
