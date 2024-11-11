@@ -159,33 +159,6 @@ for epoch in range(1000):
     loss_vals.append(loss.item())
 ```
 
-
-!!! info "Diagram of Model Workflow"
-
-    ``` mermaid
-    flowchart TB
-    subgraph Initialization
-        A[Initialize Model, Criterion, and Optimizer]
-        B[Convert Target Tensors to float32]
-    end
-
-    subgraph Training Loop
-        C[Loop: 1000 Epochs]
-        C -->|Each Epoch| D[Generate Output]
-        D --> E[Calculate Loss]
-        E --> F[Backpropagate and Update Model]
-        F --> G[Record Loss]
-        G --> C[Repeat until 1000 Epochs Complete]
-    end
-
-    subgraph Output
-        H[Output Loss Values]
-    end
-
-    A --> B --> C
-    G --> H
-    ```
-
 You'll see our familiar flow, where we:
 
 - call our model with the our number of input features, and the number of nodes in the latent space
@@ -243,4 +216,34 @@ Where:
 - $\epsilon$ is the sample from $\mathcal{N}(0,1)$ (a normal distribution with a mean of 0 and a standard deviation of 1)
 - $\odot$ is the element wise product
 
-What is cool about this is that we can use variational autoencoders to model the underlying distribution. However, the loss may not square up with our 
+What is cool about this is that we can use variational autoencoders to model the underlying distribution. However, we have an issue, we sampled from a normal distribution $\mathcal{N}(0,1)$ and our latent space has a distribution of $\mathcal{N}(\mu,\sigma^2)$. To make sure we can sample from $\mathcal{N}(0,1)$ we should have some way of penalizing the model if it strays too far from that normal distribution $\mathcal{N}(0,1)$. For a binary loss that is summarized to:
+
+??? tip "How did we get to this?"
+    
+    Here’s the markdown with math formatted using $:
+        
+    1. **KL Divergence Definition**:
+    - The KL divergence between two distributions \( q(z|x) \) and \( p(z) \) is defined as:
+       
+         $L_{KL} = D_{KL}(q(z|x) \parallel p(z)) = \int q(z|x) \log \frac{q(z|x)}{p(z)} \, dz$
+         
+       - For a VAE, $q(z|x)$ is parameterized by a mean $\mu$ and a variance $\sigma^2$ (encoded for each input by the encoder network).
+    
+    2. **Simplifying with the Standard Normal Distribution**:
+       - If $p(z)$ is a standard normal distribution $N(0, 1)$, we know:
+       
+         $p(z) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{z^2}{2}}$
+         
+       - $q(z|x)$, parameterized by $\mu$ and $\sigma^2$, is a normal distribution for each input sample: $q(z|x) = N(\mu, \sigma^2)$.
+    
+    3. **Expanding the KL Divergence Integral**:
+       - Substituting the expressions for \( q(z|x) \) and \( p(z) \) into the KL divergence formula, we get:
+    
+         $L_{KL} = \int N(\mu, \sigma^2) \log \frac{N(\mu, \sigma^2)}{N(0, 1)} \, dz$
+         
+       - Expanding this, we arrive at:
+    
+         $L_{KL} = -\frac{1}{2} \sum_{j=1}^{d} \left( 1 + \log \sigma_j^2 - \mu_j^2 - \sigma_j^2 \right)$
+         
+       - This formula arises from calculating the KL divergence between two normal distributions with known parameters.
+
