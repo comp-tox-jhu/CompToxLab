@@ -163,7 +163,7 @@ for epoch in range(1000):
 !!! info "Diagram of Model Workflow"
 
     ``` mermaid
-    flowchart LR
+    flowchart TB
     subgraph Initialization
         A[Initialize Model, Criterion, and Optimizer]
         B[Convert Target Tensors to float32]
