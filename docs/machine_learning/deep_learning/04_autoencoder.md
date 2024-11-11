@@ -259,7 +259,7 @@ class VAEClassifier(nn.Module):
         
         # Encoder: Compresses input to a smaller representation
         self.encoder = nn.Sequential(
-            nn.Linear(input_dim, 64),  # Linear layer from input dimension to 64 units
+            nn.Linear(input_dim, 64), 
             nn.ReLU()  # ReLU activation for non-linearity
         )
         
