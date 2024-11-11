@@ -164,30 +164,17 @@ for epoch in range(1000):
 
     ``` mermaid
     graph LR
-    A[Initialize Model and Parameters] --> B[Set input_dim]
-    B --> C[Define AutoEncoder Model with input_dim and latent_dim]
-    C --> D[Define BCELoss Criterion]
-    D --> E[Define Adam Optimizer]
+    A[Initialize Model, Criterion, and Optimizer]
+    A --> B[Convert Target Tensors to float32]
+    B --> C[Loop: 1000 Epochs]
     
-    E --> F[Convert Target Tensors to float32]
+    C -->|Each Epoch| D[Generate Output]
+    D --> E[Calculate Loss]
+    E --> F[Backpropagate and Update Model]
+    F --> G[Record Loss]
     
-    F --> G[Loop: 1000 Epochs]
-    
-    G -->|Train Mode| H[Generate Output using Model on X_train_tensor]
-    
-    H --> I[Calculate Loss using BCELoss]
-    
-    I --> J[Zero Gradients in Optimizer]
-    
-    J --> K[Backpropagate Loss]
-    
-    K --> L[Update Model Parameters]
-    
-    L --> M[Append Loss to loss_vals]
-    
-    M --> G[Repeat for Next Epoch]
-    
-    M --> N[Output Loss Values after Training Complete]
+    G --> C[Repeat until 1000 Epochs Complete]
+    G --> H[Output Loss Values]
     ```
 
 You'll see our familiar flow, where we:
