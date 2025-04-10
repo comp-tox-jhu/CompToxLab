@@ -177,6 +177,8 @@ nav:
                 - "Read Alignment": omics/transcriptomics/bulk_rna_seq/04_read_alignment.md
                 - "Gene Quantification": omics/transcriptomics/bulk_rna_seq/05_gene_quantification.md
                 - "Differential Expression": omics/transcriptomics/bulk_rna_seq/06_differential_expression.md
+            - "Bulk RNA-seq":
+                - "Differential Expression": omics/transcriptomics/rna_seq/deg.md
             - "Single Cell RNA-Sequencing":
                 - "Introduction": omics/transcriptomics/single_cell/01_introduction.md
                 - "Setup": omics/transcriptomics/single_cell/02_setup.md
