@@ -124,15 +124,65 @@ meta_clean <- meta_clean |>
 
 Here we say we are creating a new column `condition`, and when another column, `title` has the pattern `AD` we put `AD` as the value, and if the pattern `CON` is found, we put `Control`.
 
-## Differential Expression
+## Principal Component Analysis 
 
-Ok onto the fun part, let's do differential expression! We will be using DESeq2 to perform differential expression and find genes that are differentially expressed between Alzheimer's disease and controls.
+Now we are going to store our data in a DESeqDataSet object, this is essentially a fancy list object where we can conveniently hold our data. 
 
 ```R
 # create DESeq2 object
 dds <- DESeqDataSetFromMatrix(countData=counts_clean, 
                               colData=meta_clean, 
                               design=~condition)
+```
+
+Nice what we have done is taken count data and a meta data file, defined our formula (~ condition, which is testing for differences between control samples and Alzheimer's disease samples). Before we move forward, let's check the grouping in our dataset. To do this we will use principal component analysis where we generate several linearly uncorrelated components that help us to visualize the variation in our data:
+
+```R
+# perform variance stabilization for pca
+vst <- vst(dds, blind=FALSE)
+
+# plot pca plot 
+plotPCA(object = vst,               # variance stabilized counts data
+        intgroup=c("condition")) +  # variable to color by
+  ggpubr::theme_pubr(               # ggplot theme to use
+    legend = "right"                # where to put the legend
+  )+
+  labs(
+    color="Diagnosis"               # legend color title
+  )
+```
+
+!!! info "PCA Plot by Condition"
+    ![](img/first_pca.png)
+
+Hmmm, this is concerning, there are two very obvious groups in our data, that seem to have nothing to do with diagnosis! Any thoughts what this could be? Well this next PCA plot may shed some light on that:
+
+```R
+# plot pca plot 
+plotPCA(object = vst,                           # variance stabilized counts data
+        intgroup=c("characteristics_ch1.4")) +  # variable to color by
+  ggpubr::theme_pubr(                           # ggplot theme to use
+    legend = "right"                            # where to put the legend
+  )+
+  labs(
+    color="Diagnosis"                           # legend color title
+  )
+```
+
+!!! info "PCA Plot by Sex"
+    ![](img/second_pca.png)
+
+This tells us that sex seems to drive alot of the variation in our dataset. So we should add this as a covariate in our model!
+
+## Differential Expression
+
+Ok onto the fun part, let's do differential expression! We will be using DESeq2 to perform differential expression and find genes that are differentially expressed between Alzheimer's disease and controls, while accounting for variation due to sex.
+
+```R
+# create DESeq2 object
+dds <- DESeqDataSetFromMatrix(countData=counts_clean, 
+                              colData=meta_clean, 
+                              design=~condition+characteristics_ch1.4)
 
 # run DESeq2 on data
 dds <- DESeq(dds)
