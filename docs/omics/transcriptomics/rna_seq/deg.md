@@ -13,6 +13,20 @@ Now call this folder `rna_seq_tutorial`! Click inside this folder and create a f
 2. `scripts`
 3. `results`
 
+Now let's make sure all the packages we need are installed:
+
+```R
+# Install CRAN packages
+install.packages(c("tidyverse", "R.utils", "EnhancedVolcano", "ggpubr"))
+
+# Install Bioconductor manager if needed
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+# Install Bioconductor packages
+BiocManager::install(c("DESeq2", "clusterProfiler", "org.Hs.eg.db"))
+```
+
 Great now in console we will download our count data and meta data!
 
 ```R
