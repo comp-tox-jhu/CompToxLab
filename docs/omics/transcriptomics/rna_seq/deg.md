@@ -4,7 +4,8 @@
 
 First thing is first we need a folder to work with! Open RStudio and create a folder by clicking the folder button:
 
-![](./img/folder_button.png)
+!!! info "Where can I find the folder button?"
+    ![](./img/folder_button.png)
 
 Now call this folder `rna_seq_tutorial`! Click inside this folder and create a few more folders:
 
@@ -42,7 +43,8 @@ R.utils::gunzip("data/annot.tsv.gz")
 
 Wonderful, now that we have both we can get to work! Let's create a script by going to create a new script by going to `File` > `New File` > `R Notebook`:
 
-![](img/new_script.png)
+!!! info "How can I create a new script?"
+    ![](img/new_script.png)
 
 When we create a new R markdown there is some helpful text to get you going, let's delete that until all you see is:
 
@@ -191,7 +193,7 @@ dds <- DESeq(dds)
 res <- data.frame(results(dds))
 ```
 
-Nice what we have done is taken count data and a meta data file, defined our formula (~ condition), performed differential expression, and collected our results as a data.frame! However, if you click on the results, you'll notice that `GeneID` isn't super informative! They are just numbers. To get gene names we will need to map it back to our annotation file:
+Nice what we have done is taken count data and a meta data file, defined our formula (~ condition + characteristics_ch1.4), performed differential expression, and collected our results as a data.frame! However, if you click on the results, you'll notice that `GeneID` isn't super informative! They are just numbers. To get gene names we will need to map it back to our annotation file:
 
 ```R
 # add gene names to the results
@@ -205,9 +207,78 @@ res_mapped <- res |>
 
 Here we took our results made a column named `GeneID` converted it to a character for mapping,  joined this data frame with the annotation data frame where we also converted the `GeneID` to a character value, and mapped on the `GeneID` column. 
 
-## Principal Component Analysis
+## Volcano Plots
 
-Before we check out what these genes do, let's examine how our samples group using principal component analysis. Luckily for us, DESeq2 has wrapper functions to take care of this!
+Now that we have mapped our `GeneID` to the annotation data frame, we can visualize our top differentially expressed genes or DEGs:
 
+```R
+# use the EnhancedVolcano library to plot our differentially expressed genes
+EnhancedVolcano::EnhancedVolcano(
+  toptable = res_mapped,                                   # name of results df
+  x = "log2FoldChange",                                    # name of log2FC column
+  y="padj",                                                # name of p-value column
+  pCutoff = 0.05,                                          # p-value cutoff
+  FCcutoff = log2(2),                                      # fold change cutoff
+  lab=res_mapped$Symbol,                                   # gene names                     
+  title = "Volcano Plot",                                  # title
+  col = c('black', 'pink', 'purple', 'red3'),              # pallete colors
+  drawConnectors = TRUE,                                   # box the labels
+  subtitle = "Differential Expression of AD RNA-Seq Data") # subtitle
+```
 
+!!! info "Volcano Plot of DEGs"
+    ![](img/volcano.png)
 
+Nice! Here we see that GABA receptors, growth factors and integrins appear differentially expressed in Alzheimer's disease samples. 
+
+## Functional Enrichment Analysis
+
+Now individual genes are great but what do these genes represent? For this, we need functional enrichment analysis where we determine if our set of DEGs overlap with gene sets with known functions. We will use `clusterProfiler` to run this analysis!
+
+```R
+# enrich significant degs
+enrich <- enrichGO(
+  gene = res_mapped |>             # significant degs that pass threshold
+    filter(padj < 0.05) |> 
+    filter(abs(log2FoldChange) > log(2)) |>
+    pull(Symbol),
+  OrgDb = 'org.Hs.eg.db',          # organism your samples belong to
+  keyType = "SYMBOL",              # type of gene name
+  ont = "ALL",                     # enrichment ontology
+  pvalueCutoff = 0.1,              # pvalue cutoff
+  pAdjustMethod = "fdr",           # pvalue adjustment method
+  universe = res_mapped$Symbol,    # what other genes did you test?
+  qvalueCutoff = 0.2,              # qvalue cutoff
+  minGSSize = 2,                   # minimum number of genes per term
+  maxGSSize = 800                  # maxiumum number of genes per term
+)
+```
+
+Now we can visualize these results with a dotplot where the x axis is the number of genes that overlap the y axis is the description and the size of the dots represents the number of genes that overlap and the color represents the p-value:
+
+```R
+dotplot(
+    object = enrich,             # enrichment object
+    x='Count',                   # x-axis 
+    showCategory = 10,           # how many terms to sho
+    size='Count',                # what to size by
+    color ="p.adjust")+          # what to color by
+    scale_fill_gradient(
+        low="midnightblue",      # change colors of dotplot
+        high="thistle"
+    )+
+    labs(                         
+        size="Count",            # change size legend title
+        fill="Adjusted P-Value"  # change color legend title
+    )
+```
+
+!!! info "Dotplot of Enriched Terms"
+    ![](img/dotplot.png)
+
+Here we see that terms related to synaptic signaling and neurotransmitter mechanics are dysregulated in Alzheimer's disease. 
+
+## References
+
+1. [HBC DGE Workshop](https://hbctraining.github.io/DGE_workshop)
+2. [Differential expression analysis for sequence count data](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-10-r106)
