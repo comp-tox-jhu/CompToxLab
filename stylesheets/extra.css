@@ -1,0 +1,15 @@
+:root > * {
+  --md-primary-fg-color:        #2d3852;
+}
+
+.md-header{
+    background-color: #161c29;
+    color: white;
+}
+@font-face {
+    font-weight: bold;
+}
+
+.md-typeset .admonition, details {
+  font-size: 14px
+}
