@@ -46,7 +46,7 @@ se <- readRDS("../data/se.rds")
 
 A SummarizedExperiment is a way of storing omics data:
 
-![](img/se.svg){width=100px}
+![](img/se.svg){height=250px}
 
 ### Filtering and Stabilizing Expression
 
