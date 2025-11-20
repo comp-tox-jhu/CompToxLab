@@ -368,4 +368,10 @@ Here is our final checklist for selecting PCR candidats from RNA-seq results.
 - adequate exons and transcript length
 - not outlier‑driven effects  
 
+# References
 
+1. [Practical: Organizing data with SummarizedExperiment](https://bioconductor.org/help/course-materials/2019/BSS2019/04_Practical_CoreApproachesInBioconductor.html)
+2. [tidybulk: an R tidy framework for modular transcriptomic data analysis](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02233-7)
+3. [Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)
+4. [clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters](https://pmc.ncbi.nlm.nih.gov/articles/PMC3339379/)
+5. [Genome wide annotation for Human](https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html)
