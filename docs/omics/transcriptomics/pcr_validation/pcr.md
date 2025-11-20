@@ -235,6 +235,23 @@ ranked |>
   slice_head(n=10)
 ```
 
+```
+Symbol log2FoldChange baseMean pathway_hit padj
+<chr>  <dbl>          <dbl>    <int>       <dbl>
+HSPA1A	2.455791	35096.8118	23	2.064107e-04
+HSPA1B	2.443789	33144.9815	18	1.303694e-04
+HSPA1L	1.887385	758.4465	1	3.737354e-05
+ATF3	1.837993	632.1215	14	6.419790e-08
+DNAJB1	1.830695	9915.0189	6	3.032908e-04
+CXCR4	1.717091	516.1339	14	2.460203e-04
+FOXJ1	1.643526	391.6230	19	3.994640e-03
+SERPINH1	1.642161	1144.9492	1	4.483712e-04
+RGS1	1.616057	905.4349	1	6.102832e-03
+BCL6B	1.548744	207.3333	5	9.924136e-05
+```
+
+
+
 And the top 10 downregulated genes!
 
 ```{r}
@@ -244,6 +261,21 @@ ranked |>
   slice_head(n=10)
 ```
 
+
+```
+Symbol log2FoldChange baseMean pathway_hit padj
+<chr>  <dbl>          <dbl>    <int>       <dbl>
+PCSK1	-2.205614	258.76353	21	5.346873e-04
+PCDH8	-2.163541	190.43384	19	4.758336e-05
+ADCYAP1	-2.158613	158.49512	18	8.329149e-05
+VGF	-2.104217	562.34778	28	6.733200e-06
+BDNF	-2.073503	156.44470	34	1.000697e-06
+CARTPT	-2.065815	129.88813	26	2.415623e-04
+CHGB	-2.035318	1504.91848	1	4.556266e-04
+GABRA4	-1.963389	295.29849	67	5.375256e-04
+PPEF1	-1.935684	64.45886	1	1.592429e-05
+OLFM3	-1.929110	308.58967	3	1.136850e-03
+```
 
 ---
 
@@ -278,6 +310,8 @@ se[rowData(se)$Symbol %in% "PCSK1",] |>
   )
 ```
 
+![](img/bad_pcr.png)
+
 You want:
 
 - clean separation between conditions  
@@ -311,6 +345,8 @@ se[rowData(se)$Symbol %in% "VGF",] |>
     
   )
 ```
+
+![](img/good_pcr.png)
 
 This one has much cleaner separation between control and AD!
 
