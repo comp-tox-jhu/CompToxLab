@@ -23,6 +23,24 @@ Here we look to provide a biologically informed method to validate RNA‑seq fin
 
 # 1. Loading & Cleaning Data
 
+## Installing Packages
+
+If you ever need to install packages I recommend `pacman`, which will handle a lot of the complexity of installing tools for you:
+
+```{r}
+install.packages("pacman")
+
+pacman::p_load(
+  tidyverse,
+  tidybulk,
+  DESeq2,
+  ggpubr,
+  clusterProfiler,
+  org.Hs.eg.db,
+  biomaRt
+)
+```
+
 ```{r}
 library(tidyverse)         
 library(tidybulk)          
