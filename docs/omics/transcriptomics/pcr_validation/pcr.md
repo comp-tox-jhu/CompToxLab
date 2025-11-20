@@ -209,7 +209,7 @@ gene_meta <- getBM(
     "gene_biotype"
   ),
   filters = "hgnc_symbol",
-  values = unique(ranked$Symbol),
+  values = unique(pcr_candidates$Symbol),
   mart = mart
 ) |> 
   group_by(hgnc_symbol) |> 
