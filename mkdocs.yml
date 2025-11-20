@@ -179,6 +179,8 @@ nav:
                 - "Differential Expression": omics/transcriptomics/bulk_rna_seq/06_differential_expression.md
             - "Bulk RNA-seq":
                 - "Differential Expression": omics/transcriptomics/rna_seq/deg.md
+            - "PCR Validation from RNA-seq":
+                - "PCR Validation": omics/transcriptomics/pcr_validation/pcr.md
             - "Single Cell RNA-Sequencing":
                 - "Introduction": omics/transcriptomics/single_cell/01_introduction.md
                 - "Setup": omics/transcriptomics/single_cell/02_setup.md
