@@ -178,3 +178,5 @@ nav:
                 - "Differential Expression": omics/transcriptomics/rna_seq/deg.md
             - "PCR Validation":
                 - "PCR Validation": omics/transcriptomics/pcr_validation/pcr.md
+            - "Enrichment Analysis":
+                - "Enrichment Analysis": omics/transcriptomics/enrichment_analysis/pathway.md
