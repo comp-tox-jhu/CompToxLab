@@ -9,6 +9,8 @@ Pathways analysis helps us understand the biological functions and networks affe
 
 Typically, you examine the overlap between your DEGs and sets of genes with known biological functions. If the overlap is greater than expected by chance you can say that your DEGs are enriched for genes related to that pathway. You can compare your DEGs to different databases of gene sets (KEGG, GO, Reactome, etc.). At it's simplist implementation you can just examine the overlap between your DEGs and your own gene set if you have one!
 
+![](img/overlap.png)
+
 In the differential expression tutorial we looked at DEGs between Alzheimer's disease and control, then we ended with GO enrichment results. Let's dig a little deeper into those results.
 
 ## Load Libraries/Data
